@@ -592,10 +592,25 @@ section + section {
 							<div class="newslatter-widget ul-li-block">
 								<h2 class="widget-title text-uppercase">Waiting List</h2>
 								<div class="newslatter-form">
-									<form action="#" method="get">
-										<input type="email" name="email" placeholder="Enter mail">
-										<button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
-									</form>
+									<form name="waitlist"
+      id="newsletter-form"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field">
+  <!-- Netlify requires this hidden field -->
+  <input type="hidden" name="form-name" value="waitlist">
+  <!-- Honeypot (spam trap) -->
+  <p style="display:none;">
+    <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+  </p>
+
+  <label for="nl-email" class="visually-hidden">Email</label>
+  <input id="nl-email" type="email" name="email" placeholder="Enter mail" required>
+  <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
+
+  <!-- Inline status message (no redirect) -->
+  <div id="newsletter-status" aria-live="polite" style="margin-top:8px;opacity:.9;"></div>
+</form>
 								</div>
 							</div>
 						</div>
@@ -640,5 +655,39 @@ section + section {
 	<script src="assets/js/jquery.magnific-popup.min.js"></script>
 	<script src="assets/js/jquery.marquee.min.js"></script>
 	<script src="assets/js/script.js"></script>
+	<script>
+		(function () {
+		  const form = document.getElementById('newsletter-form');
+		  if (!form) return;
+		  const statusEl = document.getElementById('newsletter-status');
+	  
+		  function encodeFormData(formEl) {
+			const data = new FormData(formEl);
+			return new URLSearchParams(data).toString();
+		  }
+	  
+		  form.addEventListener('submit', async function (e) {
+			e.preventDefault();
+			statusEl.textContent = 'Submitting…';
+	  
+			try {
+			  const res = await fetch('/', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				body: encodeFormData(form)
+			  });
+	  
+			  if (res.ok) {
+				form.reset();
+				statusEl.textContent = 'Thanks! You’re on the list.';
+			  } else {
+				throw new Error('Network response was not OK');
+			  }
+			} catch (err) {
+			  statusEl.textContent = 'Something went wrong. Please try again.';
+			}
+		  });
+		})();
+	  </script>
 </body>
 </html>

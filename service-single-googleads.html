@@ -301,94 +301,136 @@
 
     <!-- Start of Footer section
 	============================================= -->
-    <footer id="ori-footer" class="ori-footer-section footer-style-one">
-      <div class="container">
-        <div class="ori-footer-widget-wrapper">
-          <div class="row">
-            <div class="col-lg-3 col-md-6">
-              <div class="ori-footer-widget">
-                <div class="logo-widget">
-                  <a href="#"
-                    ><img src="assets/img/logo/logo-postr.png" alt=""
-                  /></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <div class="ori-footer-widget"></div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <div class="ori-footer-widget">
-                <div class="contact-widget ul-li-block">
-                  <h2 class="widget-title text-uppercase">Contact info</h2>
-                  <div class="contact-info">
-                    <span>Ole Kirks Vej 81 2.6, 7190, Billund, Syddanmark, Denmark</span>
-                    <span>(+423) 651-8022</span>
-                    <a href="mailto:ian@postrmarketing.com">ian@postrmarketing.com</a>
-                    <span>Office Hours: 9AM - 4PM</span>
-                    <span>Mon - Sun</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <div class="ori-footer-widget">
-                <div class="newslatter-widget ul-li-block">
-                  <h2 class="widget-title text-uppercase">Waiting List</h2>
-                  <div class="newslatter-form">
-                    <form action="#" method="get">
-                      <input
-                        type="email"
-                        name="email"
-                        placeholder="Enter mail"
-                      />
-                      <button type="submit">
-                        Subscribe <i class="fas fa-paper-plane"></i>
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="ori-footer-copyright d-flex justify-content-between">
-          <div class="ori-copyright-text">
-            © 2022 All Right Recived - Orixy - Themexriver - Built By POSTR
-          </div>
+	<footer id="ori-footer" class="ori-footer-section footer-style-one">
+		<div class="container">
+			<div class="ori-footer-widget-wrapper">
+				<div class="row">
+					<div class="col-lg-3 col-md-6">
+						<div class="ori-footer-widget">
+							<div class="logo-widget">
+								<a href="#"><img src="assets/img/logo/logo-postr.png" alt=""></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="ori-footer-widget">
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="ori-footer-widget">
+							<div class="contact-widget ul-li-block">
+								<h2 class="widget-title text-uppercase">Contact info</h2>
+								<div class="contact-info">
+									<span>Ole Kirks Vej 81 2.6, 7190, Billund, Syddanmark, Denmark</span>
+									<span>(+423) 651-8022</span>
+									<a href="mailto:ian@postrmarketing.com">ian@postrmarketing.com</a>
+									<span>Office Hours: 9AM - 4PM</span>
+									<span>Mon - Sun</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="ori-footer-widget">
+							<div class="newslatter-widget ul-li-block">
+								<h2 class="widget-title text-uppercase">Waiting List</h2>
+								<div class="newslatter-form">
+									<form name="waitlist"
+      id="newsletter-form"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field">
+  <!-- Netlify requires this hidden field -->
+  <input type="hidden" name="form-name" value="waitlist">
+  <!-- Honeypot (spam trap) -->
+  <p style="display:none;">
+    <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+  </p>
+
+  <label for="nl-email" class="visually-hidden">Email</label>
+  <input id="nl-email" type="email" name="email" placeholder="Enter mail" required>
+  <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
+
+  <!-- Inline status message (no redirect) -->
+  <div id="newsletter-status" aria-live="polite" style="margin-top:8px;opacity:.9;"></div>
+</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ori-footer-copyright d-flex justify-content-between">
+				<div class="ori-copyright-text">
+					© 2022 All Right Recived - Orixy - Themexriver - Built By POSTR
+				</div>
           <!--<div class="ori-copyright-social">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-youtube"></i></a>
           </div>-->
-        </div>
-      </div>
-    </footer>
-    <!-- End of Footer section
-	============================================= -->
+			</div>
+		</div>
+	</footer>
+<!-- End of Footer section
+	============================================= -->		
 
-    <!-- For Js Library -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery-ui.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/appear.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/twin.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/knob.js"></script>
-    <script src="assets/js/jquery.filterizr.js"></script>
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/rbtools.min.js"></script>
-    <script src="assets/js/rs6.min.js"></script>
-    <script src="assets/js/jarallax.js"></script>
-    <script src="assets/js/jquery.inputarrow.js"></script>
-    <script src="assets/js/swiper.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/jquery.marquee.min.js"></script>
-    <script src="assets/js/script.js"></script>
-  </body>
+	<!-- For Js Library -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery-ui.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/appear.js"></script>
+	<script src="assets/js/slick.js"></script>
+	<script src="assets/js/twin.js"></script>
+	<script src="assets/js/wow.min.js"></script>
+	<script src="assets/js/knob.js"></script>
+	<script src="assets/js/jquery.filterizr.js"></script>
+	<script src="assets/js/imagesloaded.pkgd.min.js"></script>
+	<script src="assets/js/rbtools.min.js"></script>
+	<script src="assets/js/rs6.min.js"></script>
+	<script src="assets/js/jarallax.js"></script>
+	<script src="assets/js/jquery.inputarrow.js"></script>
+	<script src="assets/js/swiper.min.js"></script>
+	<script src="assets/js/jquery.counterup.min.js"></script>
+	<script src="assets/js/waypoints.min.js"></script>
+	<script src="assets/js/jquery.magnific-popup.min.js"></script>
+	<script src="assets/js/jquery.marquee.min.js"></script>
+	<script src="assets/js/script.js"></script>
+	<script>
+		(function () {
+		  const form = document.getElementById('newsletter-form');
+		  if (!form) return;
+		  const statusEl = document.getElementById('newsletter-status');
+	  
+		  function encodeFormData(formEl) {
+			const data = new FormData(formEl);
+			return new URLSearchParams(data).toString();
+		  }
+	  
+		  form.addEventListener('submit', async function (e) {
+			e.preventDefault();
+			statusEl.textContent = 'Submitting…';
+	  
+			try {
+			  const res = await fetch('/', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				body: encodeFormData(form)
+			  });
+	  
+			  if (res.ok) {
+				form.reset();
+				statusEl.textContent = 'Thanks! You’re on the list.';
+			  } else {
+				throw new Error('Network response was not OK');
+			  }
+			} catch (err) {
+			  statusEl.textContent = 'Something went wrong. Please try again.';
+			}
+		  });
+		})();
+	  </script>
+</body>
 </html>
