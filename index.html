@@ -93,16 +93,9 @@
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 14px;
   background: rgba(255,255,255,0.02);
-  transition: transform .18s ease, border-color .18s ease, background .18s ease;
 }
 /* remove gradient ring */
 .cap-card::before { display: none !important; }
-
-.cap-card:hover {
-  transform: translateY(-2px);
-  background: rgba(255,255,255,0.03);
-  border-color: rgba(255,255,255,0.16);
-}
 
 /* icons: white on black */
 .cap-icon {
@@ -154,6 +147,32 @@ section + section {
 #ori-team-1 .about-card ul li {
   margin-bottom: 1rem; /* adjust: 1rem ≈ 16px */
   line-height: 1.5;    /* improves readability */
+}
+
+/* 1) Make "Learn more" look like the icon cards, with hover */
+.service-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.02);
+  text-decoration: none;
+  color: #fff;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+}
+.service-cta i { transition: transform .18s ease; }
+.service-cta:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.5);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.06) inset;
+}
+.service-cta:hover i { transform: translateX(3px); }
+.service-cta:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.35);
+  outline-offset: 2px;
 }
 
 
@@ -296,14 +315,14 @@ section + section {
 		<div class="cap-card">
 		  <div class="cap-icon"><i class="fas fa-window-maximize"></i></div>
 		  <h5>Web Design</h5>
-		  <p>Fast, clean pages with CTAs that get clicks and calls.</p>
+		  <p>Fast, clean pages with layouts that get clicks and calls.</p>
 		</div>
   
 		<!-- Landing Pages -->
 		<div class="cap-card">
 		  <div class="cap-icon"><i class="fas fa-file-lines"></i></div>
 		  <h5>Landing Pages</h5>
-		  <p>Message matched pages that tighten CPC to CPL to CPA.</p>
+		  <p>Message matched pages that turn search traffic into revenue</p>
 		</div>
   
 		<!-- Analytics & Tracking -->
