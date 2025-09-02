@@ -63,6 +63,39 @@
   outline-offset: 2px;
 }
 
+/* Center top logo on mobile */
+@media (max-width: 991.98px) {
+  /* Center the row */
+  .ori-header-content-area .ori-header-content {
+    justify-content: center !important;
+  }
+
+  /* Hide desktop-only bits so they don't steal space */
+  .ori-header-content-area .ori-main-navigation-area,
+  .ori-header-content-area .ori-header-sidebar-search {
+    display: none !important;
+  }
+
+  /* Kill the inline padding and center the image */
+  .ori-header-content-area .brand-logo a {
+    padding-right: 0 !important;
+    display: block;
+  }
+  .ori-header-content-area .brand-logo img {
+    display: block;
+    margin: 0 auto; /* centers the image */
+  }
+}
+
+/* Also center the logo inside the slide-out mobile menu header */
+.mobile_menu .m-brand-logo {
+  text-align: center;
+}
+.mobile_menu .m-brand-logo img {
+  display: block;
+  margin: 0 auto;
+}
+
 	</style>
 <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="1x2cQBN4CRSphgiX9" data-version="062024"></script>
 	
