@@ -1,76 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>POSTR</title>
-    <meta
-      name="keywords"
-      content="advertising, advertising agency, agency, agency theme, business, creative agency, digital, digital advertising, digital agency, digital marketing, digital marketing agency, digital theme, marketing, startup, marketing agency, get leads, lead gen, lead generation, email marketing, google ads, google advertising, seo, seo agency"
-    />
-    <meta name="author" content="Themexriver" />
-    <link
-      rel="shortcut icon"
-      href="assets/img/logo/favicon.png"
-      type="image/x-icon"
-    />
-    <!-- Mobile Specific Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+	<meta charset="UTF-8">
+	<title>POSTR</title>
+	<meta name="keywords" content="advertising, advertising agency, agency, agency theme, business, creative agency, digital, digital advertising, digital agency, digital marketing, digital marketing agency, digital theme, marketing, startup, marketing agency, get leads, lead gen, lead generation, email marketing, google ads, google advertising, seo, seo agency">
+	<meta name="author" content="Themexriver">
+	<link rel="shortcut icon" href="assets/img/logo/favicon.png" type="image/x-icon">
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="assets/css/animate.css" />
-    <link rel="stylesheet" href="assets/css/fontawesome-fix.css" />
-    <link rel="stylesheet" href="assets/css/video.min.css" />
-    <link rel="stylesheet" href="assets/css/slick-theme.css" />
-    <link rel="stylesheet" href="assets/css/slick.css" />
-    <link rel="stylesheet" href="assets/css/global.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <style>
-      :root {
-        --base-color-1: #0016ad !important;
-        --base-color: #0016ad !important;
-      }
-      /* Remove blue color from accordion buttons */
-      .accordion-button:not(.collapsed) {
-        color: #333333 !important;
-        background-color: transparent !important;
-        box-shadow: none !important;
-      }
-      .accordion-button:focus {
-        border-color: transparent !important;
-        box-shadow: none !important;
-      }
-      .accordion-button {
-        color: #333333 !important;
-        background-color: transparent !important;
-      }
-    </style>
-  </head>
-  <body class="ori-digital-studio">
-    <div class="cursor"></div>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<link rel="stylesheet" href="assets/css/fontawesome-fix.css">
+	<link rel="stylesheet" href="assets/css/video.min.css">
+	<link rel="stylesheet" href="assets/css/slick-theme.css">
+	<link rel="stylesheet" href="assets/css/slick.css">
+	<link rel="stylesheet" href="assets/css/global.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<style>
+/* White accent for headings and lines */
+:root {
+  --base-color-1: #ffffff !important;
+  --base-color: #ffffff !important;
+}
 
-    <!-- Start of header section
+		/* Make the left image fill its column neatly */
+#ori-team-1 .ori-team-img { height: 100%; overflow: hidden; }
+#ori-team-1 .ori-team-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Position the overlay name nicely near the bottom center */
+#ori-team-1 .ori-team-text {
+  left: 50%; transform: translateX(-50%);
+  bottom: 24px; right: auto; width: auto;
+}
+
+/* Simple card feel for the text column without fighting your theme */
+#ori-team-1 .about-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+}
+
+/* Reduce padding on small screens */
+@media (max-width: 575.98px) {
+  #ori-team-1 .about-card { padding: 1.25rem !important; }
+}
+
+	</style>
+<script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="1x2cQBN4CRSphgiX9" data-version="062024"></script>
+	
+</head>
+<body class="ori-digital-studio">
+	<div class="cursor"></div>
+  
+<!-- Start of header section
 	============================================= -->
-    <header id="ori-header" class="ori-header-section header-style-one">
-      <div class="ori-header-content-area">
-        <div class="ori-header-content d-flex align-items-center">
-          <div class="brand-logo">
-            <a href="index.html" ; style="padding-right: 30px"
-              ><img
-                src="assets/img/logo/logo_postr.png"
-                alt=""
-                style="max-width: 100px"
-            /></a>
-          </div>
-          <div class="ori-main-navigation-area">
-            <nav class="ori-main-navigation clearfix ul-li">
-              <ul id="main-nav" class="nav navbar-nav clearfix">
+  <header id="ori-header" class="ori-header-section header-style-one">
+    <div class="ori-header-content-area">
+      <div class="ori-header-content d-flex align-items-center">
+        <!-- Logo -->
+        <div class="brand-logo">
+          <a href="index.html" style="padding-right: 30px;">
+            <img src="assets/img/logo/logo_postr.png" alt="POSTR" style="max-width: 100px;">
+          </a>
+        </div>
+  
+        <!-- Main Navigation -->
+        <div class="ori-main-navigation-area">
+          <nav class="ori-main-navigation clearfix ul-li">
+            <ul id="main-nav" class="nav navbar-nav clearfix">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li class="dropdown">
+                <a href="#">Pages</a>
+                <ul class="dropdown-menu clearfix">
+                  <li><a href="faq.html">FAQ Page</a></li>
+                  <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#">Services</a>
+                <ul class="dropdown-menu clearfix">
+                  <li><a href="service-single-googleads.html">Google Ads</a></li>
+                  <li><a href="service-single-marketresearch.html">Market Research</a></li>
+                  <li><a href="service-single-outbound.html">Outbound Marketing</a></li>
+                  <li><a href="service-single-webdevelopment.html">Web Development</a></li>
+                </ul>
+              </li>
+              <li><a href="portfolio-single.html">Projects</a></li>
+            </ul>
+          </nav>
+        </div>
+  
+        <!-- Spacer / right slot -->
+        <div class="ori-header-sidebar-search d-flex align-items-center" style="width: 20px;"></div>
+      </div>
+  
+      <!-- Mobile Menu -->
+      <div class="mobile_menu position-relative">
+        <div class="mobile_menu_button open_mobile_menu">
+          <i class="fal fa-bars" style="margin-top: 20px;"></i>
+        </div>
+        <div class="mobile_menu_wrap">
+          <div class="mobile_menu_overlay open_mobile_menu"></div>
+          <div class="mobile_menu_content">
+            <div class="mobile_menu_close open_mobile_menu">
+              <i class="fal fa-times"></i>
+            </div>
+            <div class="m-brand-logo">
+              <a href="index.html">
+                <img src="assets/img/logo/logo_postr.png" alt="POSTR">
+              </a>
+            </div>
+            <nav class="mobile-main-navigation clearfix ul-li">
+              <ul id="m-main-nav" class="nav navbar-nav clearfix">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li class="dropdown">
@@ -83,96 +127,22 @@
                 <li class="dropdown">
                   <a href="#">Services</a>
                   <ul class="dropdown-menu clearfix">
-                    <li>
-                      <a href="service-single-googleads.html">Google Ads</a>
-                    </li>
-                    <li>
-                      <a href="service-single-marketresearch.html"
-                        >Market Research</a
-                      >
-                    </li>
-                    <li>
-                      <a href="service-single-outbound.html"
-                        >Outbound Marketing</a
-                      >
-                    </li>
-                    <li>
-                      <a href="service-single-webdevelopment.html"
-                        >Web Development</a
-                      >
-                    </li>
+                    <li><a href="service-single-googleads.html">Google Ads</a></li>
+                    <li><a href="service-single-marketresearch.html">Market Research</a></li>
+                    <li><a href="service-single-outbound.html">Outbound Marketing</a></li>
+                    <li><a href="service-single-webdevelopment.html">Web Development</a></li>
                   </ul>
                 </li>
-                <li><a href="portfolio-single.html">Portfolio</a></li>
+                <li><a href="portfolio-single.html">Projects</a></li>
               </ul>
             </nav>
           </div>
-          <div
-            class="ori-header-sidebar-search d-flex align-items-center"
-            style="width: 20px"
-          ></div>
-        </div>
-        <!-- /Mobile-Menu -->
-        <div class="mobile_menu position-relative">
-          <div class="mobile_menu_button open_mobile_menu">
-            <i class="fal fa-bars" ; style="margin-top: 20px"></i>
-          </div>
-          <div class="mobile_menu_wrap">
-            <div class="mobile_menu_overlay open_mobile_menu"></div>
-            <div class="mobile_menu_content">
-              <div class="mobile_menu_close open_mobile_menu">
-                <i class="fal fa-times"></i>
-              </div>
-              <div class="m-brand-logo">
-                <a href="index.html"
-                  ><img src="assets/img/logo/logo_postr.png" alt=""
-                /></a>
-              </div>
-              <nav class="mobile-main-navigation clearfix ul-li">
-                <ul id="m-main-nav" class="nav navbar-nav clearfix">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="about.html">About</a></li>
-                  <li class="dropdown">
-                    <a href="!#">Pages</a>
-                    <ul class="dropdown-menu clearfix">
-                      <li><a href="faq.html">FAQ Page</a></li>
-                      <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown">
-                    <a href="#">Services</a>
-                    <ul class="dropdown-menu clearfix">
-                      <li>
-                        <a href="service-single-googleads.html">Google Ads</a>
-                      </li>
-                      <li>
-                        <a href="service-single-marketresearch.html"
-                          >Market Research</a
-                        >
-                      </li>
-                      <li>
-                        <a href="service-single-outbound.html"
-                          >Outbound Marketing</a
-                        >
-                      </li>
-                      <li>
-                        <a href="service-single-webdevelopment.html"
-                          >Web Development</a
-                        >
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a href="portfolio-single.html">Portfolio</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-          <!-- /Mobile-Menu -->
         </div>
       </div>
-    </header>
-    <!-- /header -->
-    <!-- End of header section
+      <!-- /Mobile-Menu -->
+    </div>
+  </header>
+  <!-- End of header section
 	============================================= -->
 
     <!-- Start of Breadcrumbs  section
@@ -190,16 +160,6 @@
             <li>Faq</li>
           </ul>
         </div>
-      </div>
-      <div class="line_animation">
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
       </div>
     </section>
     <!-- End of Breadcrumbs section
@@ -485,16 +445,6 @@
           </div>
         </div>
       </div>
-      <div class="line_animation">
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-      </div>
     </section>
     <!-- End of Faq  section
 	============================================= -->
@@ -581,16 +531,6 @@
           </div>
         </div>
       </div>
-      <div class="line_animation">
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-      </div>
     </section>
     <!-- End of Faq Price section
 	============================================= -->
@@ -665,16 +605,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="line_animation">
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
-        <div class="line_area"></div>
       </div>
     </section>
     <!-- End of Sponsor section

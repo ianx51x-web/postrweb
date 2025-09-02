@@ -19,10 +19,6 @@
 	<link rel="stylesheet" href="assets/css/global.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 	<style>
-		:root {
-			--base-color-1: #0016ad !important;
-			--base-color: #0016ad !important;
-		}
 
 		/* Make the left image fill its column neatly */
 #ori-team-1 .ori-team-img { height: 100%; overflow: hidden; }
@@ -46,7 +42,121 @@
   #ori-team-1 .about-card { padding: 1.25rem !important; }
 }
 
+/* Service slices */
+.service-slice { padding: 110px 0; position: relative; }
+.service-slice + .service-slice { border-top: 1px solid rgba(255,255,255,0.07); }
+.service-eyebrow { letter-spacing: .12em; font-size: .8rem; opacity: .8; text-transform: uppercase; }
+.service-title { margin: .35rem 0 1rem 0; }
+.service-copy { opacity: .9; }
+.service-bullets li { margin-bottom: .35rem; }
+.service-cta { margin-top: 1.25rem; display: inline-flex; align-items: center; gap: .5rem; }
+.service-cta i { transition: transform .2s ease; }
+.service-cta:hover i { transform: translateX(3px); }
+
+/* Optional: subtle section background shifts */
+.service-alt { background: rgba(255,255,255,0.02); }
+
+/* Mobile spacing */
+@media (max-width: 991.98px) {
+  .service-slice { padding: 70px 0; }
+}
+
+/* White accent for headings and lines */
+:root {
+  --base-color-1: #ffffff !important;
+  --base-color: #ffffff !important;
+}
+
+/* Accent: pure white on black */
+.holo-text {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  color: #ffffff !important;
+}
+
+.capabilities-slice { padding: 90px 0; position: relative; }
+.cap-intro { max-width: 880px; margin: 0 auto 36px auto; text-align: center; }
+.cap-intro h2 { margin-bottom: 12px; }
+.cap-intro p { opacity: .9; }
+
+.cap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+@media (max-width: 1199.98px){ .cap-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 767.98px){ .cap-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 479.98px){ .cap-grid { grid-template-columns: 1fr; } }
+
+.cap-card {
+  position: relative;
+  padding: 18px 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.02);
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+/* remove gradient ring */
+.cap-card::before { display: none !important; }
+
+.cap-card:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.03);
+  border-color: rgba(255,255,255,0.16);
+}
+
+/* icons: white on black */
+.cap-icon {
+  width: 42px; height: 42px; border-radius: 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-bottom: 10px;
+  background: transparent !important;
+  border: 1px solid rgba(255,255,255,0.35) !important;
+  color: #ffffff !important;
+  font-size: 18px;
+}
+
+.cap-card h5 { margin: 6px 0 6px 0; font-size: 1rem; text-transform: uppercase; color: #ffffff; }
+.cap-card p { font-size: .92rem; opacity: .85; margin: 0; color: #ffffff; }
+
+/* Thin divider above the grid */
+.cap-divider {
+  height: 2px; width: 120px; margin: 0 auto 22px auto; border-radius: 2px;
+  background: rgba(255,255,255,0.9) !important;
+  opacity: .9;
+}
+
+section + section {
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+#ori-team-1 {
+  padding: 110px 0; /* 110px top and bottom, 0 left and right */
+}
+
+/* Topo background for testimonial section only */
+#ori-testimonial-1 {
+  background: url("assets/img/bg/bread-bg.png") repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #000; /* fallback */
+}
+
+/* Testimonial "card" style */
+.ori-testimonial-item-1 {
+  background: rgba(0, 0, 0, 0.35); /* transparent overlay */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 720px;
+  margin: 0 auto; /* center horizontally */
+}
+
+#ori-team-1 .about-card ul li {
+  margin-bottom: 1rem; /* adjust: 1rem ≈ 16px */
+  line-height: 1.5;    /* improves readability */
+}
+
+
 	</style>
+
 <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="1x2cQBN4CRSphgiX9" data-version="062024"></script>
 	
 </head>
@@ -83,7 +193,7 @@
 									<li><a href="service-single-webdevelopment.html">Web Development</a></li>
 								</ul>
 							</li>
-							<li><a href="portfolio-single.html">Portfolio</a></li>
+							<li><a href="portfolio-single.html">Projects</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -124,7 +234,7 @@
 									<li><a href="service-single-webdevelopment.html">Web Development</a></li>
 								</ul>
 							</li>
-							<li><a href="portfolio-single.html">Portfolio</a></li>
+							<li><a href="portfolio-single.html">Projects</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -160,92 +270,161 @@
 <!-- End of Slider section
 	============================================= --> 
 
-<!-- Start of Service section
-	============================================= -->
-	<section id="ori-service-1" class="ori-service-section-1">
-		<div class="ori-service-wrapper-1">
-			<div class="container">
-				<div class="ori-service-top-content-1 d-flex justify-content-between align-items-center">
-					<div class="ori-section-title-1 text-uppercase wow fadeInLeft" data-wow-delay="200ms" data-wow-duration="1500ms">
-						<h2>Modern digital <span> marketing experience</span></h2>
-					</div>
-				</div>
-				<div class="ori-service-content-1">
-					<div class="row">
-						<div class="col-lg-4 wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">
-							<div class="ori-service-inner-item position-relative">
-								<div class="ori-service-more position-absolute">
-									<a href="service-single-googleads.html"><i class="fas fa-arrow-right"></i></a>
-								</div>
-								<div class="ori-service-img-title position-relative">
-									<div class="ori-service-img">
-										<img src="assets/img/service/google_ads.png" alt="">
-									</div>
-									<div class="ori-service-title text-center position-absolute">
-										<h3>Google Ads  <i class="fal fa-arrow-right"></i></h3>
-									</div> 
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
-							<div class="ori-service-inner-item position-relative">
-								<div class="ori-service-more position-absolute">
-									<a href="service-single-webdevelopment.html"><i class="fas fa-arrow-right"></i></a>
-								</div>
-								<div class="ori-service-img-title position-relative">
-									<div class="ori-service-img">
-										<img src="assets/img/service/website.png" alt="">
-									</div>
-									<div class="ori-service-title text-center position-absolute">
-										<h3>Website Development <i class="fal fa-arrow-right"></i></h3>
-									</div> 
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
-							<div class="ori-service-inner-item position-relative">
-								<div class="ori-service-more position-absolute">
-									<a href="service-single-outbound.html"><i class="fas fa-arrow-right"></i></a>
-								</div>
-								<div class="ori-service-img-title position-relative">
-									<div class="ori-service-img">
-										<img src="assets/img/service/outbound.png" alt="">
-									</div>
-									<div class="ori-service-title text-center position-absolute">
-										<h3>Outbound Marketing <i class="fal fa-arrow-right"></i></h3>
-									</div> 
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 wow fadeInUp" data-wow-delay="800ms" data-wow-duration="1500ms">
-							<div class="ori-service-inner-item position-relative" style="margin-top: 25px;">
-								<div class="ori-service-more position-absolute">
-									<a href="service-single-marketresearch.html"><i class="fas fa-arrow-right"></i></a>
-								</div>
-								<div class="ori-service-img-title position-relative">
-									<div class="ori-service-img">
-										<img src="assets/img/service/market_research.png" alt="">
-									</div>
-									<div class="ori-service-title text-center position-absolute">
-										<h3>Market Research  <i class="fal fa-arrow-right"></i></h3>
-									</div> 
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+<!-- Capabilities icon grid -->
+<section id="ori-capabilities" class="capabilities-slice">
+	<div class="container">
+	  <div class="cap-intro">
+		<h2 class="text-uppercase"><span class="holo-text">Your Marketing Strategy Mapped Out</span></h2>
+		<div class="cap-divider"></div>
+		<p>
+		  We are a social media marketing agency helping brands thrive across digital channels.
+		  Social media management, websites, Facebook Ads, Google Ads, and SEO are a few of our specialties.
+		  Our goal is to adapt what makes you great into systems that extend your reach and help you grow.
+		</p>
+	  </div>
+  
+	  <div class="cap-grid">
+  
+		<!-- Google Ads -->
+		<div class="cap-card">
+		  <div class="cap-icon"><img src="assets/img/icon/googleads.svg" alt="Google Ads"></div>
+		  <h5>Google Ads</h5>
+		  <p>High-intent search that fills the calendar with real jobs.</p>
 		</div>
-	</section>
-<!-- End of Service section
-	============================================= -->
+  
+		<!-- Web Design -->
+		<div class="cap-card">
+		  <div class="cap-icon"><i class="fas fa-window-maximize"></i></div>
+		  <h5>Web Design</h5>
+		  <p>Fast, clean pages with CTAs that get clicks and calls.</p>
+		</div>
+  
+		<!-- Landing Pages -->
+		<div class="cap-card">
+		  <div class="cap-icon"><i class="fas fa-file-lines"></i></div>
+		  <h5>Landing Pages</h5>
+		  <p>Message matched pages that tighten CPC to CPL to CPA.</p>
+		</div>
+  
+		<!-- Analytics & Tracking -->
+		<div class="cap-card">
+		  <div class="cap-icon"><i class="fas fa-chart-line"></i></div>
+		  <h5>Analytics</h5>
+		  <p>Clean tracking so every decision is tied to revenue.</p>
+		</div>
+	  </div>
+	</div>
+  </section>
+
+
+<!-- Google Ads -->
+<section id="service-googleads" class="service-slice">
+	<div class="container">
+	  <div class="row align-items-center g-5">
+		<div class="col-lg-6 wow fadeInLeft" data-wow-delay="200ms" data-wow-duration="1200ms">
+		  <span class="service-eyebrow">Service</span>
+		  <h2 class="service-title text-uppercase">Google Ads</h2>
+		  <p class="service-copy">
+			Fill the calendar on purpose, not by luck. We run high-intent search that books real jobs, not just clicks.
+		  </p>
+		  <ul class="service-bullets">
+			<li>Build and tune lead-driven campaigns for your niche and city</li>
+			<li>Conversion tracking that ties spend to booked jobs</li>
+			<li>Fast iteration on keywords, copy, and landing pages</li>
+		  </ul>
+		  <a class="service-cta text-uppercase" href="service-single-googleads.html">
+			Learn more <i class="fal fa-arrow-right"></i>
+		  </a>
+		</div>
+		<div class="col-lg-6 wow fadeInRight" data-wow-delay="300ms" data-wow-duration="1200ms">
+		  <img class="img-fluid" src="assets/img/service/googleads.png" alt="Google Ads">
+		</div>
+	  </div>
+	</div>
+  </section>
+  
+  <!-- Website Development -->
+  <section id="service-webdev" class="service-slice service-alt">
+	<div class="container">
+	  <div class="row align-items-center g-5">
+		<div class="col-lg-6 order-lg-2 wow fadeInRight" data-wow-delay="200ms" data-wow-duration="1200ms">
+		  <span class="service-eyebrow">Service</span>
+		  <h2 class="service-title text-uppercase">Website Development</h2>
+		  <p class="service-copy">
+			Sites that look sharp and convert. Built to load fast, track clean, and turn visitors into bookings.
+		  </p>
+		  <ul class="service-bullets">
+			<li>Clean UI with clear CTAs for phone and form</li>
+			<li>Speed, schema, and analytics baked in</li>
+			<li>Landing pages for each service and city</li>
+		  </ul>
+		  <a class="service-cta text-uppercase" href="service-single-webdevelopment.html">
+			Learn more <i class="fal fa-arrow-right"></i>
+		  </a>
+		</div>
+		<div class="col-lg-6 order-lg-1 wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1200ms">
+		  <img class="img-fluid" src="assets/img/service/webdesign.png" alt="Website Development">
+		</div>
+	  </div>
+	</div>
+  </section>
+  
+  <!-- Outbound Marketing -->
+  <section id="service-outbound" class="service-slice">
+	<div class="container">
+	  <div class="row align-items-center g-5">
+		<div class="col-lg-6 wow fadeInLeft" data-wow-delay="200ms" data-wow-duration="1200ms">
+		  <span class="service-eyebrow">Service</span>
+		  <h2 class="service-title text-uppercase">Outbound Marketing</h2>
+		  <p class="service-copy">
+			Direct, personal outreach that feels human and books calls. Zero fluff, tight targeting.
+		  </p>
+		  <ul class="service-bullets">
+			<li>Personalized email that reads like a one-to-one note</li>
+			<li>Offer, risk reversal, and short path to call</li>
+			<li>Inbox testing and reply-rate tuning</li>
+		  </ul>
+		  <a class="service-cta text-uppercase" href="service-single-outbound.html">
+			Learn more <i class="fal fa-arrow-right"></i>
+		  </a>
+		</div>
+		<div class="col-lg-6 wow fadeInRight" data-wow-delay="300ms" data-wow-duration="1200ms">
+		  <img class="img-fluid" src="assets/img/service/outboundservice.png" alt="Outbound Marketing">
+		</div>
+	  </div>
+	</div>
+  </section>
+  
+  <!-- Market Research -->
+  <section id="service-marketresearch" class="service-slice service-alt">
+	<div class="container">
+	  <div class="row align-items-center g-5">
+		<div class="col-lg-6 order-lg-2 wow fadeInRight" data-wow-delay="200ms" data-wow-duration="1200ms">
+		  <span class="service-eyebrow">Service</span>
+		  <h2 class="service-title text-uppercase">Market Research</h2>
+		  <p class="service-copy">
+			Find the pockets of demand, the angles that convert, and the offers competitors miss.
+		  </p>
+		  <ul class="service-bullets">
+			<li>ICP, keywords, and message testing</li>
+			<li>Review mining for pains and language</li>
+			<li>Competitor teardown with action steps</li>
+		  </ul>
+		  <a class="service-cta text-uppercase" href="service-single-marketresearch.html">
+			Learn more <i class="fal fa-arrow-right"></i>
+		  </a>
+		</div>
+		<div class="col-lg-6 order-lg-1 wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1200ms">
+		  <img class="img-fluid" src="assets/img/service/market_research.png" alt="Market Research">
+		</div>
+	  </div>
+	</div>
+  </section>
 
    <!-- Start of Testimonial section
 	============================================= -->
 	<section id="ori-testimonial-1" class="ori-testimonial-section-1 position-relative">
-		<div class="ori-vector-bg position-absolute wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">
-			<img src="assets/img/bg/48c.png" alt="">
-		</div>
+		<div class="ori-vector-bg position-absolute wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms"></div>
 		<div class="container">
 			<div class="ori-testimonial-content-1 position-relative">
 				<div class="ori-testimonial-title text-center text-uppercase">
@@ -255,7 +434,7 @@
 					<div class="ori-testimonial-item-area">
 						<div class="ori-testimonial-item-1">
 							<div class="ori-testimonial-text text-center pera-content">
-								<p>"We got so many clients we literally had to say stop stop stop and start hiring more staff to keep up."
+								<p>"We got so many clients we literally had start hiring more staff to keep up."
 								</p>
 								<div class="ori-testimonial-author text-center text-uppercase">
 									<h4>Jens' & Laura's Cleaning Service</h4>
@@ -283,16 +462,6 @@
 					<button type="button" class="testi-right_arrow"><img src="assets/img/vector/next.png" alt=""></button>
 				</div>
 			</div>
-		</div>
-		<div class="line_animation">
-			<div class="line_area"></div>
-			<div class="line_area"></div>
-			<div class="line_area"></div>
-			<div class="line_area"></div>
-			<div class="line_area"></div>
-			<div class="line_area"></div>
-			<div class="line_area"></div>
-			<div class="line_area"></div>
 		</div>
 	</section>				
 <!-- End of Testimonial section
@@ -328,12 +497,13 @@
             <div class="h-100 d-flex flex-column justify-content-center p-4 p-lg-5 about-card">
               <h3 class="text-uppercase mb-3">About POSTR</h3>
               <p class="mb-3">
-                We make sure you don't just become a number in a portfolio and get handed off to a random intern. For us it's important to always keep the client at the center. We show you this by:
+                We make sure you don't just become a number in a portfolio and get handed off to some intern. For us it's important to always keep you at the center. We do this by:
               </p>
               <ul class="mb-4">
                 <li>Tailoring every step of the process to each client, no cookie-cutter solutions</li>
                 <li>Fast turnaround times: No more waiting for the big agencies to get back to you</li>
                 <li>Becoming a strategic partner: We want you to win long-term, not just right now</li>
+				<li>Giving you full attention at all times, because we aren't limited by size and company beaurocracy</li>
               </ul>
               <p class="mb-0">
                 If you want grow your local business, you are in the right place.
@@ -347,11 +517,6 @@
       </div>
 
     </div>
-  </div>
-
-  <div class="line_animation">
-    <div class="line_area"></div><div class="line_area"></div><div class="line_area"></div><div class="line_area"></div>
-    <div class="line_area"></div><div class="line_area"></div><div class="line_area"></div><div class="line_area"></div>
   </div>
 </section>
 <!-- End of Team section -->
@@ -367,16 +532,6 @@
 				<h3></n> roi /&nbsp<span>jobs /&nbsp</span></h3>
 				<h3></n> full calendar /&nbsp<span>ads /&nbsp</span></h3>
 			</div>
-		</div>
-		<div class="line_animation">
-			<div class="line_area"></div>
-			<div class="line_area"></div>
-			<div class="line_area"></div>
-			<div class="line_area"></div>
-			<div class="line_area"></div>
-			<div class="line_area"></div>
-			<div class="line_area"></div>
-			<div class="line_area"></div>
 		</div>
 	</section>		
 <!-- End of Text scroll section
