@@ -602,21 +602,21 @@ section + section{border-top:1px solid rgba(255,255,255,0.05);}
   </section>
 
   <!-- Conversational Questionnaire -->
-  <section id="ori-quiz" class="kpi-section">
-    <div class="container">
-      <div class="kpi-card" id="quiz-card" style="max-width:860px;margin:0 auto;">
-        <div class="kpi-heading text-center text-uppercase" style="margin-bottom:14px;">
-          <h2>Quick <span>Fit Check</span></h2>
-          <div class="kpi-divider"></div>
-          <p class="kpi-sub">Answer a few quick questions. If it’s a fit, you can grab a time for a quick call.</p>
-        </div>
-
-        <!-- Progress -->
-        <div aria-hidden="true" style="height:6px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:16px;">
-          <div id="quiz-progress" style="height:100%;width:0%;
-            background: linear-gradient(90deg, var(--kpi-g1,#d4b24a), var(--kpi-g2,#e7cf7a), var(--kpi-g3,#f2e3a3), var(--kpi-g4,#ffe9b3));">
-          </div>
-        </div>
+<section id="ori-quiz" class="kpi-section">
+	<div class="container">
+	  <div class="kpi-card" id="quiz-card" style="max-width:860px;margin:0 auto;">
+		<div class="kpi-heading text-center text-uppercase" style="margin-bottom:14px;">
+		  <h2>Quick <span>Fit Check</span></h2>
+		  <div class="kpi-divider"></div>
+		  <p class="kpi-sub">Answer a few quick questions. If it’s a fit, you can grab a time for a quick call.</p>
+		</div>
+  
+		<!-- Progress -->
+		<div aria-hidden="true" style="height:6px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:16px;">
+		  <div id="quiz-progress" style="height:100%;width:0%;
+			background: linear-gradient(90deg, var(--kpi-g1,#d4b24a), var(--kpi-g2,#e7cf7a), var(--kpi-g3,#f2e3a3), var(--kpi-g4,#ffe9b3));">
+		  </div>
+		</div>
 
         <!-- Screens -->
         <form id="quiz" novalidate>
@@ -762,19 +762,16 @@ section + section{border-top:1px solid rgba(255,255,255,0.05);}
             </div>
           </div>
 
-          <!-- Screen 7 (contact) -->
-          <div class="q-screen" data-step="7" hidden>
-            <label class="field-label" for="q_name">Your name</label>
-            <input id="q_name" name="name" type="text" required>
-
-            <label class="field-label" for="q_email" style="margin-top:10px;">Best email</label>
-            <input id="q_email" name="email" type="email" required>
-
-            <div class="q-cta">
-              <button type="button" class="service-cta" data-prev>Back</button>
-              <button type="button" class="service-cta" data-submit>See times <i class="fal fa-arrow-right"></i></button>
-            </div>
-          </div>
+          <!-- Screen 7 (note only) -->
+<div class="q-screen" data-step="7" hidden>
+	<label class="field-label" for="q_note">Anything you’d like us to know?</label>
+	<textarea id="q_note" name="note" rows="4" placeholder="Add a note for us..." style="width:100%;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.12);color:#fff;border-radius:10px;padding:10px 12px;"></textarea>
+  
+	<div class="q-cta" style="margin-top:12px;">
+	  <button type="button" class="service-cta" data-prev>Back</button>
+	  <button type="button" class="service-cta" data-submit>See times <i class="fal fa-arrow-right"></i></button>
+	</div>
+  </div>
 
           <!-- Screen 8 (calendar) -->
           <div class="q-screen" data-step="8" hidden>
@@ -787,30 +784,30 @@ section + section{border-top:1px solid rgba(255,255,255,0.05);}
           </div>
         </form>
 
-        <!-- Hidden Netlify form (receives the submission) -->
-        <form name="lead-quiz" data-netlify="true" netlify-honeypot="bot-field" hidden>
-          <input type="hidden" name="form-name" value="lead-quiz">
-          <input type="text" name="business_type">
-          <input type="text" name="city">
-          <input type="text" name="goal">
-          <input type="text" name="budget">
-          <input type="text" name="timeline">
-          <input type="text" name="has_site">
-          <input type="text" name="name">
-          <input type="email" name="email">
-          <input type="tel" name="phone">
-          <input type="text" name="utm_source">
-          <input type="text" name="utm_medium">
-          <input type="text" name="utm_campaign">
-          <input type="text" name="utm_term">
-          <input type="text" name="utm_content">
-          <p style="display:none;">
-            <label>Don’t fill this out: <input name="bot-field"></label>
-          </p>
-        </form>
-      </div>
+         <!-- Hidden Netlify form (receives the submission) -->
+      <form name="lead-quiz" data-netlify="true" netlify-honeypot="bot-field" hidden>
+        <input type="hidden" name="form-name" value="lead-quiz">
+        <input type="text" name="business_type">
+        <input type="text" name="city">
+        <input type="text" name="goal">
+        <input type="text" name="budget">
+        <input type="text" name="timeline">
+        <input type="text" name="has_site">
+        <input type="text" name="name">
+        <input type="email"name="email">
+        <input type="text" name="note">
+        <input type="text" name="utm_source">
+        <input type="text" name="utm_medium">
+        <input type="text" name="utm_campaign">
+        <input type="text" name="utm_term">
+        <input type="text" name="utm_content">
+        <p style="display:none;">
+          <label>Don’t fill this out: <input name="bot-field"></label>
+        </p>
+      </form>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Rolling Text -->
   <section id="ori-text-scroll-2" class="ori-text-scroll-section-2 position-relative">
