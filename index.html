@@ -1,724 +1,1074 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>POSTR</title>
-	<meta name="keywords" content="advertising, advertising agency, agency, agency theme, business, creative agency, digital, digital advertising, digital agency, digital marketing, digital marketing agency, digital theme, marketing, startup, marketing agency, get leads, lead gen, lead generation, email marketing, google ads, google advertising, seo, seo agency">
-	<meta name="author" content="Themexriver">
+  <meta charset="UTF-8">
+  <title>POSTR</title>
+  <meta name="keywords" content="advertising, advertising agency, agency, agency theme, business, creative agency, digital, digital advertising, digital agency, digital marketing, digital marketing agency, digital theme, marketing, startup, marketing agency, get leads, lead gen, lead generation, email marketing, google ads, google advertising, seo, seo agency">
+  <meta name="author" content="Themexriver">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo/favicon.png?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo/favicon.png?v=2">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-fix.css">
+  <link rel="stylesheet" href="assets/css/video.min.css">
+  <link rel="stylesheet" href="assets/css/slick-theme.css">
+  <link rel="stylesheet" href="assets/css/slick.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+/* ---------- Core accents ---------- */
+:root{
+  --base-color-1:#ffffff !important;
+  --base-color:#ffffff !important;
 
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-	<link rel="stylesheet" href="assets/css/animate.css">
-	<link rel="stylesheet" href="assets/css/fontawesome-fix.css">
-	<link rel="stylesheet" href="assets/css/video.min.css">
-	<link rel="stylesheet" href="assets/css/slick-theme.css">
-	<link rel="stylesheet" href="assets/css/slick.css">
-	<link rel="stylesheet" href="assets/css/global.css">
-	<link rel="stylesheet" href="assets/css/style.css">
-	<style>
+  /* Four-color gradient for KPI divider — tweak to match brand */
+  --kpi-g1:#d4b24a;
+  --kpi-g2:#f0dc9a;
+  --kpi-g3:#cfa841;
+  --kpi-g4:#a8832e;
 
-		/* Make the left image fill its column neatly */
-#ori-team-1 .ori-team-img { height: 100%; overflow: hidden; }
-#ori-team-1 .ori-team-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* Fallback accent gold */
+  --accent-gold:#d4b24a;
+}
 
+/* Make the left image fill its column neatly */
+#ori-team-1 .ori-team-img{height:100%;overflow:hidden;}
+#ori-team-1 .ori-team-img img{width:100%;height:100%;object-fit:cover;display:block;}
 /* Position the overlay name nicely near the bottom center */
-#ori-team-1 .ori-team-text {
-  left: 50%; transform: translateX(-50%);
-  bottom: 24px; right: auto; width: auto;
-}
-
-/* Simple card feel for the text column without fighting your theme */
-#ori-team-1 .about-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
-}
-
-/* Reduce padding on small screens */
-@media (max-width: 575.98px) {
-  #ori-team-1 .about-card { padding: 1.25rem !important; }
-}
+#ori-team-1 .ori-team-text{left:50%;transform:translateX(-50%);bottom:24px;right:auto;width:auto;}
+/* Simple card feel for the text column */
+#ori-team-1 .about-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;}
+@media (max-width:575.98px){#ori-team-1 .about-card{padding:1.25rem !important;}}
 
 /* Service slices */
-.service-slice { padding: 110px 0; position: relative; }
-.service-slice + .service-slice { border-top: 1px solid rgba(255,255,255,0.07); }
-.service-eyebrow { letter-spacing: .12em; font-size: .8rem; opacity: .8; text-transform: uppercase; }
-.service-title { margin: .35rem 0 1rem 0; }
-.service-copy { opacity: .9; }
-.service-bullets li { margin-bottom: .35rem; }
-.service-cta { margin-top: 1.25rem; display: inline-flex; align-items: center; gap: .5rem; }
-.service-cta i { transition: transform .2s ease; }
-.service-cta:hover i { transform: translateX(3px); }
-
-/* Optional: subtle section background shifts */
-.service-alt { background: rgba(255,255,255,0.02); }
-
-/* Mobile spacing */
-@media (max-width: 991.98px) {
-  .service-slice { padding: 70px 0; }
-}
-
-/* White accent for headings and lines */
-:root {
-  --base-color-1: #ffffff !important;
-  --base-color: #ffffff !important;
-}
+.service-slice{padding:110px 0;position:relative;}
+.service-slice + .service-slice{border-top:1px solid rgba(255,255,255,0.07);}
+.service-eyebrow{letter-spacing:.12em;font-size:.8rem;opacity:.8;text-transform:uppercase;}
+.service-title{margin:.35rem 0 1rem 0;}
+.service-copy{opacity:.9;}
+.service-bullets li{margin-bottom:.35rem;}
+.service-cta{margin-top:1.25rem;display:inline-flex;align-items:center;gap:.5rem;}
+.service-cta i{transition:transform .2s ease;}
+.service-cta:hover i{transform:translateX(3px);}
+.service-alt{background:rgba(255,255,255,0.02);}
+@media (max-width:991.98px){.service-slice{padding:70px 0;}}
 
 /* Accent: pure white on black */
-.holo-text {
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
-  color: #ffffff !important;
-}
+.holo-text{background:none !important;-webkit-background-clip:initial !important;background-clip:initial !important;color:#ffffff !important;}
 
-.capabilities-slice { padding: 90px 0; position: relative; }
-.cap-intro { max-width: 880px; margin: 0 auto 36px auto; text-align: center; }
-.cap-intro h2 { margin-bottom: 12px; }
-.cap-intro p { opacity: .9; }
+/* Capabilities grid (icon cards) */
+.capabilities-slice{padding:90px 0;position:relative;}
+.cap-intro{max-width:880px;margin:0 auto 36px auto;text-align:center;}
+.cap-intro h2{margin-bottom:12px;}
+.cap-intro p{opacity:.9;}
+.cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+@media (max-width:1199.98px){.cap-grid{grid-template-columns:repeat(3,1fr);}}
+@media (max-width:767.98px){.cap-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:479.98px){.cap-grid{grid-template-columns:1fr;}}
+.cap-card{position:relative;padding:18px 16px;border:1px solid rgba(255,255,255,0.08);border-radius:14px;background:rgba(255,255,255,0.02);}
+.cap-card::before{display:none !important;}
+.cap-icon{width:42px;height:42px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:10px;background:transparent !important;border:1px solid rgba(255,255,255,0.35) !important;color:#ffffff !important;font-size:18px;}
+.cap-card h5{margin:6px 0 6px 0;font-size:1rem;text-transform:uppercase;color:#ffffff;}
+.cap-card p{font-size:.92rem;opacity:.85;margin:0;color:#ffffff;}
+.cap-divider{height:2px;width:120px;margin:0 auto 22px auto;border-radius:2px;background:rgba(255,255,255,0.9) !important;opacity:.9;}
 
-.cap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-@media (max-width: 1199.98px){ .cap-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 767.98px){ .cap-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 479.98px){ .cap-grid { grid-template-columns: 1fr; } }
+section + section{border-top:1px solid rgba(255,255,255,0.05);}
+#ori-team-1{padding:110px 0;}
 
-.cap-card {
-  position: relative;
-  padding: 18px 16px;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px;
-  background: rgba(255,255,255,0.02);
-}
-/* remove gradient ring */
-.cap-card::before { display: none !important; }
+/* Testimonial bg + card */
+#ori-testimonial-1{background:url("assets/img/bg/bread-bg.png") repeat;background-size:cover;background-attachment:fixed;background-color:#000;}
+.ori-testimonial-item-1{background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:2rem;max-width:720px;margin:0 auto;}
+#ori-team-1 .about-card ul li{margin-bottom:1rem;line-height:1.5;}
 
-/* icons: white on black */
-.cap-icon {
-  width: 42px; height: 42px; border-radius: 10px;
-  display: inline-flex; align-items: center; justify-content: center;
-  margin-bottom: 10px;
-  background: transparent !important;
-  border: 1px solid rgba(255,255,255,0.35) !important;
-  color: #ffffff !important;
-  font-size: 18px;
-}
-
-.cap-card h5 { margin: 6px 0 6px 0; font-size: 1rem; text-transform: uppercase; color: #ffffff; }
-.cap-card p { font-size: .92rem; opacity: .85; margin: 0; color: #ffffff; }
-
-/* Thin divider above the grid */
-.cap-divider {
-  height: 2px; width: 120px; margin: 0 auto 22px auto; border-radius: 2px;
-  background: rgba(255,255,255,0.9) !important;
-  opacity: .9;
-}
-
-section + section {
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-
-#ori-team-1 {
-  padding: 110px 0; /* 110px top and bottom, 0 left and right */
-}
-
-/* Topo background for testimonial section only */
-#ori-testimonial-1 {
-  background: url("assets/img/bg/bread-bg.png") repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-color: #000; /* fallback */
-}
-
-/* Testimonial "card" style */
-.ori-testimonial-item-1 {
-  background: rgba(0, 0, 0, 0.35); /* transparent overlay */
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 2rem;
-  max-width: 720px;
-  margin: 0 auto; /* center horizontally */
-}
-
-#ori-team-1 .about-card ul li {
-  margin-bottom: 1rem; /* adjust: 1rem ≈ 16px */
-  line-height: 1.5;    /* improves readability */
-}
-
-/* 1) Make "Learn more" look like the icon cards, with hover */
-.service-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.35);
-  background: rgba(255,255,255,0.02);
-  text-decoration: none;
-  color: #fff;
-  transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
-}
-.service-cta i { transition: transform .18s ease; }
-.service-cta:hover {
-  transform: translateY(-2px);
-  background: rgba(255,255,255,0.05);
-  border-color: rgba(255,255,255,0.5);
-  box-shadow: 0 0 0 3px rgba(255,255,255,0.06) inset;
-}
-.service-cta:hover i { transform: translateX(3px); }
-.service-cta:focus-visible {
-  outline: 2px solid rgba(255,255,255,0.35);
-  outline-offset: 2px;
-}
+/* Learn more button style (matches icon cards) */
+.service-cta{display:inline-flex;align-items:center;gap:.5rem;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.35);background:rgba(255,255,255,0.02);text-decoration:none;color:#fff;transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease;}
+.service-cta i{transition:transform .18s ease;}
+.service-cta:hover{transform:translateY(-2px);background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.5);box-shadow:0 0 0 3px rgba(255,255,255,0.06) inset;}
+.service-cta:hover i{transform:translateX(3px);}
+.service-cta:focus-visible{outline:2px solid rgba(255,255,255,0.35);outline-offset:2px;}
 
 /* Center top logo on mobile */
-@media (max-width: 991.98px) {
-  /* Center the row */
-  .ori-header-content-area .ori-header-content {
-    justify-content: center !important;
-  }
-
-  /* Hide desktop-only bits so they don't steal space */
+@media (max-width:991.98px){
+  .ori-header-content-area .ori-header-content{justify-content:center !important;}
   .ori-header-content-area .ori-main-navigation-area,
-  .ori-header-content-area .ori-header-sidebar-search {
-    display: none !important;
-  }
+  .ori-header-content-area .ori-header-sidebar-search{display:none !important;}
+  .ori-header-content-area .brand-logo a{padding-right:0 !important;display:block;}
+  .ori-header-content-area .brand-logo img{display:block;margin:0 auto;}
+}
+/* Center inside slide-out menu */
+.mobile_menu .m-brand-logo{text-align:center;}
+.mobile_menu .m-brand-logo img{display:block;margin:0 auto;}
 
-  /* Kill the inline padding and center the image */
-  .ori-header-content-area .brand-logo a {
-    padding-right: 0 !important;
-    display: block;
-  }
-  .ori-header-content-area .brand-logo img {
-    display: block;
-    margin: 0 auto; /* centers the image */
+/* ---------- KPI block ---------- */
+.kpi-section{padding:90px 0;}
+.kpi-card{position:relative;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);border-radius:16px;padding:28px;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.02);}
+.kpi-grid{
+  position:relative;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:28px;
+  border-radius:12px;padding:14px;
+  /* Vertical, horizontal, and gradient center divider */
+  background:
+    linear-gradient(rgba(255,255,255,.06), rgba(255,255,255,.06)) 50% 0/1px 100% no-repeat,
+    linear-gradient(rgba(255,255,255,.06), rgba(255,255,255,.06)) 0 50%/100% 1px no-repeat,
+    linear-gradient(90deg,var(--kpi-g1),var(--kpi-g2),var(--kpi-g3),var(--kpi-g4)) 50% 50%/min(58%,520px) 4px no-repeat;
+}
+.kpi-item{padding:10px 14px;position:relative;z-index:1;}
+.kpi-title{margin:0 0 6px 0;letter-spacing:.02em;opacity:.95;}
+.kpi-value{font-size:clamp(32px,6vw,48px);font-weight:800;line-height:1;margin:4px 0 8px;}
+.kpi-value .kpi-counter{display:inline-block;min-width:2ch;}
+.kpi-desc{margin:0;opacity:.85;}
+@media (max-width:767.98px){
+  .kpi-grid{
+    grid-template-columns:1fr;
+    background:
+      linear-gradient(rgba(255,255,255,.06), rgba(255,255,255,.06)) 0 50%/100% 1px no-repeat,
+      linear-gradient(90deg,var(--kpi-g1),var(--kpi-g2),var(--kpi-g3),var(--kpi-g4)) 50% 50%/70% 4px no-repeat;
   }
 }
 
-/* Also center the logo inside the slide-out mobile menu header */
-.mobile_menu .m-brand-logo {
-  text-align: center;
-}
-.mobile_menu .m-brand-logo img {
-  display: block;
-  margin: 0 auto;
-}
-	</style>
+/* KPI header block (above the card) */
+.kpi-heading { margin-bottom: 22px; }
+.kpi-heading h2 { margin: 0; letter-spacing: .02em; }
+.kpi-heading span { font-weight: 700; }
 
-<script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="1x2cQBN4CRSphgiX9" data-version="062024"></script>
-	
+/* Small gradient divider under the H2 (uses your four brand colors) */
+.kpi-divider{
+  height: 3px;
+  width: 160px;
+  margin: 10px auto 8px auto;
+  border-radius: 3px;
+  background: linear-gradient(90deg,var(--kpi-g1),var(--kpi-g2),var(--kpi-g3),var(--kpi-g4));
+  opacity: .95;
+}
+
+/* Optional subheading sentence */
+.kpi-sub{
+  margin: 6px auto 0 auto;
+  max-width: 860px;
+  font-size: .98rem;
+  text-transform: none;
+  opacity: .85;
+}
+
+/* ---------- QUIZ (card selections, no native blue selects) ---------- */
+#ori-quiz .field{margin-bottom:20px;}
+#ori-quiz .field-label{display:block;margin:0 0 10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+
+#ori-quiz .choice-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+@media (max-width:575.98px){
+  #ori-quiz .choice-grid{grid-template-columns:1fr;}
+}
+
+/* Hide native radios */
+#ori-quiz .choice-input{
+  position:absolute !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+}
+
+/* Card look */
+#ori-quiz .choice-card{
+  border:1px solid rgba(255,255,255,0.15);
+  background:rgba(255,255,255,0.02);
+  border-radius:12px;
+  padding:12px 14px;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;
+  min-height:48px;
+  transition:background .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease;
+  color:#fff;text-align:left;
+}
+#ori-quiz .choice-card:hover{
+  background:rgba(255,255,255,0.05);
+  border-color:rgba(255,255,255,0.35);
+  transform:translateY(-1px);
+}
+
+/* Selected state (gold) */
+#ori-quiz .choice-input:checked + .choice-card{
+  border-color:var(--accent-gold);
+  box-shadow:0 0 0 3px rgba(212,178,74,0.20) inset;
+  background:linear-gradient(90deg, rgba(212,178,74,0.12), rgba(255,255,255,0.03));
+}
+
+/* Focus ring */
+#ori-quiz .choice-input:focus-visible + .choice-card{
+  outline:2px solid var(--accent-gold);
+  outline-offset:2px;
+}
+
+/* Optional tiny round check at right */
+#ori-quiz .fake-check{
+  width:18px;height:18px;border-radius:50%;
+  border:1px solid rgba(255,255,255,0.35);
+  margin-left:12px;flex:0 0 auto;
+}
+#ori-quiz .choice-input:checked + .choice-card .fake-check{
+  background:var(--accent-gold);
+  border-color:var(--accent-gold);
+  box-shadow:0 0 0 2px rgba(0,0,0,0.35) inset;
+}
+
+/* Inputs for text/email/tel */
+#ori-quiz input[type="text"],
+#ori-quiz input[type="email"],
+#ori-quiz input[type="tel"]{
+  width:100%;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.12);
+  color:#fff;border-radius:10px;
+  padding:10px 12px;margin-top:6px;
+}
+#ori-quiz input:focus{
+  outline:2px solid rgba(212,178,74,.6);
+  outline-offset:2px;
+}
+
+/* CTA row */
+#ori-quiz .q-cta{margin-top:12px;display:flex;gap:8px;}
+
+/* hide any accidental native selects inside quiz */
+#ori-quiz select{display:none !important;}
+  </style>
+
+  <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="1x2cQBN4CRSphgiX9" data-version="062024"></script>
 </head>
 <body class="ori-digital-studio">
-	<div class="cursor"></div>
-  
-<!-- Start of header section
-	============================================= -->
-	<header id="ori-header" class="ori-header-section header-style-one">
-		<div class="ori-header-content-area">
-			<div class="ori-header-content d-flex align-items-center">
-				<div class="brand-logo">
-					<a href="index.html"; style="padding-right: 30px;"><img src="assets/img/logo/logo-postr.png" alt="" style="max-width: 100px;"></a>
-				</div>
-				<div class="ori-main-navigation-area">
-					<nav class="ori-main-navigation clearfix ul-li">
-						<ul id="main-nav" class="nav navbar-nav clearfix">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li class="dropdown">
-								<a href="#">Pages</a>
-								<ul class="dropdown-menu clearfix">
-									<li><a href="faq.html">FAQ Page</a></li>
-									<li><a href="contact.html">Contact Us</a></li>
-									
-								</ul>
-							</li>
-							<li class="dropdown">
-								<a href="#">Services</a>
-								<ul class="dropdown-menu clearfix">
-									<li><a href="service-single-googleads.html">Google Ads</a></li>
-									<li><a href="service-single-marketresearch.html">Market Research</a></li>
-									<li><a href="service-single-outbound.html">Outbound Marketing</a></li>
-									<li><a href="service-single-webdevelopment.html">Web Development</a></li>
-								</ul>
-							</li>
-							<li><a href="portfolio-single.html">Projects</a></li>
-						</ul>
-					</nav>
-				</div>
-				<div class="ori-header-sidebar-search d-flex align-items-center" style="width: 20px;">
-				</div>
-			</div>
-			<!-- /Mobile-Menu -->
-			<div class="mobile_menu position-relative">
-				<div class="mobile_menu_button open_mobile_menu">
-					<i class="fal fa-bars"; style="margin-top: 20px;"></i>
-				</div>
-				<div class="mobile_menu_wrap">
-					<div class="mobile_menu_overlay open_mobile_menu"></div>
-					<div class="mobile_menu_content">
-						<div class="mobile_menu_close open_mobile_menu">
-							<i class="fal fa-times"></i>
-						</div>
-						<div class="m-brand-logo">
-							<a  href="index.html"><img src="assets/img/logo/logo-postr.png" alt=""></a>
-						</div>
-						<nav class="mobile-main-navigation  clearfix ul-li">
-							<ul id="m-main-nav" class="nav navbar-nav clearfix"> 
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li class="dropdown">
-								<a href="!#">Pages</a>
-								<ul class="dropdown-menu clearfix">
-									<li><a href="faq.html">FAQ Page</a></li>
-									<li><a href="contact.html">Contact Us</a></li>
-								</ul>
-							</li>
-							<li class="dropdown">
-								<a href="#">Services</a>
-								<ul class="dropdown-menu clearfix">
-									<li><a href="service-single-googleads.html">Google Ads</a></li>
-									<li><a href="service-single-marketresearch.html">Market Research</a></li>
-									<li><a href="service-single-outbound.html">Outbound Marketing</a></li>
-									<li><a href="service-single-webdevelopment.html">Web Development</a></li>
-								</ul>
-							</li>
-							<li><a href="portfolio-single.html">Projects</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-				<!-- /Mobile-Menu -->
-			</div>
-		</div>
-	</header><!-- /header -->
-<!-- End of header section
-	============================================= -->
+  <div class="cursor"></div>
 
-
-<!-- Start of Slider section
-	============================================= -->
-	<section id="ori-slider-1" class="ori-slider-section-1 position-relative">
-		<div class="ori-slider-content-wrapper-1 postion-relative">
-			<div class="ori-slider-social position-absolute text-uppercase ul-li">
-			</div>
-			<div class="ori-slider-wrap-1">
-				<div  class="ori-slider-content-1 position-relative">
-					<div class="ori-slider-text text-center  text-uppercase">
-						<h1>Transform Your Business Into a <span>Local Success</span> 
-							Story
-						</h1>
-						<div class="ori-slider-img position-absolute">
-							<img src="assets/img/slider/header-bg.png" alt="">
-						</div>
-					</div>
-				</div>
-		</div>
-		</div>
-	</section>				
-<!-- End of Slider section
-	============================================= --> 
-
-<!-- Capabilities icon grid -->
-<section id="ori-capabilities" class="capabilities-slice">
-	<div class="container">
-	  <div class="cap-intro">
-		<h2 class="text-uppercase"><span class="holo-text">Put Your Local Business on the Map</span></h2>
-		<div class="cap-divider"></div>
-		<p>
-		  We help brick-and-mortar companies turn online traffic into steady growth. From websites that earn trust to Google Ads and outbound campaigns that bring in business-contracts, we build systems that expand your reach and keep your calendar full.
-		</p>
-	  </div>
-  
-	  <div class="cap-grid">
-  
-		<!-- Google Ads -->
-		<div class="cap-card">
-		  <div class="cap-icon"><img src="assets/img/icon/googleads.svg" alt="Google Ads"></div>
-		  <h5>Google Ads</h5>
-		  <p>High-intent search that fills the calendar with real jobs.</p>
-		</div>
-  
-		<!-- Web Design -->
-		<div class="cap-card">
-		  <div class="cap-icon"><i class="fas fa-window-maximize"></i></div>
-		  <h5>Web Design</h5>
-		  <p>Fast, clean pages with layouts that get clicks and calls.</p>
-		</div>
-  
-		<!-- Landing Pages -->
-		<div class="cap-card">
-		  <div class="cap-icon"><i class="fas fa-file-lines"></i></div>
-		  <h5>Landing Pages</h5>
-		  <p>Message matched pages that turn search traffic into revenue</p>
-		</div>
-  
-		<!-- Analytics & Tracking -->
-		<div class="cap-card">
-		  <div class="cap-icon"><i class="fas fa-chart-line"></i></div>
-		  <h5>Analytics</h5>
-		  <p>Clean tracking so every decision is tied to revenue.</p>
-		</div>
-	  </div>
-	</div>
-  </section>
-
-
-<!-- Google Ads -->
-<section id="service-googleads" class="service-slice">
-	<div class="container">
-	  <div class="row align-items-center g-5">
-		<div class="col-lg-6 wow fadeInLeft" data-wow-delay="200ms" data-wow-duration="1200ms">
-		  <span class="service-eyebrow">Service</span>
-		  <h2 class="service-title text-uppercase">Google Ads</h2>
-		  <p class="service-copy">
-			Fill the calendar on purpose, not by luck. We run high-intent search that books real jobs, not just clicks.
-		  </p>
-		  <ul class="service-bullets">
-			<li>Build and tune lead-driven campaigns for your niche and city</li>
-			<li>Conversion tracking that ties spend to booked jobs</li>
-			<li>Fast iteration on keywords, copy, and landing pages</li>
-		  </ul>
-		  <a class="service-cta text-uppercase" href="service-single-googleads.html">
-			Learn more <i class="fal fa-arrow-right"></i>
-		  </a>
-		</div>
-		<div class="col-lg-6 wow fadeInRight" data-wow-delay="300ms" data-wow-duration="1200ms">
-		  <img class="img-fluid" src="assets/img/service/googleads.png" alt="Google Ads">
-		</div>
-	  </div>
-	</div>
-  </section>
-  
-  <!-- Website Development -->
-  <section id="service-webdev" class="service-slice service-alt">
-	<div class="container">
-	  <div class="row align-items-center g-5">
-		<div class="col-lg-6 order-lg-2 wow fadeInRight" data-wow-delay="200ms" data-wow-duration="1200ms">
-		  <span class="service-eyebrow">Service</span>
-		  <h2 class="service-title text-uppercase">Website Development</h2>
-		  <p class="service-copy">
-			Sites that look sharp and convert. Built to load fast, track clean, and turn visitors into bookings.
-		  </p>
-		  <ul class="service-bullets">
-			<li>Clean UI with clear CTAs for phone and form</li>
-			<li>Speed, schema, and analytics baked in</li>
-			<li>Landing pages for each service and city</li>
-		  </ul>
-		  <a class="service-cta text-uppercase" href="service-single-webdevelopment.html">
-			Learn more <i class="fal fa-arrow-right"></i>
-		  </a>
-		</div>
-		<div class="col-lg-6 order-lg-1 wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1200ms">
-		  <img class="img-fluid" src="assets/img/service/webdesign.png" alt="Website Development">
-		</div>
-	  </div>
-	</div>
-  </section>
-  
-  <!-- Outbound Marketing -->
-  <section id="service-outbound" class="service-slice">
-	<div class="container">
-	  <div class="row align-items-center g-5">
-		<div class="col-lg-6 wow fadeInLeft" data-wow-delay="200ms" data-wow-duration="1200ms">
-		  <span class="service-eyebrow">Service</span>
-		  <h2 class="service-title text-uppercase">Outbound Marketing</h2>
-		  <p class="service-copy">
-			Direct, personal outreach that feels human and books calls.
-		  </p>
-		  <ul class="service-bullets">
-			<li>Personalized email that reads like a one-to-one note</li>
-			<li>Offer creation and optimization</li>
-			<li>Inbox testing and reply-rate tuning</li>
-		  </ul>
-		  <a class="service-cta text-uppercase" href="service-single-outbound.html">
-			Learn more <i class="fal fa-arrow-right"></i>
-		  </a>
-		</div>
-		<div class="col-lg-6 wow fadeInRight" data-wow-delay="300ms" data-wow-duration="1200ms">
-		  <img class="img-fluid" src="assets/img/service/outboundservice.png" alt="Outbound Marketing">
-		</div>
-	  </div>
-	</div>
-  </section>
-  
-  <!-- Market Research -->
-  <section id="service-marketresearch" class="service-slice service-alt">
-	<div class="container">
-	  <div class="row align-items-center g-5">
-		<div class="col-lg-6 order-lg-2 wow fadeInRight" data-wow-delay="200ms" data-wow-duration="1200ms">
-		  <span class="service-eyebrow">Service</span>
-		  <h2 class="service-title text-uppercase">Market Research</h2>
-		  <p class="service-copy">
-			Find the pockets of demand, the angles that convert, and the offers competitors miss.
-		  </p>
-		  <ul class="service-bullets">
-			<li>Customer Profiles, keywords, and message testing</li>
-			<li>Review mining for pains and language</li>
-			<li>Competitor teardown with action steps</li>
-		  </ul>
-		  <a class="service-cta text-uppercase" href="service-single-marketresearch.html">
-			Learn more <i class="fal fa-arrow-right"></i>
-		  </a>
-		</div>
-		<div class="col-lg-6 order-lg-1 wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1200ms">
-		  <img class="img-fluid" src="assets/img/service/market-research.png" alt="Market Research">
-		</div>
-	  </div>
-	</div>
-  </section>
-
-   <!-- Start of Testimonial section
-	============================================= -->
-	<section id="ori-testimonial-1" class="ori-testimonial-section-1 position-relative">
-		<div class="ori-vector-bg position-absolute wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms"></div>
-		<div class="container">
-			<div class="ori-testimonial-content-1 position-relative">
-				<div class="ori-testimonial-title text-center text-uppercase">
-					<h3>What our Clients say</h3>
-				</div>
-				<div class="ori-testimonial-slider-1">
-					<div class="ori-testimonial-item-area">
-						<div class="ori-testimonial-item-1">
-							<div class="ori-testimonial-text text-center pera-content">
-								<p>"We got so many clients we literally had start hiring more staff to keep up."
-								</p>
-								<div class="ori-testimonial-author text-center text-uppercase">
-									<h4>Jens' & Laura's Cleaning Service</h4>
-									<div class="ori-testimonial-title text-center text-uppercase">
-										<h3>Home Cleaning Business</h3>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--<div class="ori-testimonial-item-area">      Next Testimonial
-						<div class="ori-testimonial-item-1">
-							<div class="ori-testimonial-text text-center pera-content">
-								<p>"Our office is something we are pleased with. We consider it the little magnet; it is wanting to come here and afterward difficult to leave it. Our office is additionally a big name."
-								</p>
-								<div class="ori-testimonial-author text-center text-uppercase">
-									<h4>Hahimlam Dirat</h4>
-									<span>ui/ux Designer</span>
-								</div>
-							</div>
-						</div>
-					</div>-->
-				<div class="carousel_nav">
-					<button type="button" class="testi-left_arrow"><img src="assets/img/vector/prev.png" alt=""></button>
-					<button type="button" class="testi-right_arrow"><img src="assets/img/vector/next.png" alt=""></button>
-				</div>
-			</div>
-		</div>
-	</section>				
-<!-- End of Testimonial section
-	============================================= -->	
-
-<!-- Start of Team section -->
-<section id="ori-team-1" class="ori-team-section-1 position-relative">
-  <div class="ori-team-content-area">
-    <div class="container">
-      <div class="ori-team-top-content-1 d-flex justify-content-between align-items-center">
-        <div class="ori-section-title-1 text-uppercase wow fadeInLeft" data-wow-delay="200ms" data-wow-duration="1500ms">
-          <h2>Meet the <span>one-man army</span></h2>
+  <!-- Header -->
+  <header id="ori-header" class="ori-header-section header-style-one">
+    <div class="ori-header-content-area">
+      <div class="ori-header-content d-flex align-items-center">
+        <div class="brand-logo">
+          <a href="index.html" style="padding-right: 30px;"><img src="assets/img/logo/logo-postr.png" alt="" style="max-width: 100px;"></a>
         </div>
+        <div class="ori-main-navigation-area">
+          <nav class="ori-main-navigation clearfix ul-li">
+            <ul id="main-nav" class="nav navbar-nav clearfix">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li class="dropdown">
+                <a href="#">Pages</a>
+                <ul class="dropdown-menu clearfix">
+                  <li><a href="faq.html">FAQ Page</a></li>
+                  <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#">Services</a>
+                <ul class="dropdown-menu clearfix">
+                  <li><a href="service-single-googleads.html">Google Ads</a></li>
+                  <li><a href="service-single-marketresearch.html">Market Research</a></li>
+                  <li><a href="service-single-outbound.html">Outbound Marketing</a></li>
+                  <li><a href="service-single-webdevelopment.html">Web Development</a></li>
+                </ul>
+              </li>
+              <li><a href="portfolio-single.html">Projects</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="ori-header-sidebar-search d-flex align-items-center" style="width: 20px;"></div>
       </div>
 
-      <div class="ori-team-content-1">
-        <div class="row align-items-stretch g-4">
-          <!-- Left: Photo -->
-          <div class="col-lg-7 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
-            <div class="ori-team-inner-item position-relative h-100">
-              <div class="ori-team-img h-100">
-                <img src="assets/img/team/ian.png" alt="Ian Andersen" class="img-fluid w-100 h-100">
-              </div>
-              <div class="ori-team-text text-center position-absolute">
-                <h3><a href="team-single.html">Ian Andersen</a></h3>
-                <span>Owner</span>
-              </div>
+      <div class="mobile_menu position-relative">
+        <div class="mobile_menu_button open_mobile_menu">
+          <i class="fal fa-bars" style="margin-top: 20px;"></i>
+        </div>
+        <div class="mobile_menu_wrap">
+          <div class="mobile_menu_overlay open_mobile_menu"></div>
+          <div class="mobile_menu_content">
+            <div class="mobile_menu_close open_mobile_menu">
+              <i class="fal fa-times"></i>
             </div>
-          </div>
-
-          <!-- Right: About content -->
-          <div class="col-lg-5 wow fadeInUp" data-wow-delay="450ms" data-wow-duration="1500ms">
-            <div class="h-100 d-flex flex-column justify-content-center p-4 p-lg-5 about-card">
-              <h3 class="text-uppercase mb-3">About POSTR</h3>
-              <p class="mb-3">
-                We make sure you don't just become a number in a portfolio and get handed off to some intern. For us it's important to always keep you at the center. We do this by:
-              </p>
-              <ul class="mb-4">
-                <li>Tailoring every step of the process to each client, no cookie-cutter solutions</li>
-                <li>Fast turnaround times: No more waiting for the big agencies to get back to you</li>
-                <li>Becoming a strategic partner: We want you to win long-term, not just right now</li>
-				<li>Giving you full attention at all times, because we aren't limited by size and company beaurocracy</li>
+            <div class="m-brand-logo">
+              <a href="index.html"><img src="assets/img/logo/logo-postr.png" alt=""></a>
+            </div>
+            <nav class="mobile-main-navigation clearfix ul-li">
+              <ul id="m-main-nav" class="nav navbar-nav clearfix">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                  <a href="!#">Pages</a>
+                  <ul class="dropdown-menu clearfix">
+                    <li><a href="faq.html">FAQ Page</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#">Services</a>
+                  <ul class="dropdown-menu clearfix">
+                    <li><a href="service-single-googleads.html">Google Ads</a></li>
+                    <li><a href="service-single-marketresearch.html">Market Research</a></li>
+                    <li><a href="service-single-outbound.html">Outbound Marketing</a></li>
+                    <li><a href="service-single-webdevelopment.html">Web Development</a></li>
+                  </ul>
+                </li>
+                <li><a href="portfolio-single.html">Projects</a></li>
               </ul>
-              <p class="mb-0">
-                If you want grow your local business, you are in the right place.
-              </p>
-              <!-- Optional CTA
-              <a href="about.html" class="btn btn-outline-light mt-4">More about me</a>
-              -->
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Slider -->
+  <section id="ori-slider-1" class="ori-slider-section-1 position-relative">
+    <div class="ori-slider-content-wrapper-1 postion-relative">
+      <div class="ori-slider-social position-absolute text-uppercase ul-li"></div>
+      <div class="ori-slider-wrap-1">
+        <div class="ori-slider-content-1 position-relative">
+          <div class="ori-slider-text text-center text-uppercase">
+            <h1>Transform Your Business Into a <span>Local Success</span> 
+              Story
+            </h1>
+            <div class="ori-slider-img position-absolute">
+              <img src="assets/img/slider/header-bg.png" alt="">
             </div>
           </div>
         </div>
       </div>
-
     </div>
-  </div>
-</section>
-<!-- End of Team section -->
+  </section>
 
+  <!-- Capabilities -->
+  <section id="ori-capabilities" class="capabilities-slice">
+    <div class="container">
+      <div class="cap-intro">
+        <h2 class="text-uppercase"><span class="holo-text">Put Your Local Business on the Map</span></h2>
+        <div class="cap-divider"></div>
+        <p>
+          We help brick-and-mortar companies turn online traffic into steady growth. From websites that earn trust to Google Ads and outbound campaigns that bring in business-contracts, we build systems that expand your reach and keep your calendar full.
+        </p>
+      </div>
 
+      <div class="cap-grid">
+        <div class="cap-card">
+          <div class="cap-icon"><img src="assets/img/icon/googleads.svg" alt="Google Ads"></div>
+          <h5>Google Ads</h5>
+          <p>High-intent search that fills the calendar with real jobs.</p>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon"><i class="fas fa-window-maximize"></i></div>
+          <h5>Web Design</h5>
+          <p>Fast, clean pages with layouts that get clicks and calls.</p>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon"><i class="fas fa-file-lines"></i></div>
+          <h5>Landing Pages</h5>
+          <p>Message matched pages that turn search traffic into revenue</p>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon"><i class="fas fa-chart-line"></i></div>
+          <h5>Analytics</h5>
+          <p>Clean tracking so every decision is tied to revenue.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- Start of Text scroll section
-	============================================= -->
-	<section id="ori-text-scroll-2" class="ori-text-scroll-section-2 position-relative">
-		<div class="ori-text-scroll-content">
-			<div class="ori-text-scroll-item-2 clearfix text-uppercase">
-				<h3></n> customers /&nbsp<span>bookings /&nbsp</span></h3>
-				<h3></n> roi /&nbsp<span>jobs /&nbsp</span></h3>
-				<h3></n> full calendar /&nbsp<span>ads /&nbsp</span></h3>
-			</div>
-		</div>
-	</section>		
-<!-- End of Text scroll section
-	============================================= -->
+  <!-- Services -->
+  <section id="service-googleads" class="service-slice">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 wow fadeInLeft" data-wow-delay="200ms" data-wow-duration="1200ms">
+          <span class="service-eyebrow">Service</span>
+          <h2 class="service-title text-uppercase">Google Ads</h2>
+          <p class="service-copy">
+            Fill the calendar on purpose, not by luck. We run high-intent search that books real jobs, not just clicks.
+          </p>
+          <ul class="service-bullets">
+            <li>Build and tune lead-driven campaigns for your niche and city</li>
+            <li>Conversion tracking that ties spend to booked jobs</li>
+            <li>Fast iteration on keywords, copy, and landing pages</li>
+          </ul>
+          <a class="service-cta text-uppercase" href="service-single-googleads.html">
+            Learn more <i class="fal fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="col-lg-6 wow fadeInRight" data-wow-delay="300ms" data-wow-duration="1200ms">
+          <img class="img-fluid" src="assets/img/service/googleads.png" alt="Google Ads">
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- Start of Footer section
-	============================================= -->
-	<footer id="ori-footer" class="ori-footer-section footer-style-one">
-		<div class="container">
-			<div class="ori-footer-widget-wrapper">
-				<div class="row">
-					<div class="col-lg-3 col-md-6">
-						<div class="ori-footer-widget">
-							<div class="logo-widget">
-								<a href="#"><img src="assets/img/logo/logo-postr.png" alt=""></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="ori-footer-widget">
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="ori-footer-widget">
-							<div class="contact-widget ul-li-block">
-								<h2 class="widget-title text-uppercase">Contact info</h2>
-								<div class="contact-info">
-									<span>Ole Kirks Vej 81 2.6, 7190, Billund, Syddanmark, Denmark</span>
-									<span>(+423) 651-8022</span>
-									<a href="mailto:ian@postrmarketing.com">ian@postrmarketing.com</a>
-									<span>Office Hours: 9AM - 4PM</span>
-									<span>Mon - Sun</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="ori-footer-widget">
-							<div class="newslatter-widget ul-li-block">
-								<h2 class="widget-title text-uppercase">Waiting List</h2>
-								<div class="newslatter-form">
-									<form name="waitlist"
-      id="newsletter-form"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field">
-  <!-- Netlify requires this hidden field -->
-  <input type="hidden" name="form-name" value="waitlist">
-  <!-- Honeypot (spam trap) -->
-  <p style="display:none;">
-    <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
-  </p>
+  <section id="service-webdev" class="service-slice service-alt">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 order-lg-2 wow fadeInRight" data-wow-delay="200ms" data-wow-duration="1200ms">
+          <span class="service-eyebrow">Service</span>
+          <h2 class="service-title text-uppercase">Website Development</h2>
+          <p class="service-copy">
+            Sites that look sharp and convert. Built to load fast, track clean, and turn visitors into bookings.
+          </p>
+          <ul class="service-bullets">
+            <li>Clean UI with clear CTAs for phone and form</li>
+            <li>Speed, schema, and analytics baked in</li>
+            <li>Landing pages for each service and city</li>
+          </ul>
+          <a class="service-cta text-uppercase" href="service-single-webdevelopment.html">
+            Learn more <i class="fal fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="col-lg-6 order-lg-1 wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1200ms">
+          <img class="img-fluid" src="assets/img/service/webdesign.png" alt="Website Development">
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <label for="nl-email" class="visually-hidden">Email</label>
-  <input id="nl-email" type="email" name="email" placeholder="Enter mail" required>
-  <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
+  <section id="service-outbound" class="service-slice">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 wow fadeInLeft" data-wow-delay="200ms" data-wow-duration="1200ms">
+          <span class="service-eyebrow">Service</span>
+          <h2 class="service-title text-uppercase">Outbound Marketing</h2>
+          <p class="service-copy">
+            Direct, personal outreach that feels human and books calls.
+          </p>
+          <ul class="service-bullets">
+            <li>Personalized email that reads like a one-to-one note</li>
+            <li>Offer creation and optimization</li>
+            <li>Inbox testing and reply-rate tuning</li>
+          </ul>
+          <a class="service-cta text-uppercase" href="service-single-outbound.html">
+            Learn more <i class="fal fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="col-lg-6 wow fadeInRight" data-wow-delay="300ms" data-wow-duration="1200ms">
+          <img class="img-fluid" src="assets/img/service/outboundservice.png" alt="Outbound Marketing">
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Inline status message (no redirect) -->
-  <div id="newsletter-status" aria-live="polite" style="margin-top:8px;opacity:.9;"></div>
-</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="ori-footer-copyright d-flex justify-content-between">
-				<div class="ori-copyright-text">
-					© 2022 All Right Recived - Orixy - Themexriver - Built By POSTR
-				</div>
-          <!--<div class="ori-copyright-social">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>-->
-			</div>
-		</div>
-	</footer>
-<!-- End of Footer section
-	============================================= -->		
+  <section id="service-marketresearch" class="service-slice service-alt">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 order-lg-2 wow fadeInRight" data-wow-delay="200ms" data-wow-duration="1200ms">
+          <span class="service-eyebrow">Service</span>
+          <h2 class="service-title text-uppercase">Market Research</h2>
+          <p class="service-copy">
+            Find the pockets of demand, the angles that convert, and the offers competitors miss.
+          </p>
+          <ul class="service-bullets">
+            <li>Customer Profiles, keywords, and message testing</li>
+            <li>Review mining for pains and language</li>
+            <li>Competitor teardown with action steps</li>
+          </ul>
+          <a class="service-cta text-uppercase" href="service-single-marketresearch.html">
+            Learn more <i class="fal fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="col-lg-6 order-lg-1 wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1200ms">
+          <img class="img-fluid" src="assets/img/service/market-research.png" alt="Market Research">
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<!-- For Js Library -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery-ui.min.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/popper.min.js"></script>
-	<script src="assets/js/appear.js"></script>
-	<script src="assets/js/slick.js"></script>
-	<script src="assets/js/twin.js"></script>
-	<script src="assets/js/wow.min.js"></script>
-	<script src="assets/js/knob.js"></script>
-	<script src="assets/js/jquery.filterizr.js"></script>
-	<script src="assets/js/imagesloaded.pkgd.min.js"></script>
-	<script src="assets/js/rbtools.min.js"></script>
-	<script src="assets/js/rs6.min.js"></script>
-	<script src="assets/js/jarallax.js"></script>
-	<script src="assets/js/jquery.inputarrow.js"></script>
-	<script src="assets/js/swiper.min.js"></script>
-	<script src="assets/js/jquery.counterup.min.js"></script>
-	<script src="assets/js/waypoints.min.js"></script>
-	<script src="assets/js/jquery.magnific-popup.min.js"></script>
-	<script src="assets/js/jquery.marquee.min.js"></script>
-	<script src="assets/js/script.js"></script>
-	<script>
-		(function () {
-		  const form = document.getElementById('newsletter-form');
-		  if (!form) return;
-		  const statusEl = document.getElementById('newsletter-status');
-	  
-		  function encodeFormData(formEl) {
-			const data = new FormData(formEl);
-			return new URLSearchParams(data).toString();
-		  }
-	  
-		  form.addEventListener('submit', async function (e) {
-			e.preventDefault();
-			statusEl.textContent = 'Submitting…';
-	  
-			try {
-			  const res = await fetch('/', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-				body: encodeFormData(form)
-			  });
-	  
-			  if (res.ok) {
-				form.reset();
-				statusEl.textContent = 'Thanks! You’re on the list.';
-			  } else {
-				throw new Error('Network response was not OK');
-			  }
-			} catch (err) {
-			  statusEl.textContent = 'Something went wrong. Please try again.';
-			}
-		  });
-		})();
-	  </script>
+  <!-- Testimonials -->
+  <section id="ori-testimonial-1" class="ori-testimonial-section-1 position-relative">
+    <div class="ori-vector-bg position-absolute wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms"></div>
+    <div class="container">
+      <div class="ori-testimonial-content-1 position-relative">
+        <div class="ori-testimonial-title text-center text-uppercase">
+          <h3>What our Clients say</h3>
+        </div>
+        <div class="ori-testimonial-slider-1">
+          <div class="ori-testimonial-item-area">
+            <div class="ori-testimonial-item-1">
+              <div class="ori-testimonial-text text-center pera-content">
+                <p>"We got so many clients we literally had start hiring more staff to keep up."</p>
+                <div class="ori-testimonial-author text-center text-uppercase">
+                  <h4>Jens' & Laura's Cleaning Service</h4>
+                  <div class="ori-testimonial-title text-center text-uppercase">
+                    <h3>Home Cleaning Business</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel_nav">
+            <button type="button" class="testi-left_arrow"><img src="assets/img/vector/prev.png" alt=""></button>
+            <button type="button" class="testi-right_arrow"><img src="assets/img/vector/next.png" alt=""></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="ori-team-1" class="ori-team-section-1 position-relative">
+    <div class="ori-team-content-area">
+      <div class="container">
+        <div class="ori-team-top-content-1 d-flex justify-content-between align-items-center">
+          <div class="ori-section-title-1 text-uppercase wow fadeInLeft" data-wow-delay="200ms" data-wow-duration="1500ms">
+            <h2>Meet the <span>one-man army</span></h2>
+          </div>
+        </div>
+
+        <div class="ori-team-content-1">
+          <div class="row align-items-stretch g-4">
+            <div class="col-lg-7 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
+              <div class="ori-team-inner-item position-relative h-100">
+                <div class="ori-team-img h-100">
+                  <img src="assets/img/team/ian.png" alt="Ian Andersen" class="img-fluid w-100 h-100">
+                </div>
+                <div class="ori-team-text text-center position-absolute">
+                  <h3><a href="team-single.html">Ian Andersen</a></h3>
+                  <span>Owner</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-5 wow fadeInUp" data-wow-delay="450ms" data-wow-duration="1500ms">
+              <div class="h-100 d-flex flex-column justify-content-center p-4 p-lg-5 about-card">
+                <h3 class="text-uppercase mb-3">About POSTR</h3>
+                <p class="mb-3">
+                  We make sure you don't just become a number in a portfolio and get handed off to some intern. For us it's important to always keep you at the center. We do this by:
+                </p>
+                <ul class="mb-4">
+                  <li>Tailoring every step of the process to each client, no cookie-cutter solutions</li>
+                  <li>Fast turnaround times: No more waiting for the big agencies to get back to you</li>
+                  <li>Becoming a strategic partner: We want you to win long-term, not just right now</li>
+                  <li>Giving you full attention at all times, because we aren't limited by size and company beaurocracy</li>
+                </ul>
+                <p class="mb-0">
+                  If you want grow your local business, you are in the right place.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- KPI section -->
+  <section id="ori-kpi" class="kpi-section">
+    <div class="container">
+
+      <!-- Header for the KPI / case study -->
+      <div class="kpi-heading text-center text-uppercase">
+        <h2>Case Study: <span>Jens &amp; Laura’s Cleaning Service</span></h2>
+        <div class="kpi-divider"></div>
+        <p class="kpi-sub">14-day performance lift from targeted Google Ads + landing page overhaul</p>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-grid">
+          <div class="kpi-item">
+            <h5 class="kpi-title text-uppercase">Ad spend</h5>
+            <div class="kpi-value">
+              <span class="kpi-counter" data-target="300" data-prefix="$">0</span>
+            </div>
+            <p class="kpi-desc">They used our price-halving method to pay at least 50% less for clicks compared to their competitors.</p>
+          </div>
+          <div class="kpi-item">
+            <h5 class="kpi-title text-uppercase">Clients</h5>
+            <div class="kpi-value">
+              <span class="kpi-counter" data-target="4" data-suffix="×">0</span>
+            </div>
+            <p class="kpi-desc">They went from getting 1–2 calls a week to getting calls every day.</p>
+          </div>
+          <div class="kpi-item">
+            <h5 class="kpi-title text-uppercase">Revenue</h5>
+            <div class="kpi-value">
+              <span class="kpi-counter" data-target="1700" data-prefix="$">0</span>
+            </div>
+            <p class="kpi-desc">They generated enough revenue to start growing their business again, after months of flatlining.</p>
+          </div>
+          <div class="kpi-item">
+            <h5 class="kpi-title text-uppercase">Average Order Value</h5>
+            <div class="kpi-value">
+              <span class="kpi-counter" data-target="283" data-prefix="$">0</span>
+            </div>
+            <p class="kpi-desc">Higher order values meant fewer price shoppers and more profitable work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conversational Questionnaire -->
+  <section id="ori-quiz" class="kpi-section">
+    <div class="container">
+      <div class="kpi-card" id="quiz-card" style="max-width:860px;margin:0 auto;">
+        <div class="kpi-heading text-center text-uppercase" style="margin-bottom:14px;">
+          <h2>Quick <span>Fit Check</span></h2>
+          <div class="kpi-divider"></div>
+          <p class="kpi-sub">Answer a few quick questions. If it’s a fit, you can grab a time for a quick call.</p>
+        </div>
+
+        <!-- Progress -->
+        <div aria-hidden="true" style="height:6px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:16px;">
+          <div id="quiz-progress" style="height:100%;width:0%;
+            background: linear-gradient(90deg, var(--kpi-g1,#d4b24a), var(--kpi-g2,#e7cf7a), var(--kpi-g3,#f2e3a3), var(--kpi-g4,#ffe9b3));">
+          </div>
+        </div>
+
+        <!-- Screens -->
+        <form id="quiz" novalidate>
+          <!-- Screen 1 -->
+          <div class="q-screen" data-step="1">
+            <label class="field-label" for="q_business">What type of local business are you?</label>
+            <input id="q_business" name="business_type" type="text" placeholder="e.g., House Cleaning, Dentist, HVAC" required>
+            <div class="q-cta">
+              <button type="button" class="service-cta" data-next>Next <i class="fal fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Screen 2 -->
+          <div class="q-screen" data-step="2" hidden>
+            <label class="field-label" for="q_city">Which city/area do you serve most?</label>
+            <input id="q_city" name="city" type="text" placeholder="e.g., Miami, Los Angeles, Houston" required>
+            <div class="q-cta">
+              <button type="button" class="service-cta" data-prev>Back</button>
+              <button type="button" class="service-cta" data-next>Next <i class="fal fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Screen 3 (cards instead of dropdown) -->
+          <div class="q-screen" data-step="3" hidden>
+            <label class="field-label">What’s the main goal right now?</label>
+            <div class="choice-grid">
+              <label>
+                <input class="choice-input" type="radio" name="goal" value="Book more jobs / appointments" required>
+                <div class="choice-card">
+                  <span>Book more jobs / appointments</span>
+                  <span class="fake-check"></span>
+                </div>
+              </label>
+              <label>
+                <input class="choice-input" type="radio" name="goal" value="Improve website conversions">
+                <div class="choice-card">
+                  <span>Improve website conversions</span>
+                  <span class="fake-check"></span>
+                </div>
+              </label>
+              <label>
+                <input class="choice-input" type="radio" name="goal" value="Test Google Ads">
+                <div class="choice-card">
+                  <span>Test Google Ads</span>
+                  <span class="fake-check"></span>
+                </div>
+              </label>
+              <label>
+                <input class="choice-input" type="radio" name="goal" value="Launch outbound">
+                <div class="choice-card">
+                  <span>Launch outbound</span>
+                  <span class="fake-check"></span>
+                </div>
+              </label>
+              <label>
+                <input class="choice-input" type="radio" name="goal" value="Other">
+                <div class="choice-card">
+                  <span>Other</span>
+                  <span class="fake-check"></span>
+                </div>
+              </label>
+            </div>
+            <div class="q-cta">
+              <button type="button" class="service-cta" data-prev>Back</button>
+              <button type="button" class="service-cta" data-next>Next <i class="fal fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Screen 4 -->
+          <div class="q-screen" data-step="4" hidden>
+            <label class="field-label">Monthly ad budget?</label>
+            <div class="choice-grid">
+              <label>
+                <input class="choice-input" type="radio" name="budget" value="< $1k" required>
+                <div class="choice-card">
+                  <span>&lt; $1k</span><span class="fake-check"></span>
+                </div>
+              </label>
+              <label>
+                <input class="choice-input" type="radio" name="budget" value="$1k–$3k">
+                <div class="choice-card">
+                  <span>$1k–$3k</span><span class="fake-check"></span>
+                </div>
+              </label>
+              <label>
+                <input class="choice-input" type="radio" name="budget" value="$3k–$6k">
+                <div class="choice-card">
+                  <span>$3k–$6k</span><span class="fake-check"></span>
+                </div>
+              </label>
+              <label>
+                <input class="choice-input" type="radio" name="budget" value="$6k+">
+                <div class="choice-card">
+                  <span>$6k+</span><span class="fake-check"></span>
+                </div>
+              </label>
+            </div>
+            <div class="q-cta">
+              <button type="button" class="service-cta" data-prev>Back</button>
+              <button type="button" class="service-cta" data-next>Next <i class="fal fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Screen 5 -->
+          <div class="q-screen" data-step="5" hidden>
+            <label class="field-label">How soon do you want to start?</label>
+            <div class="choice-grid">
+              <label>
+                <input class="choice-input" type="radio" name="timeline" value="ASAP" required>
+                <div class="choice-card"><span>ASAP</span><span class="fake-check"></span></div>
+              </label>
+              <label>
+                <input class="choice-input" type="radio" name="timeline" value="This month">
+                <div class="choice-card"><span>This month</span><span class="fake-check"></span></div>
+              </label>
+              <label>
+                <input class="choice-input" type="radio" name="timeline" value="This quarter">
+                <div class="choice-card"><span>This quarter</span><span class="fake-check"></span></div>
+              </label>
+            </div>
+            <div class="q-cta">
+              <button type="button" class="service-cta" data-prev>Back</button>
+              <button type="button" class="service-cta" data-next>Next <i class="fal fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Screen 6 -->
+          <div class="q-screen" data-step="6" hidden>
+            <label class="field-label">Do you have a website?</label>
+            <div class="choice-grid">
+              <label>
+                <input class="choice-input" type="radio" name="has_site" value="Yes" required>
+                <div class="choice-card"><span>Yes</span><span class="fake-check"></span></div>
+              </label>
+              <label>
+                <input class="choice-input" type="radio" name="has_site" value="No">
+                <div class="choice-card"><span>No</span><span class="fake-check"></span></div>
+              </label>
+            </div>
+            <div class="q-cta">
+              <button type="button" class="service-cta" data-prev>Back</button>
+              <button type="button" class="service-cta" data-next>Next <i class="fal fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Screen 7 (contact) -->
+          <div class="q-screen" data-step="7" hidden>
+            <label class="field-label" for="q_name">Your name</label>
+            <input id="q_name" name="name" type="text" required>
+
+            <label class="field-label" for="q_email" style="margin-top:10px;">Best email</label>
+            <input id="q_email" name="email" type="email" required>
+
+            <div class="q-cta">
+              <button type="button" class="service-cta" data-prev>Back</button>
+              <button type="button" class="service-cta" data-submit>See times <i class="fal fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Screen 8 (calendar) -->
+          <div class="q-screen" data-step="8" hidden>
+            <h4 class="text-uppercase" style="margin:0 0 8px;">Great fit: book a quick call</h4>
+            <p class="kpi-desc" style="margin-bottom:12px;">Pick a time that works for you. We’ll bring ideas tailored to your answers.</p>
+            <a class="service-cta text-uppercase" href="https://calendly.com/ian-postrmarketing/one-on-one-meeting-1" target="_blank" rel="noopener">
+              Book 15-min call <i class="fal fa-arrow-right"></i>
+            </a>
+            <div id="quiz-thanks" style="margin-top:10px;opacity:.9;"></div>
+          </div>
+        </form>
+
+        <!-- Hidden Netlify form (receives the submission) -->
+        <form name="lead-quiz" data-netlify="true" netlify-honeypot="bot-field" hidden>
+          <input type="hidden" name="form-name" value="lead-quiz">
+          <input type="text" name="business_type">
+          <input type="text" name="city">
+          <input type="text" name="goal">
+          <input type="text" name="budget">
+          <input type="text" name="timeline">
+          <input type="text" name="has_site">
+          <input type="text" name="name">
+          <input type="email" name="email">
+          <input type="tel" name="phone">
+          <input type="text" name="utm_source">
+          <input type="text" name="utm_medium">
+          <input type="text" name="utm_campaign">
+          <input type="text" name="utm_term">
+          <input type="text" name="utm_content">
+          <p style="display:none;">
+            <label>Don’t fill this out: <input name="bot-field"></label>
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rolling Text -->
+  <section id="ori-text-scroll-2" class="ori-text-scroll-section-2 position-relative">
+    <div class="ori-text-scroll-content">
+      <div class="ori-text-scroll-item-2 clearfix text-uppercase">
+        <h3></n> customers /&nbsp<span>bookings /&nbsp</span></h3>
+        <h3></n> roi /&nbsp<span>jobs /&nbsp</span></h3>
+        <h3></n> full calendar /&nbsp<span>ads /&nbsp</span></h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="ori-footer" class="ori-footer-section footer-style-one">
+    <div class="container">
+      <div class="ori-footer-widget-wrapper">
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="ori-footer-widget">
+              <div class="logo-widget">
+                <a href="#"><img src="assets/img/logo/logo-postr.png" alt=""></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6"><div class="ori-footer-widget"></div></div>
+          <div class="col-lg-3 col-md-6">
+            <div class="ori-footer-widget">
+              <div class="contact-widget ul-li-block">
+                <h2 class="widget-title text-uppercase">Contact info</h2>
+                <div class="contact-info">
+                  <span>Ole Kirks Vej 81 2.6, 7190, Billund, Syddanmark, Denmark</span>
+                  <span>(+423) 651-8022</span>
+                  <a href="mailto:ian@postrmarketing.com">ian@postrmarketing.com</a>
+                  <span>Office Hours: 9AM - 4PM</span>
+                  <span>Mon - Sun</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="ori-footer-widget">
+              <div class="newslatter-widget ul-li-block">
+                <h2 class="widget-title text-uppercase">Waiting List</h2>
+                <div class="newslatter-form">
+                  <form name="waitlist" id="newsletter-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="waitlist">
+                    <p style="display:none;">
+                      <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+                    </p>
+                    <label for="nl-email" class="visually-hidden">Email</label>
+                    <input id="nl-email" type="email" name="email" placeholder="Enter mail" required>
+                    <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
+                    <div id="newsletter-status" aria-live="polite" style="margin-top:8px;opacity:.9;"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ori-footer-copyright d-flex justify-content-between">
+        <div class="ori-copyright-text">
+          © 2022 All Right Recived - Orixy - Themexriver - Built By POSTR
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS libs -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery-ui.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/appear.js"></script>
+  <script src="assets/js/slick.js"></script>
+  <script src="assets/js/twin.js"></script>
+  <script src="assets/js/wow.min.js"></script>
+  <script src="assets/js/knob.js"></script>
+  <script src="assets/js/jquery.filterizr.js"></script>
+  <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/js/rbtools.min.js"></script>
+  <script src="assets/js/rs6.min.js"></script>
+  <script src="assets/js/jarallax.js"></script>
+  <script src="assets/js/jquery.inputarrow.js"></script>
+  <script src="assets/js/swiper.min.js"></script>
+  <script src="assets/js/jquery.counterup.min.js"></script>
+  <script src="assets/js/waypoints.min.js"></script>
+  <script src="assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="assets/js/jquery.marquee.min.js"></script>
+  <script src="assets/js/script.js"></script>
+
+  <!-- Newsletter (Netlify, no redirect) -->
+  <script>
+  (function () {
+    const form = document.getElementById('newsletter-form');
+    if (!form) return;
+    const statusEl = document.getElementById('newsletter-status');
+
+    function encodeFormData(formEl) {
+      const data = new FormData(formEl);
+      return new URLSearchParams(data).toString();
+    }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      statusEl.textContent = 'Submitting…';
+      try {
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encodeFormData(form)
+        });
+        if (res.ok) { form.reset(); statusEl.textContent = 'Thanks! You’re on the list.'; }
+        else { throw new Error('Network response was not OK'); }
+      } catch (err) { statusEl.textContent = 'Something went wrong. Please try again.'; }
+    });
+  })();
+  </script>
+
+  <!-- KPI counters (animate once; supports prefix/suffix) -->
+  <script>
+  (function(){
+    let didRun = false;
+
+    function animateCounter(el){
+      const target = parseFloat(el.getAttribute('data-target') || '0');
+      const decimals = String(target).includes('.') ? 1 : 0;
+      const duration = parseInt(el.getAttribute('data-duration') || '1500', 10);
+      const prefix = el.getAttribute('data-prefix') || '';
+      const suffix = el.getAttribute('data-suffix') || '';
+      const startTime = performance.now();
+      const ease = t => 1 - Math.pow(1 - t, 3); // easeOutCubic
+
+      function frame(now){
+        const p = Math.min(1, (now - startTime) / duration);
+        const val = target * ease(p);
+        const num = decimals ? val.toFixed(decimals) : Math.round(val);
+        el.textContent = `${prefix}${num}${suffix}`;
+        if (p < 1) requestAnimationFrame(frame);
+        else el.textContent = `${prefix}${decimals ? target.toFixed(decimals) : Math.round(target)}${suffix}`; // lock final
+      }
+      requestAnimationFrame(frame);
+    }
+
+    function run(){
+      if (didRun) return;
+      didRun = true;
+      document.querySelectorAll('#ori-kpi .kpi-counter').forEach(animateCounter);
+    }
+
+    const sec = document.getElementById('ori-kpi');
+    if (!sec) return;
+
+    if ('IntersectionObserver' in window){
+      const io = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){ run(); io.disconnect(); }
+        });
+      }, { threshold: 0.35 });
+      io.observe(sec);
+    } else {
+      window.addEventListener('load', run);
+    }
+  })();
+  </script>
+
+  <!-- Quiz logic -->
+  <script>
+  (function(){
+    const screens = Array.from(document.querySelectorAll('#ori-quiz .q-screen'));
+    if (!screens.length) return;
+
+    const formUI = document.getElementById('quiz');
+    const shadowForm = document.querySelector('form[name="lead-quiz"]');
+    const progressEl = document.getElementById('quiz-progress');
+    let step = 1, total = screens.length;
+
+    // UTM capture
+    const usp = new URLSearchParams(location.search);
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=>{
+      const v = usp.get(k) || '';
+      const el = shadowForm.querySelector(`[name="${k}"]`);
+      if (el) el.value = v;
+    });
+
+    const show = n => {
+      screens.forEach(s => s.hidden = s.dataset.step != n);
+      step = n;
+      progressEl.style.width = Math.round(((n-1)/(total-1))*100) + '%';
+    };
+
+    const getCurrent = () => screens.find(s => s.dataset.step == step);
+    const validate = () => {
+      const cur = getCurrent();
+      const required = cur.querySelectorAll('[required]');
+      for (const f of required){
+        if (f.type === 'radio'){
+          const group = cur.querySelectorAll(`input[name="${f.name}"]`);
+          const anyChecked = Array.from(group).some(x => x.checked);
+          if (!anyChecked) return false;
+        } else if (!f.value.trim()) {
+          return false;
+        }
+      }
+      return true;
+    };
+
+    // next/back/submit
+    formUI.addEventListener('click', (e)=>{
+      const nextBtn = e.target.closest('[data-next]');
+      const prevBtn = e.target.closest('[data-prev]');
+      const submitBtn = e.target.closest('[data-submit]');
+      if (nextBtn){
+        if (!validate()) return;
+        show(Math.min(step+1, total));
+      }
+      if (prevBtn){
+        show(Math.max(step-1, 1));
+      }
+      if (submitBtn){
+        if (!validate()) return;
+
+        // copy values into hidden Netlify form
+        const srcFields = new FormData(formUI);
+        for (const [k,v] of srcFields.entries()){
+          const el = shadowForm.querySelector(`[name="${k}"]`);
+          if (el && el.type !== 'radio' && el.type !== 'checkbox'){ el.value = v; }
+        }
+        // radios
+        ['goal','budget','timeline','has_site'].forEach(name=>{
+          const checked = formUI.querySelector(`input[name="${name}"]:checked`);
+          const el = shadowForm.querySelector(`[name="${name}"]`);
+          if (checked && el) el.value = checked.value;
+        });
+
+        // submit to Netlify without redirect
+        const payload = new FormData(shadowForm);
+        fetch('/', { method:'POST', body: payload })
+          .catch(()=>{})
+          .finally(()=> {
+            show(step+1); // calendar screen
+            const msg = document.getElementById('quiz-thanks');
+            if (msg) msg.textContent = "Thanks, your answers are saved. Grab a time that suits you.";
+          });
+      }
+    });
+
+    // Enter to advance for text/email/tel fields
+    formUI.addEventListener('keydown', (e)=>{
+      if (e.key === 'Enter'){
+        const isTextField = e.target.matches('input[type="text"], input[type="email"], input[type="tel"]');
+        if (isTextField){ e.preventDefault(); if (validate()) show(step+1); }
+      }
+    });
+
+    show(1);
+  })();
+  </script>
+
 </body>
 </html>
