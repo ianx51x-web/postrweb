@@ -1,621 +1,717 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>THE DOJO · Studio Layout</title>
-  
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-    <style>
-      :root{
-        --black:#0a0a0a;
-        --dark:#111;
-        --card:#161616;
-        --border:#2a2a2a;
-        --muted:#999;
-        --text:#e0e0e0;
-        --bright:#f2f2f2;
-        --white:#ffffff;
-  
-        --accent:#ff4d00;
-        --accent2:#00e5ff;
-        --accentGlow: rgba(255,77,0,0.10);
-  
-        --max:1180px;
-      }
-  
-      *{box-sizing:border-box;margin:0;padding:0}
-      body{
-        background:var(--black);
-        color:var(--text);
-        font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-        line-height:1.75;
-        -webkit-font-smoothing:antialiased;
-      }
-  
-      body::before{
-        content:"";
-        position:fixed; inset:0;
-        pointer-events:none;
-        z-index:9999;
-        background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      }
-  
-      a{color:inherit;text-decoration:none}
-      .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
-  
-      /* TOP NAV */
-      .top{
-        position:sticky; top:0; z-index:1000;
-        background:rgba(10,10,10,0.88);
-        backdrop-filter: blur(18px);
-        border-bottom:1px solid var(--border);
-      }
-  
-      .top-row{
-        display:grid;
-        grid-template-columns: 1fr auto 1fr;
-        align-items:center;
-        gap:16px;
-        padding:16px 0;
-      }
-  
-      .brand{
-        justify-self:center;
-        font-family:"Space Mono",monospace;
-        letter-spacing:6px;
-        font-size:14px;
-        color:var(--bright);
-        text-transform:uppercase;
-        white-space:nowrap;
-      }
-  
-      .phone{
-        justify-self:end;
-        display:flex;
-        align-items:center;
-        gap:10px;
-        font-family:"Space Mono",monospace;
-        font-size:12px;
-        letter-spacing:1px;
-        color:var(--muted);
-      }
-  
-      .phone .dot{
-        width:7px;height:7px;border-radius:50%;
-        background:var(--accent);
-        box-shadow:0 0 0 4px rgba(255,77,0,0.12);
-        animation:blink 2s infinite;
-      }
-      @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-  
-      .nav{
-        display:flex;
-        justify-content:center;
-        gap:26px;
-        padding:10px 0 16px;
-        border-top:1px solid rgba(255,255,255,0.03);
-      }
-      .nav a{
-        font-family:"Space Mono",monospace;
-        font-size:11px;
-        letter-spacing:2px;
-        text-transform:uppercase;
-        color:var(--muted);
-        padding:6px 4px;
-        border-bottom:1px solid transparent;
-        transition: all .2s ease;
-      }
-      .nav a:hover{color:var(--bright); border-bottom-color:rgba(255,77,0,0.35)}
-      .nav a.active{color:var(--bright); border-bottom-color:var(--accent)}
-  
-      /* HERO SLIDER */
-      .hero{
-        position:relative;
-        padding:28px 0 0;
-      }
-  
-      .slider{
-        position:relative;
-        border:1px solid var(--border);
-        border-radius:10px;
-        overflow:hidden;
-        background:var(--dark);
-        box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-      }
-  
-      .slide{
-        position:absolute; inset:0;
-        opacity:0;
-        transition: opacity 700ms ease;
-        pointer-events:none;
-      }
-      .slide.active{opacity:1; pointer-events:auto}
-  
-      .slide img{
-        width:100%;
-        height: clamp(380px, 52vw, 560px);
-        object-fit:cover;
-        display:block;
-        transform: scale(1.02);
-        filter: saturate(0.95) contrast(1.02);
-      }
-  
-      .hero-overlay{
-        position:absolute; inset:0;
-        background:
-          radial-gradient(120% 110% at 50% 10%, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.78) 72%),
-          linear-gradient(to top, rgba(0,0,0,0.78), rgba(0,0,0,0.05));
-        pointer-events:none;
-      }
-  
-      .hero-content{
-        position:absolute;
-        left:50%;
-        bottom:28px;
-        transform:translateX(-50%);
-        width:min(860px, calc(100% - 44px));
-        text-align:center;
-      }
-  
-      .hero-kicker{
-        font-family:"Space Mono",monospace;
-        letter-spacing:4px;
-        text-transform:uppercase;
-        font-size:11px;
-        color:rgba(255,255,255,0.70);
-        margin-bottom:10px;
-      }
-  
-      .hero-title{
-        font-size: clamp(26px, 3.4vw, 40px);
-        font-weight:600;
-        color:var(--bright);
-        letter-spacing:-0.3px;
-        line-height:1.15;
-        margin-bottom:10px;
-      }
-  
-      .hero-sub{
-        font-family:"Space Mono",monospace;
-        font-size:12px;
-        letter-spacing:2px;
-        text-transform:uppercase;
-        color:rgba(255,255,255,0.65);
-        margin-bottom:16px;
-      }
-  
-      .btn{
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        gap:10px;
-        padding:14px 22px;
-        border-radius:6px;
-        border:1px solid rgba(255,77,0,0.5);
-        background:rgba(255,77,0,0.15);
-        color:var(--bright);
-        font-family:"Space Mono",monospace;
-        font-size:12px;
-        letter-spacing:2px;
-        text-transform:uppercase;
-        transition: all .2s ease;
-        cursor:pointer;
-        user-select:none;
-      }
-      .btn:hover{
-        border-color:var(--accent);
-        background: rgba(255,77,0,0.22);
-        box-shadow: 0 0 40px rgba(255,77,0,0.12);
-      }
-  
-      .slider-controls{
-        position:absolute;
-        left:18px;
-        right:18px;
-        top:18px;
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        pointer-events:none;
-      }
-  
-      .icon-btn{
-        pointer-events:auto;
-        width:40px;height:40px;
-        border-radius:10px;
-        border:1px solid rgba(255,255,255,0.08);
-        background:rgba(10,10,10,0.45);
-        color:rgba(255,255,255,0.75);
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        cursor:pointer;
-        transition: all .2s ease;
-      }
-      .icon-btn:hover{
-        border-color:rgba(255,77,0,0.45);
-        color:var(--bright);
-        background:rgba(10,10,10,0.60);
-      }
-  
-      .dots{
-        pointer-events:auto;
-        display:flex;
-        gap:8px;
-        align-items:center;
-        justify-content:center;
-      }
-      .dot{
-        width:9px;height:9px;border-radius:99px;
-        border:1px solid rgba(255,255,255,0.18);
-        background:rgba(255,255,255,0.06);
-        cursor:pointer;
-        transition: all .2s ease;
-      }
-      .dot.active{
-        background:rgba(255,77,0,0.55);
-        border-color:rgba(255,77,0,0.85);
-        box-shadow: 0 0 0 4px rgba(255,77,0,0.14);
-      }
-  
-      /* SECTION 2 */
-      .section{
-        padding:80px 0;
-      }
-  
-      .section-head{
-        text-align:center;
-        padding:0 0 34px;
-      }
-  
-      .section-head h2{
-        font-family:"Space Mono",monospace;
-        letter-spacing:6px;
-        text-transform:uppercase;
-        font-size:14px;
-        color:var(--bright);
-        margin-bottom:14px;
-      }
-  
-      .section-head p{
-        max-width:820px;
-        margin:0 auto;
-        color:var(--muted);
-        font-size:15px;
-        line-height:1.9;
-      }
-  
-      .split{
-        display:grid;
-        grid-template-columns: 1.15fr 0.85fr;
-        gap:38px;
-        align-items:center;
-      }
-  
-      .frame{
-        border:1px solid var(--border);
-        border-radius:10px;
-        overflow:hidden;
-        background:var(--card);
-        box-shadow: 0 16px 46px rgba(0,0,0,0.25);
-      }
-  
-      .frame img{
-        width:100%;
-        height: auto;
-        display:block;
-      }
-  
-      .panel{
-        border:1px solid var(--border);
-        border-radius:10px;
-        background:var(--card);
-        padding:28px;
-        position:relative;
-        overflow:hidden;
-      }
-  
-      .panel::before{
-        content:"";
-        position:absolute; top:0; left:0; height:100%; width:3px;
-        background: linear-gradient(to bottom, var(--accent), var(--accent2));
-        opacity:0.9;
-      }
-  
-      .panel .tag{
-        font-family:"Space Mono",monospace;
-        font-size:10px;
-        letter-spacing:3px;
-        text-transform:uppercase;
-        color:var(--muted);
-        margin-bottom:10px;
-        padding-left:10px;
-      }
-  
-      .panel h3{
-        font-size:26px;
-        color:var(--bright);
-        letter-spacing:-0.3px;
-        line-height:1.25;
-        margin-bottom:12px;
-        padding-left:10px;
-        font-weight:600;
-      }
-  
-      .panel p{
-        color:var(--text);
-        font-size:14.5px;
-        line-height:1.9;
-        padding-left:10px;
-        margin-bottom:18px;
-      }
-  
-      .panel .btn{
-        margin-left:10px;
-        padding:12px 18px;
-        font-size:11px;
-        border-radius:8px;
-      }
-  
-      /* FOOTER */
-      footer{
-        border-top:1px solid var(--border);
-        padding:40px 0;
-        color:var(--muted);
-      }
-      .footer-row{
-        display:flex;
-        flex-wrap:wrap;
-        gap:16px;
-        align-items:center;
-        justify-content:space-between;
-        font-family:"Space Mono",monospace;
-        font-size:11px;
-        letter-spacing:2px;
-        text-transform:uppercase;
-      }
-      .footer-row span strong{color:var(--accent); font-weight:700}
-  
-      /* RESPONSIVE */
-      @media (max-width: 900px){
-        .top-row{grid-template-columns: 1fr auto}
-        .brand{justify-self:start}
-        .phone{justify-self:end}
-        .nav{flex-wrap:wrap; gap:14px}
-        .split{grid-template-columns: 1fr; gap:18px}
-        .hero-content{bottom:18px}
-      }
-    </style>
-  </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>NYC Interior Design · Spec Work</title>
 
-  <body>
+  <!-- Quiet luxury fonts: elegant serif + clean sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- TOP NAV -->
-    <header class="top">
+  <style>
+    :root{
+      /* Quiet luxury palette */
+      --paper: #fbfaf8;
+      --ink: #161616;
+      --muted: rgba(22,22,22,0.72);
+      --hairline: rgba(22,22,22,0.14);
+      --hairline2: rgba(22,22,22,0.08);
+      --card: #ffffff;
+      --shadow: 0 18px 60px rgba(0,0,0,0.08);
+
+      /* Subtle accent (kept quiet) */
+      --accent: #2b2b2b;
+      --accent2: #6f6a62;
+
+      --max: 1040px;
+      --radius: 12px;
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html, body{ height:100%; }
+    body{
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    img{ max-width:100%; display:block; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+
+    /* Top header (no nav, no CTA) */
+    header{
+      padding: 34px 0 18px;
+    }
+    .mast{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 18px;
+      border-bottom: 1px solid var(--hairline);
+      padding-bottom: 18px;
+    }
+    .mast-left{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .kicker{
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .title{
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing: 0.2px;
+      line-height: 1.1;
+    }
+    .subtitle{
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 60ch;
+    }
+    .mast-right{
+      text-align:right;
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* Layout blocks */
+    main{
+      padding: 24px 0 90px;
+    }
+
+    .section{
+      padding: 34px 0;
+      border-bottom: 1px solid var(--hairline2);
+    }
+
+    .section:last-child{ border-bottom: none; }
+
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:18px;
+      margin-bottom: 18px;
+    }
+
+    .h2{
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .note{
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .prose{
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 80ch;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 26px;
+      align-items:center;
+      margin-top: 18px;
+    }
+
+    .frame{
+      background: var(--card);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .frame .ph{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height: 340px;
+      padding: 22px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.00)),
+        #ffffff;
+      color: rgba(22,22,22,0.50);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align:center;
+      border-bottom: 1px solid var(--hairline2);
+    }
+
+    .frame img{
+      width:100%;
+      height: auto;
+    }
+
+    .panel{
+      background: rgba(255,255,255,0.55);
+      border: 1px solid var(--hairline2);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .panel .eyebrow{
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .panel h3{
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .panel p{
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 12px;
+    }
+
+    .panel p:last-child{ margin-bottom:0; }
+
+    /* Single allowed CTA: view portfolio experience */
+    .quiet-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border: 1px solid var(--hairline);
+      background: #ffffff;
+      color: var(--ink);
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+      user-select:none;
+    }
+    .quiet-btn:hover{
+      border-color: rgba(22,22,22,0.28);
+      background: rgba(255,255,255,0.86);
+      transform: translateY(-1px);
+    }
+
+    .quiet-btn .arrow{ font-size: 14px; color: var(--accent2); }
+
+    /* Portfolio detail view (same file, no separate doc) */
+    .view{
+      display:none;
+    }
+    .view.active{
+      display:block;
+    }
+
+    /* “Page” transition feel */
+    .fade-in{
+      animation: fadeIn 220ms ease-out;
+    }
+    @keyframes fadeIn{
+      from{ opacity:0; transform: translateY(6px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+
+    .back-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 18px 0 10px;
+      border-bottom: 1px solid var(--hairline);
+      margin-bottom: 22px;
+    }
+    .back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      cursor:pointer;
+      user-select:none;
+    }
+    .back-link:hover{ color: var(--ink); }
+    .back-link span{ color: var(--accent2); font-size: 16px; }
+
+    .portfolio-hero{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .portfolio-title{
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      font-weight: 500;
+      line-height: 1.05;
+    }
+    .portfolio-sub{
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 80ch;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .tile{
+      background: var(--card);
+      border: 1px solid var(--hairline);
+      border-radius: 12px;
+      overflow:hidden;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.06);
+      cursor:pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .tile:hover{
+      transform: translateY(-2px);
+      border-color: rgba(22,22,22,0.24);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+    }
+    .tile .cap{
+      padding: 12px 12px 14px;
+      border-top: 1px solid var(--hairline2);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background: rgba(251,250,248,0.92);
+      backdrop-filter: blur(6px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 22px;
+      z-index: 2000;
+    }
+    .lightbox.open{ display:flex; }
+    .lightbox-card{
+      width: min(980px, 100%);
+      background: #ffffff;
+      border: 1px solid var(--hairline);
+      border-radius: 14px;
+      overflow:hidden;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.16);
+    }
+    .lightbox-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--hairline2);
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .close{
+      border: 1px solid var(--hairline);
+      background:#fff;
+      border-radius: 999px;
+      padding: 8px 12px;
+      cursor:pointer;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: border-color 0.18s ease, color 0.18s ease;
+    }
+    .close:hover{ border-color: rgba(22,22,22,0.28); color: var(--ink); }
+
+    .lightbox-body{
+      padding: 0;
+    }
+    .lightbox-body img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    footer{
+      padding: 32px 0 44px;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--hairline);
+    }
+    .foot{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .foot .smallcaps{
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px){
+      .mast{ align-items:flex-start; }
+      .mast-right{ display:none; }
+      .split{ grid-template-columns: 1fr; }
+      .frame .ph{ min-height: 260px; }
+      .grid{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- FRONT PAGE VIEW -->
+  <div class="view active" id="viewHome">
+    <header>
       <div class="wrap">
-        <div class="top-row">
-          <div></div>
-  
-          <a class="brand" href="#home">THE DOJO STUDIO</a>
-  
-          <div class="phone">
-            <span class="dot"></span>
-            <span>(212) 961-7767</span>
+        <div class="mast">
+          <div class="mast-left">
+            <div class="kicker">Spec work, growth audit</div>
+            <div class="title">NYC Interior Design, quick wins I found</div>
+            <div class="subtitle">
+              Single page, no CTA, no fluff. Replace the placeholders with your text and screenshots.
+            </div>
+          </div>
+          <div class="mast-right">
+            <div>Prepared for: NYC Interior Design</div>
+            <div id="today"></div>
           </div>
         </div>
-  
-        <nav class="nav" aria-label="Primary">
-          <a class="active" href="#home">Home</a>
-          <a href="#services">Services</a>
-          <a href="#projects">Projects</a>
-          <a href="#collection">Collection</a>
-          <a href="#news">News</a>
-          <a href="#stores">Stores</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </nav>
       </div>
     </header>
-  
-    <!-- HERO -->
-    <section id="home" class="hero">
+
+    <main>
       <div class="wrap">
-        <div class="slider" role="region" aria-label="Featured projects">
-          <!-- Slide 1 -->
-          <div class="slide active" data-slide>
-            <!-- Replace with your local path, example: /images/hero-1.jpg -->
-            <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=2400&q=75" alt="Kitchen project" />
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-              <div class="hero-kicker">Featured Project</div>
-              <div class="hero-title">PARK AVENUE DUPLEX</div>
-              <div class="hero-sub">ARCHITECTURE · HOME REMODELING</div>
-              <a class="btn" href="#contact">Request a consultation <span aria-hidden="true">→</span></a>
-            </div>
+
+        <!-- SECTION 1: THE PROBLEM FOUND (NO IMAGE REQUIRED, but you can add one) -->
+        <section class="section" id="sec-problem">
+          <div class="section-head">
+            <div class="h2">What I found</div>
+            <div class="note">Observation</div>
           </div>
-  
-          <!-- Slide 2 -->
-          <div class="slide" data-slide>
-            <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=2400&q=75" alt="Living room project" />
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-              <div class="hero-kicker">Featured Project</div>
-              <div class="hero-title">TRIBECA LOFT</div>
-              <div class="hero-sub">INTERIOR DESIGN · FURNISHING</div>
-              <a class="btn" href="#projects">View projects <span aria-hidden="true">→</span></a>
-            </div>
-          </div>
-  
-          <!-- Controls -->
-          <div class="slider-controls">
-            <button class="icon-btn" type="button" id="prevBtn" aria-label="Previous slide">‹</button>
-  
-            <div class="dots" aria-label="Slide dots">
-              <button class="dot active" type="button" data-dot="0" aria-label="Go to slide 1"></button>
-              <button class="dot" type="button" data-dot="1" aria-label="Go to slide 2"></button>
-            </div>
-  
-            <button class="icon-btn" type="button" id="nextBtn" aria-label="Next slide">›</button>
-          </div>
-        </div>
-      </div>
-    </section>
-  
-    <!-- SECTION: CREATE A HOME YOU LOVE -->
-    <section id="services" class="section">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Create a home you love</h2>
-          <p>
-            We build interior solutions grounded in timeless principles, clean execution, and real outcomes.
-            We work with select artisans, trade sources, and private studios to create spaces that match your taste and long term goals.
+
+          <p class="prose">
+            <!-- Replace this block with your exact wording -->
+            [Write your short explanation here: no Facebook ads, only one Google ad, current growth relies on word of mouth and organic SEO, plus why that is slow and unreliable.]
           </p>
-        </div>
-  
-        <div class="split">
-          <div class="frame">
-            <!-- Replace with your local path, example: /images/service-1.jpg -->
-            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=2000&q=75" alt="Bright living room" />
-          </div>
-  
+
+          <div style="height:14px"></div>
+
           <div class="panel">
-            <div class="tag">Service 1</div>
-            <h3>Decoration</h3>
+            <div class="eyebrow">Context</div>
             <p>
-              Complete home decor that reflects your aesthetic, lifestyle, and preferences.
-              We source pieces that look intentional, not generic, and build a space that reads premium the moment you walk in.
+              [Add 2 to 4 sentences about what “leaders” means for them, what the market expects, and why the website positioning matters.]
             </p>
-            <p>
-              From custom furnishings to one of one art, the process prioritizes authenticity, materials, and craftsmanship.
-            </p>
-            <a class="btn" href="#contact">Learn more <span aria-hidden="true">→</span></a>
           </div>
+        </section>
+
+        <!-- SECTION 2: KEYWORDS YOU FOUND (IMAGE + TEXT) -->
+        <section class="section" id="sec-keywords">
+          <div class="section-head">
+            <div class="h2">Keywords with real intent</div>
+            <div class="note">Search opportunity</div>
+          </div>
+
+          <div class="split">
+            <div class="frame">
+              <div class="ph">Replace with your screenshot of the keyword list</div>
+              <!-- Uncomment and set your image path -->
+              <!-- <img src="/path/to/keywords.png" alt="Google keyword opportunities"> -->
+            </div>
+
+            <div class="panel">
+              <div class="eyebrow">Why it matters</div>
+              <h3>Search is already asking for this.</h3>
+              <p>
+                [Explain the keyword theme you found, what it signals about buyer intent, and why it is a cleaner growth lever than waiting on SEO.]
+              </p>
+              <p>
+                [Add 1 more short paragraph: expected lead quality, why NYC makes sense, and what “decent rate” means in your terms.]
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: REDESIGNED HERO SECTION (IMAGE + TEXT) -->
+        <section class="section" id="sec-hero">
+          <div class="section-head">
+            <div class="h2">Hero redesign direction</div>
+            <div class="note">Positioning</div>
+          </div>
+
+          <div class="split">
+            <div class="frame">
+              <div class="ph">Replace with your screenshot of the redesigned hero</div>
+              <!-- <img src="/path/to/hero-redesign.png" alt="Redesigned hero section"> -->
+            </div>
+
+            <div class="panel">
+              <div class="eyebrow">What changed</div>
+              <h3>Made it read like quiet luxury.</h3>
+              <p>
+                [Explain the core shift: less generic, more specific, more authority, clearer promise, better visual hierarchy, and why that attracts leaders.]
+              </p>
+              <p>
+                [Keep it tight. 3 to 6 sentences max.]
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 4: PORTFOLIO REDESIGN TEASER (IMAGE + TEXT + ONE BUTTON) -->
+        <section class="section" id="sec-portfolio-teaser">
+          <div class="section-head">
+            <div class="h2">Portfolio piece, redesigned</div>
+            <div class="note">Better story</div>
+          </div>
+
+          <div class="split">
+            <div class="frame">
+              <div class="ph">Replace with your screenshot of the portfolio teaser</div>
+              <!-- <img src="/path/to/portfolio-teaser.png" alt="Redesigned portfolio teaser"> -->
+            </div>
+
+            <div class="panel">
+              <div class="eyebrow">Missed opportunity</div>
+              <h3>The story sells, not photo spam.</h3>
+              <p>
+                [Explain what you noticed: no before/after framing, no problem, no journey, no constraints, no decisions, no outcome language.]
+              </p>
+              <p>
+                [Explain what your redesign adds: problem, approach, material choices, tradeoffs, before/after, and a clean gallery.]
+              </p>
+
+              <div style="height:10px"></div>
+
+              <button class="quiet-btn" type="button" id="openPortfolio">
+                View the redesigned portfolio experience <span class="arrow">→</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <footer>
+          <div class="foot">
+            <div class="smallcaps">Spec work preview</div>
+            <div class="smallcaps">Single file, replace content</div>
+          </div>
+        </footer>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- PORTFOLIO VIEW (SAME FILE, NO NAV) -->
+  <div class="view" id="viewPortfolio">
+    <div class="wrap fade-in">
+      <div class="back-row">
+        <div class="back-link" id="backHome">
+          <span>←</span> Back
+        </div>
+        <div class="kicker">Portfolio concept, interactive preview</div>
+      </div>
+
+      <div class="portfolio-hero">
+        <div class="portfolio-title">[Project Title Goes Here]</div>
+        <div class="portfolio-sub">
+          [Write 2 to 4 lines explaining the project story format: the problem, constraints, approach, outcome, then a curated gallery.]
         </div>
       </div>
-    </section>
-  
-    <!-- Placeholder sections so nav anchors work -->
-    <section id="projects" class="section" style="padding-top:0;">
-      <div class="wrap">
-        <div class="section-head" style="padding-top:0;">
-          <h2>Projects</h2>
-          <p>Drop your grid, case studies, before/after, whatever you want here.</p>
+
+      <!-- Optional: before/after block -->
+      <div class="split" style="margin-top:18px;">
+        <div class="frame">
+          <div class="ph">Before image placeholder</div>
+          <!-- <img src="/path/to/before.jpg" alt="Before"> -->
+        </div>
+        <div class="frame">
+          <div class="ph">After image placeholder</div>
+          <!-- <img src="/path/to/after.jpg" alt="After"> -->
         </div>
       </div>
-    </section>
-  
-    <section id="collection" class="section" style="padding-top:0;">
-      <div class="wrap">
-        <div class="section-head" style="padding-top:0;">
-          <h2>Collection</h2>
-          <p>Curated items, materials, preferred vendors, downloadable lookbooks.</p>
+
+      <div style="height:18px"></div>
+
+      <div class="panel">
+        <div class="eyebrow">The journey</div>
+        <h3>[Short headline about the transformation]</h3>
+        <p>
+          [Use this area for the narrative: what was wrong, what mattered, what decisions were made, what was custom, what was sourced, what changed.]
+        </p>
+      </div>
+
+      <!-- Gallery grid -->
+      <div class="section-head" style="margin-top:26px;">
+        <div class="h2" style="font-size:26px;">Curated gallery</div>
+        <div class="note">Click to enlarge</div>
+      </div>
+
+      <div class="grid" id="galleryGrid">
+        <!-- Tile 1 -->
+        <div class="tile" data-full="">
+          <div class="frame" style="border:none;border-radius:0;box-shadow:none;">
+            <div class="ph" style="min-height:220px;border-bottom:1px solid var(--hairline2);">Gallery image 1</div>
+            <!-- <img src="/path/to/gallery-1.jpg" alt="Gallery 1"> -->
+          </div>
+          <div class="cap">[Caption 1, optional]</div>
+        </div>
+
+        <!-- Tile 2 -->
+        <div class="tile" data-full="">
+          <div class="frame" style="border:none;border-radius:0;box-shadow:none;">
+            <div class="ph" style="min-height:220px;border-bottom:1px solid var(--hairline2);">Gallery image 2</div>
+            <!-- <img src="/path/to/gallery-2.jpg" alt="Gallery 2"> -->
+          </div>
+          <div class="cap">[Caption 2, optional]</div>
+        </div>
+
+        <!-- Tile 3 -->
+        <div class="tile" data-full="">
+          <div class="frame" style="border:none;border-radius:0;box-shadow:none;">
+            <div class="ph" style="min-height:220px;border-bottom:1px solid var(--hairline2);">Gallery image 3</div>
+            <!-- <img src="/path/to/gallery-3.jpg" alt="Gallery 3"> -->
+          </div>
+          <div class="cap">[Caption 3, optional]</div>
         </div>
       </div>
-    </section>
-  
-    <section id="news" class="section" style="padding-top:0;">
-      <div class="wrap">
-        <div class="section-head" style="padding-top:0;">
-          <h2>News</h2>
-          <p>Updates, press, announcements.</p>
+
+      <footer style="margin-top:34px;">
+        <div class="foot">
+          <div class="smallcaps">End of portfolio preview</div>
+          <div class="smallcaps">Replace images and captions</div>
         </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Lightbox (click any tile to open once you wire real images) -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-card fade-in">
+      <div class="lightbox-top">
+        <div id="lightboxLabel">Preview</div>
+        <button class="close" type="button" id="closeLightbox">Close</button>
       </div>
-    </section>
-  
-    <section id="stores" class="section" style="padding-top:0;">
-      <div class="wrap">
-        <div class="section-head" style="padding-top:0;">
-          <h2>Stores</h2>
-          <p>Showroom info, partners, locations.</p>
-        </div>
+      <div class="lightbox-body" id="lightboxBody">
+        <!-- injected -->
       </div>
-    </section>
-  
-    <section id="about" class="section" style="padding-top:0;">
-      <div class="wrap">
-        <div class="section-head" style="padding-top:0;">
-          <h2>About</h2>
-          <p>Short bio, positioning, credibility, process.</p>
-        </div>
-      </div>
-    </section>
-  
-    <section id="contact" class="section" style="padding-top:0;">
-      <div class="wrap">
-        <div class="section-head" style="padding-top:0;">
-          <h2>Contact</h2>
-          <p>Put your form here. Keep it short. Make it fast.</p>
-        </div>
-  
-        <div class="panel" style="max-width:760px;margin:0 auto;">
-          <div class="tag">Request</div>
-          <h3>Consultation</h3>
-          <p>Replace this with your real form endpoint. This is just the shell.</p>
-  
-          <form onsubmit="event.preventDefault(); alert('Wire this to your backend.');" style="padding-left:10px; display:grid; gap:10px;">
-            <input required placeholder="Name" style="padding:14px 14px;border-radius:8px;border:1px solid var(--border);background:var(--dark);color:var(--bright);outline:none;">
-            <input required placeholder="Email" type="email" style="padding:14px 14px;border-radius:8px;border:1px solid var(--border);background:var(--dark);color:var(--bright);outline:none;">
-            <input placeholder="Phone (optional)" style="padding:14px 14px;border-radius:8px;border:1px solid var(--border);background:var(--dark);color:var(--bright);outline:none;">
-            <textarea rows="4" placeholder="What are we building?" style="padding:14px 14px;border-radius:8px;border:1px solid var(--border);background:var(--dark);color:var(--bright);outline:none;resize:vertical;"></textarea>
-            <button class="btn" type="submit" style="justify-self:start;">Send <span aria-hidden="true">→</span></button>
-          </form>
-        </div>
-      </div>
-    </section>
-  
-    <footer>
-      <div class="wrap">
-        <div class="footer-row">
-          <span>THE DOJO STUDIO · <strong>LOCAL BUILD</strong></span>
-          <span>© <span id="yr"></span></span>
-        </div>
-      </div>
-    </footer>
-  
-    <script>
-      // Minimal slider logic
-      const slides = Array.from(document.querySelectorAll("[data-slide]"));
-      const dots = Array.from(document.querySelectorAll("[data-dot]"));
-      const prevBtn = document.getElementById("prevBtn");
-      const nextBtn = document.getElementById("nextBtn");
-      let idx = 0;
-      let timer = null;
-  
-      function setActive(i){
-        idx = (i + slides.length) % slides.length;
-        slides.forEach((s, k) => s.classList.toggle("active", k === idx));
-        dots.forEach((d, k) => d.classList.toggle("active", k === idx));
-      }
-  
-      function next(){ setActive(idx + 1); }
-      function prev(){ setActive(idx - 1); }
-  
-      nextBtn.addEventListener("click", () => { stopAuto(); next(); startAuto(); });
-      prevBtn.addEventListener("click", () => { stopAuto(); prev(); startAuto(); });
-  
-      dots.forEach(d => {
-        d.addEventListener("click", () => {
-          stopAuto();
-          setActive(parseInt(d.dataset.dot, 10));
-          startAuto();
-        });
+    </div>
+  </div>
+
+  <script>
+    // Date in header
+    (function(){
+      const el = document.getElementById("today");
+      if (!el) return;
+      const d = new Date();
+      const opts = { year:"numeric", month:"long", day:"numeric" };
+      el.textContent = d.toLocaleDateString(undefined, opts);
+    })();
+
+    // View switching (same doc)
+    const viewHome = document.getElementById("viewHome");
+    const viewPortfolio = document.getElementById("viewPortfolio");
+
+    function showHome(){
+      viewPortfolio.classList.remove("active");
+      viewHome.classList.add("active");
+      location.hash = "";
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+
+    function showPortfolio(){
+      viewHome.classList.remove("active");
+      viewPortfolio.classList.add("active");
+      location.hash = "#portfolio";
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+
+    document.getElementById("openPortfolio").addEventListener("click", showPortfolio);
+    document.getElementById("backHome").addEventListener("click", showHome);
+
+    // Hash support (direct open)
+    window.addEventListener("load", () => {
+      if (location.hash === "#portfolio") showPortfolio();
+    });
+    window.addEventListener("hashchange", () => {
+      if (location.hash === "#portfolio") showPortfolio();
+      else showHome();
+    });
+
+    // Lightbox: works if you set tile dataset or if tile contains an <img>
+    const lightbox = document.getElementById("lightbox");
+    const lightboxBody = document.getElementById("lightboxBody");
+    const lightboxLabel = document.getElementById("lightboxLabel");
+    const closeLightbox = document.getElementById("closeLightbox");
+
+    function openLightbox(imgSrc, label){
+      if (!imgSrc) return;
+      lightboxLabel.textContent = label || "Preview";
+      lightboxBody.innerHTML = '<img src="' + imgSrc + '" alt="">';
+      lightbox.classList.add("open");
+    }
+    function closeLb(){
+      lightbox.classList.remove("open");
+      lightboxBody.innerHTML = "";
+    }
+
+    closeLightbox.addEventListener("click", closeLb);
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLb();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLb();
+    });
+
+    // Click tiles to open
+    document.querySelectorAll(".tile").forEach((tile, i) => {
+      tile.addEventListener("click", () => {
+        const direct = tile.getAttribute("data-full");
+        const img = tile.querySelector("img");
+        const src = direct || (img ? img.getAttribute("src") : "");
+        const capEl = tile.querySelector(".cap");
+        const label = capEl ? capEl.textContent.replace(/\[|\]/g, "").trim() : ("Image " + (i + 1));
+        openLightbox(src, label);
       });
-  
-      function startAuto(){
-        timer = setInterval(next, 6500);
-      }
-      function stopAuto(){
-        if (timer) clearInterval(timer);
-        timer = null;
-      }
-  
-      startAuto();
-      document.getElementById("yr").textContent = new Date().getFullYear();
-    </script>
-  </body>
-  </html>
+    });
+  </script>
+
+</body>
+</html>
