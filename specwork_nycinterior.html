@@ -14,8 +14,8 @@
     --uiFont: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
     /* Hero CTA color (warm tan like the example) */
-    --cta:#C79255;
-    --ctaHover:#b9803f;
+    --cta:#fcfcfc;
+    --ctaHover:#b4b4b4;
   }
 
   .nyc-wrap{ font-family: var(--uiFont); color: var(--ink); }
@@ -368,36 +368,38 @@
   </nav>
 
   <!-- HERO (NEW LAYOUT + BULLETS) -->
-  <section class="nyc-hero">
-    <div class="nyc-hero-card">
-      <img
-        src="https://storage.googleapis.com/nycinteriordesign-v2-strapi-uploads/Tribeca_penthouse_NYC_high_end_interior_designer_Erika_Flugger_1_3eed5f35a9/Tribeca_penthouse_NYC_high_end_interior_designer_Erika_Flugger_1_3eed5f35a9.webp"
-        alt="Tribeca penthouse"
-        loading="eager"
-      />
-      <div class="nyc-hero-overlay"></div>
+  <!-- FULL WIDTH HERO -->
+<section class="nyc-hero">
+  <div class="nyc-hero-full">
+    <img
+      src="https://storage.googleapis.com/nycinteriordesign-v2-strapi-uploads/Tribeca_penthouse_NYC_high_end_interior_designer_Erika_Flugger_1_3eed5f35a9/Tribeca_penthouse_NYC_high_end_interior_designer_Erika_Flugger_1_3eed5f35a9.webp"
+      alt="Tribeca penthouse"
+      loading="eager"
+    />
 
-      <div class="nyc-hero-content">
-        <div class="nyc-hero-left">
-          <div class="nyc-hero-eyebrow">THE #1 INTERIOR DESIGN SERVICE</div>
+    <div class="nyc-hero-overlay"></div>
 
-          <h1 class="nyc-hero-h">
-            Designing your<br/>
-            dream home just<br/>
-            became a reality.
-          </h1>
+    <div class="nyc-hero-content">
+      <div class="nyc-hero-left">
+        <div class="nyc-hero-eyebrow">THE #1 INTERIOR DESIGN SERVICE</div>
 
-          <ul class="nyc-hero-bullets">
-            <li><span class="nyc-bullet-dot"></span><span>Personalized design plan built around your taste and lifestyle.</span></li>
-            <li><span class="nyc-bullet-dot"></span><span>Handpicked sources, materials, and finishes that actually last.</span></li>
-            <li><span class="nyc-bullet-dot"></span><span>Clear steps, clear pricing, and support from start to install.</span></li>
-          </ul>
+        <h1 class="nyc-hero-h">
+          Designing your<br/>
+          dream home just<br/>
+          became a reality.
+        </h1>
 
-          <a class="nyc-cta" href="#style">FIND YOUR STYLE</a>
-        </div>
+        <ul class="nyc-hero-bullets">
+          <li><span class="nyc-bullet-dot"></span><span>Personalized design built around your lifestyle.</span></li>
+          <li><span class="nyc-bullet-dot"></span><span>Timeless materials sourced from trusted artisans.</span></li>
+          <li><span class="nyc-bullet-dot"></span><span>Clear process from concept to installation.</span></li>
+        </ul>
+
+        <a class="nyc-cta" href="#style">FIND YOUR STYLE</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 </div>
 
 <script>
