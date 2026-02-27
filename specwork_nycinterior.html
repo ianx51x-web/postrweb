@@ -1,717 +1,397 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>NYC Interior Design · Spec Work</title>
+<!-- NYC INTERIOR DESIGN-STYLE HEADER + NAV + HERO (drop into a Custom HTML block) -->
+<style>
+  :root{
+    --bg: rgba(255,255,255,.92);
+    --bgSolid:#ffffff;
+    --ink:#0c0c0c;
+    --muted:#332e26;
+    --border: rgba(0,0,0,.08);
+    --shadow: 0 18px 40px rgba(0,0,0,.10);
+    --container: 1350px;
+    --pad: 24px;
 
-  <!-- Quiet luxury fonts: elegant serif + clean sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    /* fonts */
+    --logoFont: Georgia, "Times New Roman", Times, serif;
+    --uiFont: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
 
-  <style>
-    :root{
-      /* Quiet luxury palette */
-      --paper: #fbfaf8;
-      --ink: #080808;
-      --muted: rgba(22,22,22,0.72);
-      --hairline: rgba(22,22,22,0.14);
-      --hairline2: rgba(22,22,22,0.08);
-      --card: #ffffff;
-      --shadow: 0 18px 60px rgba(0,0,0,0.08);
+  .nyc-wrap{
+    font-family: var(--uiFont);
+    color: var(--ink);
+  }
 
-      /* Subtle accent (kept quiet) */
-      --accent: #2b2b2b;
-      --accent2: #6f6a62;
+  /* FIXED NAV SHELL */
+  .nyc-nav{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 9999;
+    background: var(--bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background .3s ease;
+    border-bottom: 1px solid transparent;
+  }
+  .nyc-nav.is-scrolled{
+    background: rgba(255,255,255,.96);
+    border-bottom-color: var(--border);
+  }
 
-      --max: 1040px;
-      --radius: 12px;
-    }
+  .nyc-container{
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+  }
 
-    *{ box-sizing:border-box; margin:0; padding:0; }
-    html, body{ height:100%; }
-    body{
-      background: var(--paper);
-      color: var(--ink);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
-    }
+  /* TOP ROW */
+  .nyc-top{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 28px;
+    padding-bottom: 14px;
+  }
 
-    a{ color: inherit; text-decoration: none; }
-    img{ max-width:100%; display:block; }
+  .nyc-logo{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+  .nyc-logo span{
+    font-family: var(--logoFont);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--ink);
+  }
 
-    .wrap{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 22px;
-    }
+  .nyc-right{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 140px;
+    justify-content: flex-end;
+  }
 
-    /* Top header (no nav, no CTA) */
-    header{
-      padding: 34px 0 18px;
-    }
-    .mast{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap: 18px;
-      border-bottom: 1px solid var(--hairline);
-      padding-bottom: 18px;
-    }
-    .mast-left{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-    }
-    .kicker{
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .title{
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 500;
-      font-size: clamp(28px, 4vw, 44px);
-      letter-spacing: 0.2px;
-      line-height: 1.1;
-    }
-    .subtitle{
-      font-size: 13px;
-      color: var(--muted);
-      max-width: 60ch;
-    }
-    .mast-right{
-      text-align:right;
-      font-size: 12px;
-      color: var(--muted);
-      white-space: nowrap;
-    }
+  .nyc-phone{
+    display: none;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    color: rgba(0,0,0,.72);
+    text-decoration: none;
+    transition: background .2s ease, color .2s ease;
+    font-size: 14px;
+  }
+  .nyc-phone:hover{ background: rgba(0,0,0,.05); color: var(--ink); }
+  .nyc-phone svg{ width: 16px; height: 16px; }
 
-    /* Layout blocks */
-    main{
-      padding: 24px 0 90px;
-    }
+  .nyc-burger{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    transition: background .2s ease;
+  }
+  .nyc-burger:hover{ background: rgba(0,0,0,.04); }
+  .nyc-burger svg{ width: 22px; height: 22px; }
 
-    .section{
-      padding: 34px 0;
-      border-bottom: 1px solid var(--hairline2);
-    }
+  /* LINK ROW (DESKTOP) */
+  .nyc-links{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 16px 0;
+  }
 
-    .section:last-child{ border-bottom: none; }
+  .nyc-link{
+    font-family: var(--uiFont);
+    font-size: 15px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+    font-weight: 500;
+    transition: color .2s ease, font-weight .2s ease, text-decoration-color .2s ease;
+    text-underline-offset: 4px;
+  }
+  .nyc-link:hover{
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+  .nyc-link.is-active{
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
 
-    .section-head{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:18px;
-      margin-bottom: 18px;
-    }
+  /* MOBILE MENU PANEL */
+  .nyc-mobile{
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .25s ease;
+    border-top: 1px solid var(--border);
+    background: rgba(255,255,255,.98);
+  }
+  .nyc-mobile > div{
+    overflow: hidden;
+  }
+  .nyc-mobile.is-open{
+    grid-template-rows: 1fr;
+  }
+  .nyc-mobile-inner{
+    padding: 14px var(--pad) 18px;
+  }
+  .nyc-mobile-grid{
+    display: grid;
+    gap: 10px;
+  }
+  .nyc-mobile a{
+    display: block;
+    padding: 12px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--ink);
+    border: 1px solid var(--border);
+    background: #fff;
+    font-size: 14px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
 
-    .h2{
-      font-family: "Cormorant Garamond", serif;
-      font-size: 28px;
-      font-weight: 500;
-      line-height: 1.1;
-    }
+  /* HERO */
+  .nyc-hero{
+    padding-top: 150px; /* clears the fixed header */
+    background: var(--bgSolid);
+  }
+  .nyc-hero-inner{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 28px;
+  }
 
-    .note{
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
+  .nyc-hero-card{
+    width: min(1200px, calc(100% - (var(--pad) * 2)));
+    height: 520px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: #000;
+  }
 
-    .prose{
-      color: var(--muted);
-      font-size: 15px;
-      max-width: 80ch;
-    }
+  .nyc-hero-card img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.02);
+    transition: transform 1s ease;
+  }
+  .nyc-hero-card:hover img{
+    transform: scale(1.05);
+  }
 
-    .split{
-      display:grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 26px;
-      align-items:center;
-      margin-top: 18px;
-    }
+  .nyc-hero-grad{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.80), rgba(0,0,0,.10), rgba(0,0,0,0));
+  }
 
-    .frame{
-      background: var(--card);
-      border: 1px solid var(--hairline);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
+  .nyc-hero-content{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 36px 22px;
+    text-align: center;
+    color: #fff;
+  }
 
-    .frame .ph{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      min-height: 340px;
-      padding: 22px;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.00)),
-        #ffffff;
-      color: rgba(22,22,22,0.50);
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-align:center;
-      border-bottom: 1px solid var(--hairline2);
-    }
+  .nyc-hero-stack{
+    max-width: 760px;
+    width: 100%;
+  }
 
-    .frame img{
-      width:100%;
-      height: auto;
-    }
+  .nyc-hero-h{
+    font-family: var(--logoFont);
+    text-transform: lowercase;
+    letter-spacing: -0.02em;
+    font-size: 46px;
+    line-height: 1.05;
+    margin: 0 0 6px;
+  }
 
-    .panel{
-      background: rgba(255,255,255,0.55);
-      border: 1px solid var(--hairline2);
-      border-radius: var(--radius);
-      padding: 22px;
-    }
+  .nyc-hero-sub{
+    font-family: var(--uiFont);
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    font-size: 13px;
+    opacity: .95;
+    margin: 0 0 16px;
+  }
 
-    .panel .eyebrow{
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
+  .nyc-cta{
+    display: inline-block;
+    min-width: 200px;
+    padding: 10px 22px;
+    border: 1px solid rgba(255,255,255,.85);
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-size: 12px;
+    transition: background .2s ease, border-color .2s ease;
+  }
+  .nyc-cta:hover{
+    background: #1d1c1c;
+    border-color: #1d1c1c;
+  }
 
-    .panel h3{
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 500;
-      font-size: 24px;
-      line-height: 1.2;
-      margin-bottom: 10px;
-    }
+  /* RESPONSIVE */
+  @media (min-width: 1024px){
+    .nyc-phone{ display: inline-flex; }
+    .nyc-burger{ display: none; }
+    .nyc-links{ display: flex; }
+    .nyc-mobile{ display: none; }
+    .nyc-hero-card{ height: 750px; }
+    .nyc-logo span{ font-size: 40px; }
+    .nyc-hero-h{ font-size: 54px; }
+  }
 
-    .panel p{
-      font-size: 14.5px;
-      color: var(--muted);
-      line-height: 1.9;
-      margin-bottom: 12px;
-    }
+  @media (max-width: 420px){
+    .nyc-logo span{ font-size: 26px; }
+    .nyc-hero-h{ font-size: 38px; }
+  }
+</style>
 
-    .panel p:last-child{ margin-bottom:0; }
+<div class="nyc-wrap">
+  <!-- NAV -->
+  <nav class="nyc-nav" id="nycNav">
+    <div class="nyc-container">
+      <div class="nyc-top">
+        <!-- left spacer -->
+        <div style="width:140px;"></div>
 
-    /* Single allowed CTA: view portfolio experience */
-    .quiet-btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      border: 1px solid var(--hairline);
-      background: #ffffff;
-      color: var(--ink);
-      padding: 12px 16px;
-      border-radius: 999px;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
-      user-select:none;
-    }
-    .quiet-btn:hover{
-      border-color: rgba(22,22,22,0.28);
-      background: rgba(255,255,255,0.86);
-      transform: translateY(-1px);
-    }
+        <!-- centered logo -->
+        <a class="nyc-logo" href="#">
+          <span>nyc interior design®</span>
+        </a>
 
-    .quiet-btn .arrow{ font-size: 14px; color: var(--accent2); }
+        <!-- right actions -->
+        <div class="nyc-right">
+          <a class="nyc-phone" href="tel:12129617767" aria-label="Call (212) 961-7767">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/>
+            </svg>
+            <span>(212) 961-7767</span>
+          </a>
 
-    /* Portfolio detail view (same file, no separate doc) */
-    .view{
-      display:none;
-    }
-    .view.active{
-      display:block;
-    }
-
-    /* “Page” transition feel */
-    .fade-in{
-      animation: fadeIn 220ms ease-out;
-    }
-    @keyframes fadeIn{
-      from{ opacity:0; transform: translateY(6px); }
-      to{ opacity:1; transform: translateY(0); }
-    }
-
-    .back-row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding: 18px 0 10px;
-      border-bottom: 1px solid var(--hairline);
-      margin-bottom: 22px;
-    }
-    .back-link{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--muted);
-      cursor:pointer;
-      user-select:none;
-    }
-    .back-link:hover{ color: var(--ink); }
-    .back-link span{ color: var(--accent2); font-size: 16px; }
-
-    .portfolio-hero{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-    .portfolio-title{
-      font-family: "Cormorant Garamond", serif;
-      font-size: 34px;
-      font-weight: 500;
-      line-height: 1.05;
-    }
-    .portfolio-sub{
-      color: var(--muted);
-      font-size: 15px;
-      max-width: 80ch;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .tile{
-      background: var(--card);
-      border: 1px solid var(--hairline);
-      border-radius: 12px;
-      overflow:hidden;
-      box-shadow: 0 10px 26px rgba(0,0,0,0.06);
-      cursor:pointer;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-    }
-    .tile:hover{
-      transform: translateY(-2px);
-      border-color: rgba(22,22,22,0.24);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
-    }
-    .tile .cap{
-      padding: 12px 12px 14px;
-      border-top: 1px solid var(--hairline2);
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 1px;
-    }
-
-    .lightbox{
-      position:fixed;
-      inset:0;
-      background: rgba(251,250,248,0.92);
-      backdrop-filter: blur(6px);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding: 22px;
-      z-index: 2000;
-    }
-    .lightbox.open{ display:flex; }
-    .lightbox-card{
-      width: min(980px, 100%);
-      background: #ffffff;
-      border: 1px solid var(--hairline);
-      border-radius: 14px;
-      overflow:hidden;
-      box-shadow: 0 30px 90px rgba(0,0,0,0.16);
-    }
-    .lightbox-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--hairline2);
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-    .close{
-      border: 1px solid var(--hairline);
-      background:#fff;
-      border-radius: 999px;
-      padding: 8px 12px;
-      cursor:pointer;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--muted);
-      transition: border-color 0.18s ease, color 0.18s ease;
-    }
-    .close:hover{ border-color: rgba(22,22,22,0.28); color: var(--ink); }
-
-    .lightbox-body{
-      padding: 0;
-    }
-    .lightbox-body img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
-
-    footer{
-      padding: 32px 0 44px;
-      color: var(--muted);
-      font-size: 12px;
-      border-top: 1px solid var(--hairline);
-    }
-    .foot{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .foot .smallcaps{
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 900px){
-      .mast{ align-items:flex-start; }
-      .mast-right{ display:none; }
-      .split{ grid-template-columns: 1fr; }
-      .frame .ph{ min-height: 260px; }
-      .grid{ grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- FRONT PAGE VIEW -->
-  <div class="view active" id="viewHome">
-    <header>
-      <div class="wrap">
-        <div class="mast">
-          <div class="mast-left">
-            <div class="kicker">Spec work, growth audit</div>
-            <div class="title">NYC Interior Design, quick wins I found</div>
-            <div class="subtitle">
-              Single page, no CTA, no fluff. Replace the placeholders with your text and screenshots.
-            </div>
-          </div>
-          <div class="mast-right">
-            <div>Prepared for: NYC Interior Design</div>
-            <div id="today"></div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <main>
-      <div class="wrap">
-
-        <!-- SECTION 1: THE PROBLEM FOUND (NO IMAGE REQUIRED, but you can add one) -->
-        <section class="section" id="sec-problem">
-          <div class="section-head">
-            <div class="h2">What I found</div>
-            <div class="note">Observation</div>
-          </div>
-
-          <p class="prose">
-            <!-- Replace this block with your exact wording -->
-            [Write your short explanation here: no Facebook ads, only one Google ad, current growth relies on word of mouth and organic SEO, plus why that is slow and unreliable.]
-          </p>
-
-          <div style="height:14px"></div>
-
-          <div class="panel">
-            <div class="eyebrow">Context</div>
-            <p>
-              [Add 2 to 4 sentences about what “leaders” means for them, what the market expects, and why the website positioning matters.]
-            </p>
-          </div>
-        </section>
-
-        <!-- SECTION 2: KEYWORDS YOU FOUND (IMAGE + TEXT) -->
-        <section class="section" id="sec-keywords">
-          <div class="section-head">
-            <div class="h2">Keywords with real intent</div>
-            <div class="note">Search opportunity</div>
-          </div>
-
-          <div class="split">
-            <div class="frame">
-              <div class="ph">Replace with your screenshot of the keyword list</div>
-              <!-- Uncomment and set your image path -->
-              <!-- <img src="/path/to/keywords.png" alt="Google keyword opportunities"> -->
-            </div>
-
-            <div class="panel">
-              <div class="eyebrow">Why it matters</div>
-              <h3>Search is already asking for this.</h3>
-              <p>
-                [Explain the keyword theme you found, what it signals about buyer intent, and why it is a cleaner growth lever than waiting on SEO.]
-              </p>
-              <p>
-                [Add 1 more short paragraph: expected lead quality, why NYC makes sense, and what “decent rate” means in your terms.]
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <!-- SECTION 3: REDESIGNED HERO SECTION (IMAGE + TEXT) -->
-        <section class="section" id="sec-hero">
-          <div class="section-head">
-            <div class="h2">Hero redesign direction</div>
-            <div class="note">Positioning</div>
-          </div>
-
-          <div class="split">
-            <div class="frame">
-              <div class="ph">Replace with your screenshot of the redesigned hero</div>
-              <!-- <img src="/path/to/hero-redesign.png" alt="Redesigned hero section"> -->
-            </div>
-
-            <div class="panel">
-              <div class="eyebrow">What changed</div>
-              <h3>Made it read like quiet luxury.</h3>
-              <p>
-                [Explain the core shift: less generic, more specific, more authority, clearer promise, better visual hierarchy, and why that attracts leaders.]
-              </p>
-              <p>
-                [Keep it tight. 3 to 6 sentences max.]
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <!-- SECTION 4: PORTFOLIO REDESIGN TEASER (IMAGE + TEXT + ONE BUTTON) -->
-        <section class="section" id="sec-portfolio-teaser">
-          <div class="section-head">
-            <div class="h2">Portfolio piece, redesigned</div>
-            <div class="note">Better story</div>
-          </div>
-
-          <div class="split">
-            <div class="frame">
-              <div class="ph">Replace with your screenshot of the portfolio teaser</div>
-              <!-- <img src="/path/to/portfolio-teaser.png" alt="Redesigned portfolio teaser"> -->
-            </div>
-
-            <div class="panel">
-              <div class="eyebrow">Missed opportunity</div>
-              <h3>The story sells, not photo spam.</h3>
-              <p>
-                [Explain what you noticed: no before/after framing, no problem, no journey, no constraints, no decisions, no outcome language.]
-              </p>
-              <p>
-                [Explain what your redesign adds: problem, approach, material choices, tradeoffs, before/after, and a clean gallery.]
-              </p>
-
-              <div style="height:10px"></div>
-
-              <button class="quiet-btn" type="button" id="openPortfolio">
-                View the redesigned portfolio experience <span class="arrow">→</span>
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <footer>
-          <div class="foot">
-            <div class="smallcaps">Spec work preview</div>
-            <div class="smallcaps">Single file, replace content</div>
-          </div>
-        </footer>
-
-      </div>
-    </main>
-  </div>
-
-  <!-- PORTFOLIO VIEW (SAME FILE, NO NAV) -->
-  <div class="view" id="viewPortfolio">
-    <div class="wrap fade-in">
-      <div class="back-row">
-        <div class="back-link" id="backHome">
-          <span>←</span> Back
-        </div>
-        <div class="kicker">Portfolio concept, interactive preview</div>
-      </div>
-
-      <div class="portfolio-hero">
-        <div class="portfolio-title">[Project Title Goes Here]</div>
-        <div class="portfolio-sub">
-          [Write 2 to 4 lines explaining the project story format: the problem, constraints, approach, outcome, then a curated gallery.]
+          <button class="nyc-burger" id="nycBurger" type="button" aria-label="Open menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 6h16"></path>
+              <path d="M4 12h16"></path>
+              <path d="M4 18h16"></path>
+            </svg>
+          </button>
         </div>
       </div>
 
-      <!-- Optional: before/after block -->
-      <div class="split" style="margin-top:18px;">
-        <div class="frame">
-          <div class="ph">Before image placeholder</div>
-          <!-- <img src="/path/to/before.jpg" alt="Before"> -->
-        </div>
-        <div class="frame">
-          <div class="ph">After image placeholder</div>
-          <!-- <img src="/path/to/after.jpg" alt="After"> -->
-        </div>
-      </div>
-
-      <div style="height:18px"></div>
-
-      <div class="panel">
-        <div class="eyebrow">The journey</div>
-        <h3>[Short headline about the transformation]</h3>
-        <p>
-          [Use this area for the narrative: what was wrong, what mattered, what decisions were made, what was custom, what was sourced, what changed.]
-        </p>
-      </div>
-
-      <!-- Gallery grid -->
-      <div class="section-head" style="margin-top:26px;">
-        <div class="h2" style="font-size:26px;">Curated gallery</div>
-        <div class="note">Click to enlarge</div>
-      </div>
-
-      <div class="grid" id="galleryGrid">
-        <!-- Tile 1 -->
-        <div class="tile" data-full="">
-          <div class="frame" style="border:none;border-radius:0;box-shadow:none;">
-            <div class="ph" style="min-height:220px;border-bottom:1px solid var(--hairline2);">Gallery image 1</div>
-            <!-- <img src="/path/to/gallery-1.jpg" alt="Gallery 1"> -->
-          </div>
-          <div class="cap">[Caption 1, optional]</div>
-        </div>
-
-        <!-- Tile 2 -->
-        <div class="tile" data-full="">
-          <div class="frame" style="border:none;border-radius:0;box-shadow:none;">
-            <div class="ph" style="min-height:220px;border-bottom:1px solid var(--hairline2);">Gallery image 2</div>
-            <!-- <img src="/path/to/gallery-2.jpg" alt="Gallery 2"> -->
-          </div>
-          <div class="cap">[Caption 2, optional]</div>
-        </div>
-
-        <!-- Tile 3 -->
-        <div class="tile" data-full="">
-          <div class="frame" style="border:none;border-radius:0;box-shadow:none;">
-            <div class="ph" style="min-height:220px;border-bottom:1px solid var(--hairline2);">Gallery image 3</div>
-            <!-- <img src="/path/to/gallery-3.jpg" alt="Gallery 3"> -->
-          </div>
-          <div class="cap">[Caption 3, optional]</div>
-        </div>
-      </div>
-
-      <footer style="margin-top:34px;">
-        <div class="foot">
-          <div class="smallcaps">End of portfolio preview</div>
-          <div class="smallcaps">Replace images and captions</div>
-        </div>
-      </footer>
-    </div>
-  </div>
-
-  <!-- Lightbox (click any tile to open once you wire real images) -->
-  <div class="lightbox" id="lightbox">
-    <div class="lightbox-card fade-in">
-      <div class="lightbox-top">
-        <div id="lightboxLabel">Preview</div>
-        <button class="close" type="button" id="closeLightbox">Close</button>
-      </div>
-      <div class="lightbox-body" id="lightboxBody">
-        <!-- injected -->
+      <!-- desktop links -->
+      <div class="nyc-links" aria-label="Primary navigation">
+        <a class="nyc-link is-active" href="#">Home</a>
+        <a class="nyc-link" href="#">Services</a>
+        <a class="nyc-link" href="#">Projects</a>
+        <a class="nyc-link" href="#">Collection</a>
+        <a class="nyc-link" href="#">News</a>
+        <a class="nyc-link" href="#">Stores</a>
+        <a class="nyc-link" href="#">About</a>
+        <a class="nyc-link" href="#">Contact</a>
       </div>
     </div>
-  </div>
 
-  <script>
-    // Date in header
-    (function(){
-      const el = document.getElementById("today");
-      if (!el) return;
-      const d = new Date();
-      const opts = { year:"numeric", month:"long", day:"numeric" };
-      el.textContent = d.toLocaleDateString(undefined, opts);
-    })();
+    <!-- mobile panel -->
+    <div class="nyc-mobile" id="nycMobile">
+      <div>
+        <div class="nyc-mobile-inner">
+          <div class="nyc-mobile-grid">
+            <a href="#">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Projects</a>
+            <a href="#">Collection</a>
+            <a href="#">News</a>
+            <a href="#">Stores</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="tel:12129617767">(212) 961-7767</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-    // View switching (same doc)
-    const viewHome = document.getElementById("viewHome");
-    const viewPortfolio = document.getElementById("viewPortfolio");
+  <!-- HERO -->
+  <section class="nyc-hero">
+    <div class="nyc-hero-inner">
+      <div class="nyc-hero-card">
+        <img
+          src="https://storage.googleapis.com/nycinteriordesign-v2-strapi-uploads/Tribeca_penthouse_NYC_high_end_interior_designer_Erika_Flugger_1_3eed5f35a9/Tribeca_penthouse_NYC_high_end_interior_designer_Erika_Flugger_1_3eed5f35a9.webp"
+          alt="Tribeca penthouse"
+          loading="eager"
+        />
+        <div class="nyc-hero-grad"></div>
 
-    function showHome(){
-      viewPortfolio.classList.remove("active");
-      viewHome.classList.add("active");
-      location.hash = "";
-      window.scrollTo({ top: 0, behavior: "instant" });
+        <div class="nyc-hero-content">
+          <div class="nyc-hero-stack">
+            <h1 class="nyc-hero-h">tribeca penthouse</h1>
+            <p class="nyc-hero-sub">design | home improvement</p>
+            <a class="nyc-cta" href="#contact">request a consultation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  (function(){
+    const nav = document.getElementById('nycNav');
+    const burger = document.getElementById('nycBurger');
+    const mobile = document.getElementById('nycMobile');
+
+    function onScroll(){
+      if (window.scrollY > 10) nav.classList.add('is-scrolled');
+      else nav.classList.remove('is-scrolled');
     }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive:true });
 
-    function showPortfolio(){
-      viewHome.classList.remove("active");
-      viewPortfolio.classList.add("active");
-      location.hash = "#portfolio";
-      window.scrollTo({ top: 0, behavior: "instant" });
-    }
-
-    document.getElementById("openPortfolio").addEventListener("click", showPortfolio);
-    document.getElementById("backHome").addEventListener("click", showHome);
-
-    // Hash support (direct open)
-    window.addEventListener("load", () => {
-      if (location.hash === "#portfolio") showPortfolio();
-    });
-    window.addEventListener("hashchange", () => {
-      if (location.hash === "#portfolio") showPortfolio();
-      else showHome();
-    });
-
-    // Lightbox: works if you set tile dataset or if tile contains an <img>
-    const lightbox = document.getElementById("lightbox");
-    const lightboxBody = document.getElementById("lightboxBody");
-    const lightboxLabel = document.getElementById("lightboxLabel");
-    const closeLightbox = document.getElementById("closeLightbox");
-
-    function openLightbox(imgSrc, label){
-      if (!imgSrc) return;
-      lightboxLabel.textContent = label || "Preview";
-      lightboxBody.innerHTML = '<img src="' + imgSrc + '" alt="">';
-      lightbox.classList.add("open");
-    }
-    function closeLb(){
-      lightbox.classList.remove("open");
-      lightboxBody.innerHTML = "";
-    }
-
-    closeLightbox.addEventListener("click", closeLb);
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) closeLb();
-    });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeLb();
-    });
-
-    // Click tiles to open
-    document.querySelectorAll(".tile").forEach((tile, i) => {
-      tile.addEventListener("click", () => {
-        const direct = tile.getAttribute("data-full");
-        const img = tile.querySelector("img");
-        const src = direct || (img ? img.getAttribute("src") : "");
-        const capEl = tile.querySelector(".cap");
-        const label = capEl ? capEl.textContent.replace(/\[|\]/g, "").trim() : ("Image " + (i + 1));
-        openLightbox(src, label);
+    if (burger && mobile){
+      burger.addEventListener('click', function(){
+        const open = mobile.classList.toggle('is-open');
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
-    });
-  </script>
-
-</body>
-</html>
+    }
+  })();
+</script>
