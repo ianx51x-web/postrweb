@@ -1,4 +1,4 @@
-<!-- NYC INTERIOR DESIGN-STYLE HEADER + NAV + HERO (UPDATED HERO LAYOUT + 3 BULLETS) -->
+<!-- NYC INTERIOR DESIGN-STYLE HEADER + NAV + HERO (FULL-BLEED, ABOVE-THE-FOLD, OVERLAY FIXED, TEXT FIXED) -->
 <style>
   :root{
     --bg: rgba(255,255,255,.92);
@@ -13,9 +13,12 @@
     --logoFont: Georgia, "Times New Roman", Times, serif;
     --uiFont: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
-    /* Hero CTA color (warm tan like the example) */
-    --cta:#fcfcfc;
-    --ctaHover:#b4b4b4;
+    /* CTA color */
+    --cta:#c79255;
+    --ctaHover:#b7834b;
+
+    /* Fixed header height (used to make hero fit viewport under nav) */
+    --navH: 150px;
   }
 
   .nyc-wrap{ font-family: var(--uiFont); color: var(--ink); }
@@ -27,7 +30,7 @@
     background: var(--bg);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    transition: background .3s ease;
+    transition: background .3s ease, border-color .3s ease;
     border-bottom: 1px solid transparent;
   }
   .nyc-nav.is-scrolled{
@@ -166,36 +169,36 @@
     text-transform: uppercase;
   }
 
-  /* HERO (NEW LAYOUT) */
+  /* HERO (FULL BLEED + FITS VIEWPORT UNDER FIXED NAV) */
   .nyc-hero{
-    padding-top: 150px; /* clears fixed header */
+    margin: 0;
+    padding: 0;
     background: var(--bgSolid);
-    padding-bottom: 28px;
   }
 
-  .nyc-hero-card{
-    width: min(1280px, calc(100% - (var(--pad) * 2)));
-    margin: 0 auto;
-    height: 560px;
+  .nyc-hero-full{
     position: relative;
+    width: 100%;
+    height: calc(100vh - var(--navH));
+    min-height: 520px;
     overflow: hidden;
-    box-shadow: var(--shadow);
     background: #000;
   }
 
-  .nyc-hero-card img{
+  .nyc-hero-full img{
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     transform: scale(1.02);
   }
 
-  /* Left-heavy dark overlay like the reference */
   .nyc-hero-overlay{
     position: absolute;
     inset: 0;
+    z-index: 1;
     background:
       linear-gradient(90deg,
         rgba(0,0,0,.62) 0%,
@@ -210,13 +213,14 @@
     position: relative;
     z-index: 2;
     height: 100%;
-    display: grid;
+    display: flex;
     align-items: center;
-    padding: 44px;
+    padding-left: 8%;
+    padding-right: 24px;
   }
 
   .nyc-hero-left{
-    max-width: 560px;
+    max-width: 620px;
     color: #fff;
   }
 
@@ -234,7 +238,7 @@
     letter-spacing: -0.02em;
     font-size: 56px;
     line-height: 1.05;
-    margin: 0 0 18px;
+    margin: 0 0 16px;
   }
 
   .nyc-hero-bullets{
@@ -287,21 +291,22 @@
     .nyc-burger{ display: none; }
     .nyc-links{ display: flex; }
     .nyc-mobile{ display: none; }
-    .nyc-hero-card{ height: 640px; }
     .nyc-logo span{ font-size: 40px; }
   }
 
   @media (max-width: 900px){
-    .nyc-hero-content{ padding: 30px; }
+    :root{ --navH: 126px; }
+    .nyc-hero-content{
+      padding-left: 20px;
+      padding-right: 20px;
+    }
     .nyc-hero-h{ font-size: 44px; }
-    .nyc-hero-left{ max-width: 520px; }
+    .nyc-hero-left{ max-width: 560px; }
   }
 
   @media (max-width: 520px){
+    :root{ --navH: 118px; }
     .nyc-logo span{ font-size: 26px; }
-    .nyc-hero{ padding-top: 138px; }
-    .nyc-hero-card{ height: 520px; width: calc(100% - 20px); }
-    .nyc-hero-content{ padding: 22px; }
     .nyc-hero-h{ font-size: 38px; }
     .nyc-hero-bullets li{ font-size: 15px; }
   }
@@ -367,39 +372,39 @@
     </div>
   </nav>
 
-  <!-- HERO (NEW LAYOUT + BULLETS) -->
-  <!-- FULL WIDTH HERO -->
-<section class="nyc-hero">
-  <div class="nyc-hero-full">
-    <img
-      src="https://storage.googleapis.com/nycinteriordesign-v2-strapi-uploads/Tribeca_penthouse_NYC_high_end_interior_designer_Erika_Flugger_1_3eed5f35a9/Tribeca_penthouse_NYC_high_end_interior_designer_Erika_Flugger_1_3eed5f35a9.webp"
-      alt="Tribeca penthouse"
-      loading="eager"
-    />
+  <!-- HERO (FULL BLEED, FITS VIEWPORT UNDER NAV, TEXT ON TOP, OVERLAY FULL) -->
+  <section class="nyc-hero">
+    <div class="nyc-hero-full">
+      <img
+        src="https://storage.googleapis.com/nycinteriordesign-v2-strapi-uploads/Tribeca_penthouse_NYC_high_end_interior_designer_Erika_Flugger_1_3eed5f35a9/Tribeca_penthouse_NYC_high_end_interior_designer_Erika_Flugger_1_3eed5f35a9.webp"
+        alt="Tribeca penthouse"
+        loading="eager"
+        decoding="async"
+      />
 
-    <div class="nyc-hero-overlay"></div>
+      <div class="nyc-hero-overlay" aria-hidden="true"></div>
 
-    <div class="nyc-hero-content">
-      <div class="nyc-hero-left">
-        <div class="nyc-hero-eyebrow">THE #1 INTERIOR DESIGN SERVICE</div>
+      <div class="nyc-hero-content">
+        <div class="nyc-hero-left">
+          <div class="nyc-hero-eyebrow">THE #1 INTERIOR DESIGN SERVICE</div>
 
-        <h1 class="nyc-hero-h">
-          Designing your<br/>
-          dream home just<br/>
-          became a reality.
-        </h1>
+          <h1 class="nyc-hero-h">
+            Designing your<br/>
+            dream home just<br/>
+            became a reality.
+          </h1>
 
-        <ul class="nyc-hero-bullets">
-          <li><span class="nyc-bullet-dot"></span><span>Personalized design built around your lifestyle.</span></li>
-          <li><span class="nyc-bullet-dot"></span><span>Timeless materials sourced from trusted artisans.</span></li>
-          <li><span class="nyc-bullet-dot"></span><span>Clear process from concept to installation.</span></li>
-        </ul>
+          <ul class="nyc-hero-bullets">
+            <li><span class="nyc-bullet-dot"></span><span>Personalized design built around your lifestyle.</span></li>
+            <li><span class="nyc-bullet-dot"></span><span>Timeless materials sourced from trusted artisans.</span></li>
+            <li><span class="nyc-bullet-dot"></span><span>Clear process from concept to installation.</span></li>
+          </ul>
 
-        <a class="nyc-cta" href="#style">FIND YOUR STYLE</a>
+          <a class="nyc-cta" href="#style">FIND YOUR STYLE</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 </div>
 
 <script>
@@ -408,17 +413,29 @@
     const burger = document.getElementById('nycBurger');
     const mobile = document.getElementById('nycMobile');
 
+    function setNavHeightVar(){
+      if (!nav) return;
+      const h = Math.round(nav.getBoundingClientRect().height);
+      document.documentElement.style.setProperty('--navH', h + 'px');
+    }
+
     function onScroll(){
+      if (!nav) return;
       if (window.scrollY > 10) nav.classList.add('is-scrolled');
       else nav.classList.remove('is-scrolled');
     }
+
+    setNavHeightVar();
     onScroll();
+
+    window.addEventListener('resize', setNavHeightVar, { passive:true });
     window.addEventListener('scroll', onScroll, { passive:true });
 
     if (burger && mobile){
       burger.addEventListener('click', function(){
         const open = mobile.classList.toggle('is-open');
         burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        setTimeout(setNavHeightVar, 0);
       });
     }
   })();
