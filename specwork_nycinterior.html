@@ -1,4 +1,4 @@
-<!-- NYC INTERIOR DESIGN-STYLE HEADER + NAV + HERO (drop into a Custom HTML block) -->
+<!-- NYC INTERIOR DESIGN-STYLE HEADER + NAV + HERO (UPDATED HERO LAYOUT + 3 BULLETS) -->
 <style>
   :root{
     --bg: rgba(255,255,255,.92);
@@ -10,20 +10,19 @@
     --container: 1350px;
     --pad: 24px;
 
-    /* fonts */
     --logoFont: Georgia, "Times New Roman", Times, serif;
     --uiFont: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+    /* Hero CTA color (warm tan like the example) */
+    --cta:#C79255;
+    --ctaHover:#b9803f;
   }
 
-  .nyc-wrap{
-    font-family: var(--uiFont);
-    color: var(--ink);
-  }
+  .nyc-wrap{ font-family: var(--uiFont); color: var(--ink); }
 
   /* FIXED NAV SHELL */
   .nyc-nav{
-    position: fixed;
-    top: 0; left: 0; right: 0;
+    position: fixed; top: 0; left: 0; right: 0;
     z-index: 9999;
     background: var(--bg);
     backdrop-filter: blur(10px);
@@ -120,7 +119,6 @@
   }
 
   .nyc-link{
-    font-family: var(--uiFont);
     font-size: 15px;
     letter-spacing: .15em;
     text-transform: uppercase;
@@ -151,19 +149,10 @@
     border-top: 1px solid var(--border);
     background: rgba(255,255,255,.98);
   }
-  .nyc-mobile > div{
-    overflow: hidden;
-  }
-  .nyc-mobile.is-open{
-    grid-template-rows: 1fr;
-  }
-  .nyc-mobile-inner{
-    padding: 14px var(--pad) 18px;
-  }
-  .nyc-mobile-grid{
-    display: grid;
-    gap: 10px;
-  }
+  .nyc-mobile > div{ overflow: hidden; }
+  .nyc-mobile.is-open{ grid-template-rows: 1fr; }
+  .nyc-mobile-inner{ padding: 14px var(--pad) 18px; }
+  .nyc-mobile-grid{ display: grid; gap: 10px; }
   .nyc-mobile a{
     display: block;
     padding: 12px 10px;
@@ -177,21 +166,17 @@
     text-transform: uppercase;
   }
 
-  /* HERO */
+  /* HERO (NEW LAYOUT) */
   .nyc-hero{
-    padding-top: 150px; /* clears the fixed header */
+    padding-top: 150px; /* clears fixed header */
     background: var(--bgSolid);
-  }
-  .nyc-hero-inner{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 10px 0 28px;
+    padding-bottom: 28px;
   }
 
   .nyc-hero-card{
-    width: min(1200px, calc(100% - (var(--pad) * 2)));
-    height: 520px;
+    width: min(1280px, calc(100% - (var(--pad) * 2)));
+    margin: 0 auto;
+    height: 560px;
     position: relative;
     overflow: hidden;
     box-shadow: var(--shadow);
@@ -205,68 +190,95 @@
     height: 100%;
     object-fit: cover;
     transform: scale(1.02);
-    transition: transform 1s ease;
-  }
-  .nyc-hero-card:hover img{
-    transform: scale(1.05);
   }
 
-  .nyc-hero-grad{
+  /* Left-heavy dark overlay like the reference */
+  .nyc-hero-overlay{
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,.80), rgba(0,0,0,.10), rgba(0,0,0,0));
+    background:
+      linear-gradient(90deg,
+        rgba(0,0,0,.62) 0%,
+        rgba(0,0,0,.48) 28%,
+        rgba(0,0,0,.22) 52%,
+        rgba(0,0,0,.06) 70%,
+        rgba(0,0,0,0) 82%
+      );
   }
 
   .nyc-hero-content{
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 36px 22px;
-    text-align: center;
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: grid;
+    align-items: center;
+    padding: 44px;
+  }
+
+  .nyc-hero-left{
+    max-width: 560px;
     color: #fff;
   }
 
-  .nyc-hero-stack{
-    max-width: 760px;
-    width: 100%;
+  .nyc-hero-eyebrow{
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    opacity: .95;
+    margin: 0 0 10px;
   }
 
   .nyc-hero-h{
     font-family: var(--logoFont);
-    text-transform: lowercase;
+    font-weight: 500;
     letter-spacing: -0.02em;
-    font-size: 46px;
+    font-size: 56px;
     line-height: 1.05;
-    margin: 0 0 6px;
+    margin: 0 0 18px;
   }
 
-  .nyc-hero-sub{
-    font-family: var(--uiFont);
-    text-transform: uppercase;
-    letter-spacing: .18em;
-    font-size: 13px;
+  .nyc-hero-bullets{
+    list-style: none;
+    padding: 0;
+    margin: 0 0 22px;
+    display: grid;
+    gap: 10px;
+  }
+  .nyc-hero-bullets li{
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 10px;
+    align-items: start;
+    font-size: 16px;
+    line-height: 1.35;
     opacity: .95;
-    margin: 0 0 16px;
+  }
+  .nyc-bullet-dot{
+    width: 10px;
+    height: 10px;
+    margin-top: 6px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.88);
   }
 
   .nyc-cta{
-    display: inline-block;
-    min-width: 200px;
-    padding: 10px 22px;
-    border: 1px solid rgba(255,255,255,.85);
-    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: var(--cta);
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: .06em;
+    letter-spacing: .10em;
     font-size: 12px;
-    transition: background .2s ease, border-color .2s ease;
+    font-weight: 700;
+    transition: background .2s ease, transform .2s ease;
   }
   .nyc-cta:hover{
-    background: #1d1c1c;
-    border-color: #1d1c1c;
+    background: var(--ctaHover);
+    transform: translateY(-1px);
   }
 
   /* RESPONSIVE */
@@ -275,14 +287,23 @@
     .nyc-burger{ display: none; }
     .nyc-links{ display: flex; }
     .nyc-mobile{ display: none; }
-    .nyc-hero-card{ height: 750px; }
+    .nyc-hero-card{ height: 640px; }
     .nyc-logo span{ font-size: 40px; }
-    .nyc-hero-h{ font-size: 54px; }
   }
 
-  @media (max-width: 420px){
+  @media (max-width: 900px){
+    .nyc-hero-content{ padding: 30px; }
+    .nyc-hero-h{ font-size: 44px; }
+    .nyc-hero-left{ max-width: 520px; }
+  }
+
+  @media (max-width: 520px){
     .nyc-logo span{ font-size: 26px; }
+    .nyc-hero{ padding-top: 138px; }
+    .nyc-hero-card{ height: 520px; width: calc(100% - 20px); }
+    .nyc-hero-content{ padding: 22px; }
     .nyc-hero-h{ font-size: 38px; }
+    .nyc-hero-bullets li{ font-size: 15px; }
   }
 </style>
 
@@ -291,15 +312,12 @@
   <nav class="nyc-nav" id="nycNav">
     <div class="nyc-container">
       <div class="nyc-top">
-        <!-- left spacer -->
         <div style="width:140px;"></div>
 
-        <!-- centered logo -->
         <a class="nyc-logo" href="#">
           <span>nyc interior design®</span>
         </a>
 
-        <!-- right actions -->
         <div class="nyc-right">
           <a class="nyc-phone" href="tel:12129617767" aria-label="Call (212) 961-7767">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -318,7 +336,6 @@
         </div>
       </div>
 
-      <!-- desktop links -->
       <div class="nyc-links" aria-label="Primary navigation">
         <a class="nyc-link is-active" href="#">Home</a>
         <a class="nyc-link" href="#">Services</a>
@@ -331,7 +348,6 @@
       </div>
     </div>
 
-    <!-- mobile panel -->
     <div class="nyc-mobile" id="nycMobile">
       <div>
         <div class="nyc-mobile-inner">
@@ -351,23 +367,33 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO (NEW LAYOUT + BULLETS) -->
   <section class="nyc-hero">
-    <div class="nyc-hero-inner">
-      <div class="nyc-hero-card">
-        <img
-          src="https://storage.googleapis.com/nycinteriordesign-v2-strapi-uploads/Tribeca_penthouse_NYC_high_end_interior_designer_Erika_Flugger_1_3eed5f35a9/Tribeca_penthouse_NYC_high_end_interior_designer_Erika_Flugger_1_3eed5f35a9.webp"
-          alt="Tribeca penthouse"
-          loading="eager"
-        />
-        <div class="nyc-hero-grad"></div>
+    <div class="nyc-hero-card">
+      <img
+        src="https://storage.googleapis.com/nycinteriordesign-v2-strapi-uploads/Tribeca_penthouse_NYC_high_end_interior_designer_Erika_Flugger_1_3eed5f35a9/Tribeca_penthouse_NYC_high_end_interior_designer_Erika_Flugger_1_3eed5f35a9.webp"
+        alt="Tribeca penthouse"
+        loading="eager"
+      />
+      <div class="nyc-hero-overlay"></div>
 
-        <div class="nyc-hero-content">
-          <div class="nyc-hero-stack">
-            <h1 class="nyc-hero-h">tribeca penthouse</h1>
-            <p class="nyc-hero-sub">design | home improvement</p>
-            <a class="nyc-cta" href="#contact">request a consultation</a>
-          </div>
+      <div class="nyc-hero-content">
+        <div class="nyc-hero-left">
+          <div class="nyc-hero-eyebrow">THE #1 INTERIOR DESIGN SERVICE</div>
+
+          <h1 class="nyc-hero-h">
+            Designing your<br/>
+            dream home just<br/>
+            became a reality.
+          </h1>
+
+          <ul class="nyc-hero-bullets">
+            <li><span class="nyc-bullet-dot"></span><span>Personalized design plan built around your taste and lifestyle.</span></li>
+            <li><span class="nyc-bullet-dot"></span><span>Handpicked sources, materials, and finishes that actually last.</span></li>
+            <li><span class="nyc-bullet-dot"></span><span>Clear steps, clear pricing, and support from start to install.</span></li>
+          </ul>
+
+          <a class="nyc-cta" href="#style">FIND YOUR STYLE</a>
         </div>
       </div>
     </div>
