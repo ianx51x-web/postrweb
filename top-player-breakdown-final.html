@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Med Spa Top Players · POSTR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g1:#d4b24a;--g2:#f0dc9a;--g3:#cfa841;--g4:#a8832e;
+  --bg:#080808;--s:rgba(255,255,255,.03);--b:rgba(255,255,255,.07);
+  --text:#f5f5f5;--muted:rgba(255,255,255,.5);
+  --grad:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.25}
+
+/* PROGRESS BAR */
+#prog{position:fixed;top:0;left:0;height:2px;background:var(--grad);z-index:400;width:0%;transition:width .08s linear}
+
+/* HEADER */
+header{padding:20px 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--b);position:sticky;top:0;background:rgba(8,8,8,.93);backdrop-filter:blur(18px);z-index:200}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;letter-spacing:.1em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header-pill{font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);border:1px solid var(--b);padding:6px 14px;border-radius:100px}
+
+/* HERO */
+.hero{padding:96px 40px 72px;max-width:1120px;margin:0 auto;position:relative;overflow:hidden}
+.hero-glow{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(212,178,74,.065) 0%,transparent 70%);pointer-events:none}
+.eyebrow{font-size:.73rem;text-transform:uppercase;letter-spacing:.2em;color:var(--g1);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--g1)}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,9vw,108px);line-height:.9;text-transform:uppercase;letter-spacing:.02em;margin-bottom:24px}
+.hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{color:var(--muted);font-size:1rem;font-weight:300;max-width:520px;line-height:1.7;margin-bottom:36px}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:0}
+.chip{background:var(--s);border:1px solid var(--b);border-radius:100px;padding:8px 18px;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.6);cursor:pointer;transition:all .2s;user-select:none}
+.chip:hover,.chip.on{background:rgba(212,178,74,.1);border-color:rgba(212,178,74,.35);color:var(--g2)}
+
+/* FADE-UP ANIMATION */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.hero>*{opacity:0;animation:fadeUp .7s ease forwards}
+.hero>*:nth-child(2){animation-delay:.05s}
+.hero>*:nth-child(3){animation-delay:.15s}
+.hero>*:nth-child(4){animation-delay:.25s}
+.hero>*:nth-child(5){animation-delay:.35s}
+.hero>*:nth-child(6){animation-delay:.45s}
+
+/* PLAYER */
+.player{max-width:1120px;margin:0 auto;padding:80px 40px;border-top:1px solid var(--b);opacity:0;transform:translateY(44px);transition:opacity .75s ease,transform .75s ease}
+.player.in{opacity:1;transform:translateY(0)}
+@media(max-width:640px){.player{padding:60px 20px}}
+
+/* PLAYER TOP */
+.ptop{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:start;margin-bottom:36px}
+@media(max-width:880px){.ptop{grid-template-columns:1fr}}
+.pnum{font-family:'Bebas Neue',sans-serif;font-size:.82rem;letter-spacing:.3em;color:var(--g1);margin-bottom:10px;opacity:.8}
+.pname{font-family:'Bebas Neue',sans-serif;font-size:clamp(46px,7vw,84px);line-height:.9;text-transform:uppercase;margin-bottom:14px}
+.pbadges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.pbadge{font-size:.67rem;text-transform:uppercase;letter-spacing:.13em;padding:5px 12px;border-radius:100px;border:1px solid var(--b);color:var(--muted)}
+.pbadge.g{border-color:rgba(212,178,74,.3);color:var(--g2);background:rgba(212,178,74,.06)}
+.pdesc{color:rgba(255,255,255,.72);font-size:.96rem;line-height:1.75;max-width:560px;margin-bottom:22px}
+.stats{display:flex;flex-wrap:wrap;gap:10px}
+.stat{background:var(--s);border:1px solid var(--b);border-radius:14px;padding:13px 18px;text-align:center;min-width:90px}
+.sv{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;line-height:1;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block}
+.sl{font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+
+/* BRAND IMAGE */
+.bimg{border-radius:20px;overflow:hidden;border:1px solid var(--b);position:relative;aspect-ratio:4/3;background:#111}
+.bimg img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.bimg:hover img{transform:scale(1.04)}
+.bimg-lbl{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.75));padding:18px 14px 10px;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.55)}
+.bimg::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);z-index:1}
+
+/* FUNNEL */
+.sec-lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.18em;color:var(--g1);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.sec-lbl::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--g1)}
+.funnel{display:flex;align-items:flex-start;overflow-x:auto;padding:4px 0 16px;scrollbar-width:thin;scrollbar-color:rgba(212,178,74,.25) transparent;margin-bottom:28px}
+.funnel::-webkit-scrollbar{height:3px}
+.funnel::-webkit-scrollbar-thumb{background:rgba(212,178,74,.3);border-radius:2px}
+.fstep{flex:0 0 auto;width:148px;display:flex;flex-direction:column;align-items:center;padding:0 4px}
+.farrow{flex:0 0 42px;display:flex;align-items:center;justify-content:center;padding-top:26px}
+.farrow-line{width:30px;height:2px;background:linear-gradient(90deg,var(--g1),var(--g2));position:relative}
+.farrow-line::after{content:'';position:absolute;right:-1px;top:-4px;border-left:8px solid var(--g2);border-top:5px solid transparent;border-bottom:5px solid transparent}
+.ficon{width:60px;height:60px;border-radius:16px;background:rgba(212,178,74,.07);border:1px solid rgba(212,178,74,.2);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:9px;transition:all .22s;flex-shrink:0}
+.fstep:hover .ficon{background:rgba(212,178,74,.16);transform:scale(1.09)}
+.ftitle{font-family:'Bebas Neue',sans-serif;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;text-align:center;color:#fff;margin-bottom:4px;line-height:1.1}
+.fsub{font-size:.72rem;color:var(--muted);text-align:center;line-height:1.38}
+.fval{display:inline-block;margin-top:6px;background:rgba(212,178,74,.1);border:1px solid rgba(212,178,74,.22);border-radius:6px;padding:3px 7px;font-size:.66rem;color:var(--g2);font-weight:600}
+
+/* 2-COL GRID */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+@media(max-width:700px){.grid2{grid-template-columns:1fr}}
+.gc{background:var(--s);border:1px solid var(--b);border-radius:18px;padding:24px 26px}
+.gc.acc{background:rgba(212,178,74,.04);border-color:rgba(212,178,74,.16)}
+.gc-lbl{font-size:.67rem;text-transform:uppercase;letter-spacing:.17em;color:var(--g1);margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.gc-lbl::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--g1)}
+.gc-body{font-size:.9rem;color:rgba(255,255,255,.75);line-height:1.72}
+.gc-body ul{list-style:none;padding:0;margin-top:8px}
+.gc-body ul li{padding-left:16px;position:relative;margin-bottom:5px;font-size:.88rem}
+.gc-body ul li::before{content:'→';position:absolute;left:0;color:var(--g1);font-size:.72rem;top:2px}
+
+/* CAROUSEL */
+.carousel{display:flex;gap:13px;overflow-x:auto;padding:4px 0 16px;scrollbar-width:thin;scrollbar-color:rgba(212,178,74,.25) transparent;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin-bottom:28px}
+.carousel::-webkit-scrollbar{height:3px}
+.carousel::-webkit-scrollbar-thumb{background:rgba(212,178,74,.3);border-radius:2px}
+.icard{flex:0 0 240px;scroll-snap-align:start;background:var(--s);border:1px solid var(--b);border-radius:17px;padding:22px;transition:all .22s}
+.icard:hover{border-color:rgba(212,178,74,.28);transform:translateY(-4px)}
+.icard-icon{font-size:1.65rem;margin-bottom:11px;display:block}
+.icard-title{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px;color:#fff}
+.icard-body{font-size:.82rem;color:var(--muted);line-height:1.6}
+.qcard{flex:0 0 280px;scroll-snap-align:start;background:rgba(212,178,74,.04);border:1px solid rgba(212,178,74,.14);border-radius:17px;padding:22px;position:relative;overflow:hidden}
+.qcard::before{content:'"';font-family:'Bebas Neue',sans-serif;font-size:5rem;line-height:1;color:rgba(212,178,74,.1);position:absolute;top:2px;left:14px;pointer-events:none}
+.qtext{font-size:.88rem;font-style:italic;color:rgba(255,255,255,.72);line-height:1.65;margin-bottom:10px;padding-top:6px}
+.qsrc{font-size:.67rem;text-transform:uppercase;letter-spacing:.13em;color:var(--g1)}
+
+/* STEAL */
+.steal{background:rgba(212,178,74,.04);border:1px solid rgba(212,178,74,.18);border-radius:20px;padding:26px 30px;position:relative;overflow:hidden;margin-bottom:0}
+.steal::after{content:'STEAL THIS';position:absolute;right:-6px;bottom:-6px;font-family:'Bebas Neue',sans-serif;font-size:4.5rem;color:rgba(212,178,74,.05);pointer-events:none;letter-spacing:.06em;white-space:nowrap;line-height:1}
+.steal-lbl{font-size:.67rem;text-transform:uppercase;letter-spacing:.17em;color:var(--g1);font-weight:700;margin-bottom:11px}
+.stags{display:flex;flex-wrap:wrap;gap:8px}
+.stag{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:8px;padding:7px 13px;font-size:.81rem;color:rgba(255,255,255,.78);cursor:default;transition:all .2s}
+.stag:hover{background:rgba(212,178,74,.13);border-color:rgba(212,178,74,.28);transform:translateY(-2px)}
+.steal-note{font-size:.86rem;color:rgba(255,255,255,.6);line-height:1.65;margin-top:13px}
+
+/* TAKEAWAYS */
+.takeaways{max-width:1120px;margin:0 auto;padding:80px 40px 100px;border-top:1px solid var(--b)}
+@media(max-width:640px){.takeaways{padding:60px 20px 80px}}
+.sec-eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--g1);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.sec-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--g1)}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,5vw,58px);text-transform:uppercase;letter-spacing:.03em;margin-bottom:44px;line-height:.95}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:680px){.tgrid{grid-template-columns:1fr}}
+.tcard{background:var(--s);border:1px solid var(--b);border-radius:20px;padding:30px;transition:all .25s;cursor:default}
+.tcard:hover{border-color:rgba(212,178,74,.3);transform:translateY(-4px);background:rgba(212,178,74,.025)}
+.tcard-icon{font-size:1.75rem;margin-bottom:13px;display:block}
+.tcard-title{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:9px}
+.tcard-copy{font-size:.89rem;color:var(--muted);line-height:1.72}
+
+/* ══ BEFORE / AFTER COMPARE ══ */
+.compare-section{max-width:1120px;margin:0 auto;padding:0 40px 80px;border-top:1px solid var(--b)}
+@media(max-width:640px){.compare-section{padding:0 20px 60px}}
+.compare-section .sec-eyebrow{margin-top:60px}
+.compare-section .sec-title{margin-bottom:28px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.compare{grid-template-columns:1fr}}
+.compare-col{border-radius:20px;padding:28px 30px}
+.compare-col.before{background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.22)}
+.compare-col.after{background:rgba(80,220,120,.07);border:1px solid rgba(80,220,120,.22)}
+.compare-lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.18em;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.compare-lbl::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0}
+.before .compare-lbl{color:rgba(255,120,100,.85)}
+.after .compare-lbl{color:rgba(80,210,120,.85)}
+.compare-items{list-style:none;padding:0}
+.compare-items li{font-size:.88rem;line-height:1.6;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:flex-start;gap:10px}
+.compare-items li:last-child{border-bottom:none}
+.before .compare-items li{color:rgba(255,200,190,.8)}
+.after .compare-items li{color:rgba(190,255,210,.8)}
+.before .compare-items li::before{content:'✗';color:rgba(255,100,80,.7);font-size:.8rem;flex-shrink:0;margin-top:2px}
+.after .compare-items li::before{content:'✓';color:rgba(80,220,120,.8);font-size:.8rem;flex-shrink:0;margin-top:2px}
+
+/* CTA */
+.cta{border-top:1px solid var(--b);padding:90px 40px;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;bottom:-80px;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(212,178,74,.07),transparent 70%);pointer-events:none}
+.cta h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,6vw,70px);text-transform:uppercase;letter-spacing:.03em;margin-bottom:13px;line-height:.95}
+.cta h2 span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cta p{color:var(--muted);max-width:460px;margin:0 auto 30px;font-size:.95rem}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:var(--grad);color:#000;font-weight:700;font-size:.88rem;text-transform:uppercase;letter-spacing:.1em;border-radius:12px;text-decoration:none;transition:opacity .2s,transform .2s}
+.cta-btn:hover{opacity:.85;transform:translateY(-3px)}
+
+@media(max-width:480px){
+  header{padding:16px 20px}
+  .hero{padding:60px 20px 48px}
+}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+
+<header>
+  <div class="logo"><img src="assets/img/logo/logo-postr.png" style="width: 80px;"></div>
+  <div class="header-pill">Med Spa · Top Player Report</div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-glow"></div>
+  <p class="eyebrow">Industry Breakdown · 2026</p>
+  <h1>What the <em>Best Med Spas</em><br>Are Doing Differently</h1>
+  <p class="hero-sub">4 top players who figured out how to win while everyone else stays stuck. Here's exactly what they're doing — and how you can steal it.</p>
+  <div class="chips">
+    <span class="chip" onclick="jumpTo('peachy',0)">01 · Peachy</span>
+    <span class="chip" onclick="jumpTo('laseraway',1)">02 · LaserAway</span>
+    <span class="chip" onclick="jumpTo('facefoundrie',2)">03 · Face Foundrié</span>
+    <span class="chip" onclick="jumpTo('glowbar',3)">04 · Glowbar</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     01 · PEACHY
+══════════════════════════════════ -->
+<div class="player" id="peachy">
+  <div class="ptop">
+    <div>
+      <div class="pnum">Player 01 / 04</div>
+      <div class="pname">Peachy</div>
+      <div class="pbadges">
+        <span class="pbadge g">Botox Specialist</span>
+        <span class="pbadge">Fixed Pricing</span>
+        <span class="pbadge">AI-Powered</span>
+        <span class="pbadge">NYC · Chicago · DC · Austin</span>
+      </div>
+      <p class="pdesc">Niched into one thing — botox — and productized it completely. Flat-rate pricing, AI 3D facial mapping, and real UGC reviews replace the fuzzy med-spa experience. The result: a category they basically own.</p>
+      <div class="stats">
+        <div class="stat"><span class="sv">$425</span><span class="sl">Flat rate</span></div>
+        <div class="stat"><span class="sv">30K+</span><span class="sl">Treatments / yr</span></div>
+        <div class="stat"><span class="sv">0</span><span class="sl">Hidden fees</span></div>
+        <div class="stat"><span class="sv">3D AI</span><span class="sl">Face map</span></div>
+      </div>
+    </div>
+    <div class="bimg">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP4iQ3_G7NPybYy6f4f7gz-B2Qn0dMT2goqw&s"
+           onerror="this.onerror=null;this.parentElement.style.background='linear-gradient(135deg,#1a1208,#2a1e0a)';this.style.display='none'"
+           alt="Peachy Studio NYC">
+      <div class="bimg-lbl">Peachy Studio — West SoHo, NYC (est. 2020)</div>
+    </div>
+  </div>
+
+  <div class="sec-lbl" style="margin-bottom:14px">Funnel Breakdown</div>
+  <div class="funnel">
+    <div class="fstep"><div class="ficon">📱</div><div class="ftitle">UGC Content</div><div class="fsub">Real clients on TikTok / IG drive organic reach</div></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">🏠</div><div class="ftitle">Clean Homepage</div><div class="fsub">Feels like a landing page — zero clutter, one CTA</div></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">🤖</div><div class="ftitle">AI Face Scan</div><div class="fsub">3D facial map → personalized treatment plan</div><span class="fval">Trust builder</span></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">💰</div><div class="ftitle">$425 Flat Rate</div><div class="fsub">One price. Unlimited units. No upsell. No surprises.</div><span class="fval">Zero sticker shock</span></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">📅</div><div class="ftitle">Free Consult → Book</div><div class="fsub">No commitment to consult — lowers first-visit barrier</div></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">🔁</div><div class="ftitle">Every 3–4 Months</div><div class="fsub">Repeat cycle built into the biology of the treatment</div><span class="fval">Built-in LTV</span></div>
+  </div>
+
+  <div class="grid2">
+    <div class="gc">
+      <div class="gc-lbl">What They Do Differently</div>
+      <div class="gc-body">They eliminate buyer anxiety before the sale. Most med spas leave pricing vague, menus bloated, and the consultation mentally expensive. Peachy answers every objection before the prospect even thinks to ask.<br><br><em style="opacity:.6;font-size:.85rem">"We don't price by unit. We don't upsell. $425 — everything you need."</em></div>
+    </div>
+    <div class="gc">
+      <div class="gc-lbl">Why It Matters</div>
+      <div class="gc-body">Med spas lose people before the first appointment because the business feels vague. <em>"How much will it cost? Will they upsell me? Will I look fake?"</em><br><br>Peachy answers all of that on the homepage. Lower anxiety = higher conversion rate before anyone even calls.</div>
+    </div>
+  </div>
+
+  <div class="sec-lbl" style="margin-bottom:14px">What To Notice</div>
+  <div class="carousel">
+    <div class="icard"><span class="icard-icon">🎯</span><div class="icard-title">One Service Only</div><div class="icard-body">They do Botox. That's it. No fillers, no lasers, no menu overwhelm. Specialization = trust = conversion.</div></div>
+    <div class="icard"><span class="icard-icon">🤖</span><div class="icard-title">AI as a Trust Signal</div><div class="icard-body">3D facial mapping makes the brand feel clinical and advanced — a specialist clinic, not a luxury spa.</div></div>
+    <div class="icard"><span class="icard-icon">📹</span><div class="icard-title">UGC Over Polished Ads</div><div class="icard-body">Real client TikTok content outperforms studio ads. Peachy leans all the way into authentic UGC for acquisition.</div></div>
+    <div class="icard"><span class="icard-icon">🔄</span><div class="icard-title">Free Touch-Up = Retention Hook</div><div class="icard-body">A complimentary 2-week dose adjustment brings the client back in. A second touchpoint that feels like a gift.</div></div>
+    <div class="qcard"><div class="qtext">Peachy's flat fee of $425 is a game-changer. No surprises, just a smoother experience — and forehead.</div><div class="qsrc">Real client · TikTok · 590 likes</div></div>
+    <div class="qcard"><div class="qtext">I've been coming for a year. They took great care asking what results I want and delivered. I've introduced 4 friends.</div><div class="qsrc">Google Review · Peachy Studio</div></div>
+  </div>
+
+  <div class="steal">
+    <div class="steal-lbl">Steal This →</div>
+    <div class="stags">
+      <span class="stag">One flagship offer with fixed pricing</span>
+      <span class="stag">Answer every objection on the homepage</span>
+      <span class="stag">Use a free follow-up as a retention hook</span>
+      <span class="stag">Let UGC do your ad creative</span>
+      <span class="stag">Niche so hard you own the category</span>
+    </div>
+    <p class="steal-note">Create one dead-simple offer with fixed economics, a clear promise, and a built-in risk-reversal. Don't hide behind custom pricing unless the service genuinely requires it.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     02 · LASERAWAY
+══════════════════════════════════ -->
+<div class="player" id="laseraway">
+  <div class="ptop">
+    <div>
+      <div class="pnum">Player 02 / 04</div>
+      <div class="pname">LaserAway</div>
+      <div class="pbadges">
+        <span class="pbadge g">Volume Engine</span>
+        <span class="pbadge">Discount Entry</span>
+        <span class="pbadge">Upsell Machine</span>
+        <span class="pbadge">100+ Locations</span>
+      </div>
+      <p class="pdesc">They turned the multi-session nature of laser removal into a massive discounted front-door offer — then cross-sell, upsell, and convert at scale inside the clinic. The discount isn't a cost. It's the acquisition engine.</p>
+      <div class="stats">
+        <div class="stat"><span class="sv">70%</span><span class="sl">Off hero offer</span></div>
+        <div class="stat"><span class="sv">76%</span><span class="sl">Realized discount</span></div>
+        <div class="stat"><span class="sv">8–10</span><span class="sl">Sessions bundled</span></div>
+        <div class="stat"><span class="sv">7–8</span><span class="sl">Quiz questions</span></div>
+      </div>
+    </div>
+    <div class="bimg">
+      <img src="https://media.licdn.com/dms/image/v2/D561FAQHxmq8oM9KQ5g/feedshare-document-images_800/B56ZzjCWdqKcAk-/2/1773335572144?e=1774483200&v=beta&t=W3kHiT46Dk_PbKjydLHGSmdQZ2yrw2IuoWJkkUgnkoE"
+           onerror="this.parentElement.style.background='linear-gradient(135deg,#0a0a1a,#141428)';this.style.display='none'"
+           alt="LaserAway" loading="lazy">
+      <div class="bimg-lbl">LaserAway — National Chain, 100+ Locations</div>
+    </div>
+  </div>
+
+  <div class="sec-lbl" style="margin-bottom:14px">Funnel Breakdown</div>
+  <div class="funnel">
+    <div class="fstep"><div class="ficon">📣</div><div class="ftitle">Hero Offer Ad</div><div class="fsub">"70% off laser removal" — impossible to scroll past</div><span class="fval">Pattern interrupt</span></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">📋</div><div class="ftitle">7–8 Step Quiz</div><div class="fsub">Homepage questionnaire personalizes the offer + pre-qualifies</div></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">🎁</div><div class="ftitle">Bonus 20% Off</div><div class="fsub">Non-member bonus stacked on top → 76% realized</div><span class="fval">Urgency stacked</span></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">🏥</div><div class="ftitle">First Visit</div><div class="fsub">8–10 sessions — client locked into a multi-month journey</div></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">💳</div><div class="ftitle">Membership Push</div><div class="fsub">In-clinic upsell to membership + other body areas</div><span class="fval">LTV unlock</span></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">🛒</div><div class="ftitle">Cross-Sell Products</div><div class="fsub">3rd-party skincare sold between sessions</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="gc">
+      <div class="gc-lbl">What They Do Differently</div>
+      <div class="gc-body">They built a traffic engine that turns a scary discount into a revolving door of loyal, high-LTV clients. Each discounted entry is just the start — memberships, additional areas, and skincare do the real revenue work.</div>
+    </div>
+    <div class="gc acc">
+      <div class="gc-lbl">The Math That Makes It Work</div>
+      <div class="gc-body">
+        <ul>
+          <li>Front-end discount creates huge volume of first-timers</li>
+          <li>Multi-session format = 8–10 guaranteed return visits</li>
+          <li>Each visit = a new upsell opportunity</li>
+          <li>Membership converts the best clients into recurring revenue</li>
+          <li>The initial loss is just the cost of acquiring a great client</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-lbl" style="margin-bottom:14px">What To Notice</div>
+  <div class="carousel">
+    <div class="icard"><span class="icard-icon">🧲</span><div class="icard-title">The Offer Does the Work</div><div class="icard-body">70% off is impossible to ignore. It's not a discount — it's a hook. The first yes costs almost nothing mentally.</div></div>
+    <div class="icard"><span class="icard-icon">📊</span><div class="icard-title">Quiz = Qualification</div><div class="icard-body">7–8 questions feel like personalization but also pre-qualify intent and warm the lead before they see a price.</div></div>
+    <div class="icard"><span class="icard-icon">⏰</span><div class="icard-title">Time Pressure Stacks</div><div class="icard-body">The extra 20% off for non-members is framed as a bonus window — urgency without feeling manipulative.</div></div>
+    <div class="icard"><span class="icard-icon">🔗</span><div class="icard-title">Multi-Session = Built-In Repeat</div><div class="icard-body">Laser removal needs 8–10 sessions by nature. LaserAway uses this to guarantee a long relationship from sale one.</div></div>
+    <div class="icard"><span class="icard-icon">📈</span><div class="icard-title">Discount ≠ Cheap Brand</div><div class="icard-body">The brand stays premium. The discount is just the entry mechanism — once inside, the experience converts at full price.</div></div>
+  </div>
+
+  <div class="steal">
+    <div class="steal-lbl">Steal This →</div>
+    <div class="stags">
+      <span class="stag">Make the first yes feel easy</span>
+      <span class="stag">Use a quiz to warm the lead</span>
+      <span class="stag">Stack bonuses with time pressure</span>
+      <span class="stag">Pick a repeat-visit service for this strategy</span>
+      <span class="stag">Plan the upsell before the client walks in</span>
+    </div>
+    <p class="steal-note">Pick one service that's easy to explain, high demand, fast to deliver, and likely to lead to repeat visits. Build your discount around that — not your most expensive offering.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     03 · FACE FOUNDRIÉ
+══════════════════════════════════ -->
+<div class="player" id="facefoundrie">
+  <div class="ptop">
+    <div>
+      <div class="pnum">Player 03 / 04</div>
+      <div class="pname">Face<br>Foundrié</div>
+      <div class="pbadges">
+        <span class="pbadge g">High-End Facial Bar</span>
+        <span class="pbadge">Franchise Model</span>
+        <span class="pbadge">Market of One</span>
+      </div>
+      <p class="pdesc">Built a facial-bar model that's easier to scale than a traditional med spa — fewer moving parts, standardized delivery, strong memberships. By niching this precisely, they created a category no competitor fully matches.</p>
+      <div class="stats">
+        <div class="stat"><span class="sv">+30%</span><span class="sl">Membership length</span></div>
+        <div class="stat"><span class="sv">#1</span><span class="sl">In category</span></div>
+        <div class="stat"><span class="sv">Flat</span><span class="sl">Rate pricing</span></div>
+      </div>
+    </div>
+    <div class="bimg">
+      <img src="https://facefoundrie.com/wp-content/uploads/2025/03/FF-Naperville-Exterior-1-scaled-e1711979038998.jpg"
+           onerror="this.parentElement.style.background='linear-gradient(135deg,#0a0a1a,#141428)';this.style.display='none'"
+           alt="facefoundrié" loading="lazy">
+      <div class="bimg-lbl">Face Foundrié — Naperville Location</div>
+    </div>
+  </div>
+
+  <div class="sec-lbl" style="margin-bottom:14px">Funnel Breakdown</div>
+  <div class="funnel">
+    <div class="fstep"><div class="ficon">🆕</div><div class="ftitle">"New Category" Ad</div><div class="fsub">Positioned as a new type of clinic — curiosity drives the click</div><span class="fval">Curiosity hook</span></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">🌐</div><div class="ftitle">Premium Homepage</div><div class="fsub">Editorial feel — not a generic spa site, a brand</div></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">📍</div><div class="ftitle">Location Selector</div><div class="fsub">Multi-location booking with consistent flat-rate pricing</div></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">💆</div><div class="ftitle">First Facial</div><div class="fsub">Standardized but premium — consistent across every location</div></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">💎</div><div class="ftitle">Membership Offer</div><div class="fsub">Perks + loyalty initiatives that extend the avg. membership by 30%</div><span class="fval">+30% retention</span></div>
+  </div>
+
+  <div class="grid2">
+    <div class="gc">
+      <div class="gc-lbl">What They Do Differently</div>
+      <div class="gc-body">They became a specialist instead of a generalist. They niched into "high-end facial bar" so precisely that they created a market of one — no competitor fully matches the character of their brand.</div>
+    </div>
+    <div class="gc">
+      <div class="gc-lbl">Why It Matters</div>
+      <div class="gc-body">Instead of competing in a crowded market, they built a category they alone occupy. Their membership improvements (+30% longer average) show what happens when retention is designed in from day one — not bolted on.</div>
+    </div>
+  </div>
+
+  <div class="sec-lbl" style="margin-bottom:14px">What To Notice</div>
+  <div class="carousel">
+    <div class="icard"><span class="icard-icon">🏆</span><div class="icard-title">First Mover Advantage</div><div class="icard-body">"New clinic type" positioning gets attention generic "med spa" never could. Curiosity drives clicks before anyone knows what it is.</div></div>
+    <div class="icard"><span class="icard-icon">⚙️</span><div class="icard-title">Scalable by Design</div><div class="icard-body">Fewer services = fewer SKUs = easier staff training = consistent delivery. This is why they can franchise while others can't clone themselves.</div></div>
+    <div class="icard"><span class="icard-icon">🎯</span><div class="icard-title">Niche = Premium Pricing</div><div class="icard-body">Specialists charge more. When you're the only "high-end facial bar" in a city, you don't compete on price — you set it.</div></div>
+    <div class="icard"><span class="icard-icon">🤝</span><div class="icard-title">Loyalty That Actually Works</div><div class="icard-body">Membership perks extended the average membership length by 30%. That's a system designed to make leaving feel like a loss.</div></div>
+  </div>
+
+  <div class="steal">
+    <div class="steal-lbl">Steal This →</div>
+    <div class="stags">
+      <span class="stag">Find an underserved niche and own it</span>
+      <span class="stag">Position yourself as a "new category"</span>
+      <span class="stag">Standardize delivery so you can scale</span>
+      <span class="stag">Build loyalty perks that make leaving painful</span>
+    </div>
+    <p class="steal-note">The market is saturated with generic med spas. Find a gap where there's an underserved market that would benefit from a specialist — then build everything around serving that one person exceptionally well.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     04 · GLOWBAR
+══════════════════════════════════ -->
+<div class="player" id="glowbar">
+  <div class="ptop">
+    <div>
+      <div class="pnum">Player 04 / 04</div>
+      <div class="pname">Glowbar</div>
+      <div class="pbadges">
+        <span class="pbadge g">Quick &amp; Affordable</span>
+        <span class="pbadge">Membership Model</span>
+        <span class="pbadge">Fastest-Growing Facial Brand</span>
+      </div>
+      <p class="pdesc">They found the segment of the market that was silently unhappy — people who want results without the price tag or time commitment. Then they built an entire business model around serving exactly those people.</p>
+      <div class="stats">
+        <div class="stat"><span class="sv">$65</span><span class="sl">1 session / mo</span></div>
+        <div class="stat"><span class="sv">$120</span><span class="sl">2 sessions / mo</span></div>
+        <div class="stat"><span class="sv">4 mo</span><span class="sl">Min. commitment</span></div>
+        <div class="stat"><span class="sv">~30</span><span class="sl">Min. treatment</span></div>
+      </div>
+    </div>
+    <div class="bimg">
+      <img src="https://glowbar.com/cdn/shop/files/glowbar_value_people_first_optimized.jpg?v=1676336734&width=1500"
+           onerror="this.parentElement.style.background='linear-gradient(135deg,#0d1420,#1a2030)';this.style.display='none'"
+           alt="Glowbar DC Georgetown" loading="lazy">
+      <div class="bimg-lbl">Glowbar — Georgetown DC Opening · 2023</div>
+    </div>
+  </div>
+
+  <div class="sec-lbl" style="margin-bottom:14px">Funnel Breakdown</div>
+  <div class="funnel">
+    <div class="fstep"><div class="ficon">📊</div><div class="ftitle">Price Comparison Ad</div><div class="fsub">Facebook ads: their price vs. traditional med spa cost</div><span class="fval">+ time element</span></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">🏷️</div><div class="ftitle">Transparent Pricing</div><div class="fsub">Member vs. non-member rates shown upfront — no mystery</div></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">📅</div><div class="ftitle">Easy Booking</div><div class="fsub">Service + time selection, no consultation required</div></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">⚡</div><div class="ftitle">30-Min Facial</div><div class="fsub">Same quality, fraction of the time — speed is the product</div><span class="fval">Same quality, less time</span></div>
+    <div class="farrow"><div class="farrow-line"></div></div>
+    <div class="fstep"><div class="ficon">💳</div><div class="ftitle">4-Month Membership</div><div class="fsub">Minimum commitment turns one-timers into recurring revenue</div><span class="fval">Locked-in LTV</span></div>
+  </div>
+
+  <div class="grid2">
+    <div class="gc">
+      <div class="gc-lbl">What They Do Differently</div>
+      <div class="gc-body">They proved the same outcome — licensed aestheticians, quality facials — could be delivered faster and cheaper. Then they built the entire business structure from scratch to make that model actually profitable at scale.</div>
+    </div>
+    <div class="gc acc">
+      <div class="gc-lbl">The Customer They're Serving</div>
+      <div class="gc-body">There is always a portion of your market currently buying your type of services and <em style="color:rgba(255,255,255,.6)">secretly wishing things were different.</em><br><br>Glowbar found that person — the one who wanted a great facial without a 90-minute commitment or a $200 price tag — and built a product made exactly for them.</div>
+    </div>
+  </div>
+
+  <div class="sec-lbl" style="margin-bottom:14px">What To Notice</div>
+  <div class="carousel">
+    <div class="icard"><span class="icard-icon">⚡</span><div class="icard-title">Speed as a Feature</div><div class="icard-body">Most med spas treat speed as a compromise. Glowbar made it a selling point — "same quality, 30 minutes." That's a product decision, not just marketing.</div></div>
+    <div class="icard"><span class="icard-icon">💰</span><div class="icard-title">Price Comparison Ads</div><div class="icard-body">Showing what you cost vs. competitors is one of the most effective ad frameworks. Glowbar uses it directly. Most businesses are too afraid to.</div></div>
+    <div class="icard"><span class="icard-icon">🔒</span><div class="icard-title">Commitment = Stability</div><div class="icard-body">4-month minimum turns revenue from unpredictable to reliable. The business can plan around it. Most med spas never get this stability.</div></div>
+    <div class="icard"><span class="icard-icon">🧠</span><div class="icard-title">Bottom-Up Business Design</div><div class="icard-body">The model was built from scratch to hit a price point — not discounted down. Designed up from a specific customer's needs and a sustainable margin.</div></div>
+    <div class="qcard"><div class="qtext">Glowbar is the fastest-growing facial membership brand — bringing quick, custom facials to cities nationwide.</div><div class="qsrc">WTOP News · Georgetown DC Opening</div></div>
+  </div>
+
+  <div class="steal">
+    <div class="steal-lbl">Steal This →</div>
+    <div class="stags">
+      <span class="stag">Find the unhappy segment in your market</span>
+      <span class="stag">Use price comparison in your ads</span>
+      <span class="stag">Turn speed or simplicity into a feature</span>
+      <span class="stag">Use minimum membership commitment to lock in LTV</span>
+      <span class="stag">Design from the customer up, not the service down</span>
+    </div>
+    <p class="steal-note">Find out which of your services could be streamlined into an offer that directly serves the part of your market that's unhappy with how things currently are. Then structure the whole business to deliver it profitably.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     GRAND TAKEAWAYS
+══════════════════════════════════ -->
+<div class="takeaways">
+  <p class="sec-eyebrow">The Pattern</p>
+  <div class="sec-title">What They All<br>Have in Common</div>
+  <div class="tgrid">
+    <div class="tcard">
+      <span class="tcard-icon">🎯</span>
+      <div class="tcard-title">They Simplify the Buy</div>
+      <p class="tcard-copy">Every top player makes the first purchase easier than the average med spa. Less menu, less pricing confusion, less hesitation. The path from "I'm interested" to "I'm booked" is frictionless by design — not by accident.</p>
+    </div>
+    <div class="tcard">
+      <span class="tcard-icon">🔁</span>
+      <div class="tcard-title">They Build Retention on Purpose</div>
+      <p class="tcard-copy">Face Foundrié improved membership length by 30% with perks and loyalty initiatives. Glowbar bakes in a 4-month commitment. Retention isn't an afterthought here — it's engineered into the model from day one.</p>
+    </div>
+    <div class="tcard">
+      <span class="tcard-icon">📍</span>
+      <div class="tcard-title">They Narrow the Promise</div>
+      <p class="tcard-copy">LaserAway doesn't sell vague "beauty." Peachy built entirely around wrinkle treatment. None of them try to do everything. Narrow is easier to scale, easier to market, and much easier to win with.</p>
+    </div>
+    <div class="tcard">
+      <span class="tcard-icon">🏷️</span>
+      <div class="tcard-title">They Act Like Brands, Not Clinics</div>
+      <p class="tcard-copy">Consistent experience, standardized trust signals, cleaner websites, a clear point of view. That's why they outgrow local med spas still running on one injector, one front desk, and an Instagram page.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     BEFORE / AFTER COMPARE
+══════════════════════════════════ -->
+<div class="compare-section">
+  <p class="sec-eyebrow">The Gap</p>
+  <div class="sec-title">Where Most Med Spas<br>Are vs. Where They Could Be</div>
+  <div class="compare">
+    <div class="compare-col before">
+      <div class="compare-lbl">Where Most Med Spas Are</div>
+      <ul class="compare-items">
+        <li>10+ services with no clear flagship offer</li>
+        <li>Fuzzy pricing — clients have to call to find out</li>
+        <li>Zero paid ads, relying on word of mouth</li>
+        <li>No funnel — traffic goes to a generic homepage</li>
+        <li>No membership or recurring revenue system</li>
+        <li>Irregular clients, unpredictable monthly revenue</li>
+        <li>No clear differentiation from every other med spa</li>
+        <li>Marketing is an afterthought, not a system</li>
+      </ul>
+    </div>
+    <div class="compare-col after">
+      <div class="compare-lbl">Where the Top Players Are</div>
+      <ul class="compare-items">
+        <li>One flagship offer — clear, fixed price, easy to say yes to</li>
+        <li>Transparent pricing on every page, no guessing</li>
+        <li>Paid ads running to a high-converting intro offer</li>
+        <li>A funnel that turns cold traffic into booked appointments</li>
+        <li>Membership generating predictable monthly recurring revenue</li>
+        <li>A calendar that fills itself — not just from referrals</li>
+        <li>A clear position in the market that no competitor owns</li>
+        <li>Marketing is the growth engine, not a random Instagram post</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Want to Apply This<br><span>To Your Business?</span></h2>
+  <p>Let's build a growth system using the exact strategies the top players in your industry are already running.</p>
+  <a href="https://calendly.com/ian-postrmarketing/one-on-one-meeting-1" target="_blank" class="cta-btn">Book a Free Strategy Call →</a>
+</div>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement.scrollTop;
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('prog').style.width=(s/h*100)+'%';
+},{passive:true});
+
+const players=document.querySelectorAll('.player');
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:0.07});
+players.forEach(p=>io.observe(p));
+
+const allChips=document.querySelectorAll('.chip');
+function jumpTo(id,idx){
+  const el=document.getElementById(id);
+  if(!el)return;
+  window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});
+  allChips.forEach(c=>c.classList.remove('on'));
+  allChips[idx].classList.add('on');
+}
+
+const smap=[{id:'peachy',i:0},{id:'laseraway',i:1},{id:'facefoundrie',i:2},{id:'glowbar',i:3}];
+const sio=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const m=smap.find(x=>x.id===e.target.id);
+      if(m){allChips.forEach(c=>c.classList.remove('on'));allChips[m.i].classList.add('on')}
+    }
+  });
+},{threshold:0.3});
+smap.forEach(s=>{const el=document.getElementById(s.id);if(el)sio.observe(el)});
+</script>
+</body>
+</html>
