@@ -131,9 +131,10 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
 .panel-image{
   width:100%;
   aspect-ratio:16 / 10;
-  object-fit:cover;
+  object-fit:contain;          /* changed */
   display:block;
-  background:#111;
+  background:#0d0d0d;          /* gives you clean padding bars */
+  padding:12px;                /* optional, makes it feel intentional */
 }
 
 @media (max-width: 767px){
