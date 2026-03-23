@@ -288,6 +288,15 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
   fill:var(--g2);
   display:block;
 }
+
+.panel-title a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.panel-title a:hover{
+  opacity:.8;
+}
 </style>
 </head>
 <body>
@@ -542,23 +551,90 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
       <img src="https://media.licdn.com/dms/image/v2/D561FAQHxmq8oM9KQ5g/feedshare-document-images_800/B56ZzjCWdqKcAk-/2/1773335572144?e=1774483200&v=beta&t=W3kHiT46Dk_PbKjydLHGSmdQZ2yrw2IuoWJkkUgnkoE"
            onerror="this.parentElement.style.background='linear-gradient(135deg,#0a0a1a,#141428)';this.style.display='none'"
            alt="LaserAway" loading="lazy">
-      <div class="bimg-lbl">LaserAway — National Chain, 100+ Locations</div>
+      <div class="bimg-lbl">LaserAway - National Chain, 100+ Locations</div>
     </div>
   </div>
 
   <div class="sec-lbl" style="margin-bottom:14px">Funnel Breakdown</div>
   <div class="funnel">
-    <div class="fstep"><div class="ficon">📣</div><div class="ftitle">Hero Offer Ad</div><div class="fsub">"70% off laser removal" is impossible to scroll past</div><span class="fval">Pattern interrupt</span></div>
+    <div class="fstep">
+      <div class="ficon" aria-hidden="true">
+        <!-- megaphone -->
+        <svg viewBox="0 0 24 24">
+          <path d="M3 10v4a1 1 0 0 0 1 1h2l3 5h2v-5h2l6 3V6l-6 3H4a1 1 0 0 0-1 1z"/>
+        </svg>
+      </div>
+      <div class="ftitle">Hero Offer Ad</div>
+      <div class="fsub">"70% off laser removal" is impossible to scroll past</div>
+      <span class="fval">Pattern interrupt</span>
+    </div>
+
     <div class="farrow"><div class="farrow-line"></div></div>
-    <div class="fstep"><div class="ficon">📋</div><div class="ftitle">7–8 Step Quiz</div><div class="fsub">Homepage questionnaire personalizes the offer + pre-qualifies</div></div>
+
+    <div class="fstep">
+      <div class="ficon" aria-hidden="true">
+        <!-- checklist -->
+        <svg viewBox="0 0 24 24">
+          <path d="M9 3h11v18H4V3h5zm-3 4h2v2H6V7zm4 0h7v2h-7V7zm-4 4h2v2H6v-2zm4 0h7v2h-7v-2zm-4 4h2v2H6v-2zm4 0h7v2h-7v-2z"/>
+        </svg>
+      </div>
+      <div class="ftitle">7–8 Step Quiz</div>
+      <div class="fsub">Homepage questionnaire personalizes the offer + pre-qualifies</div>
+    </div>
+
     <div class="farrow"><div class="farrow-line"></div></div>
-    <div class="fstep"><div class="ficon">🎁</div><div class="ftitle">Bonus 20% Off</div><div class="fsub">Non-member bonus stacked on top → 76% realized</div><span class="fval">Urgency stacked</span></div>
+
+    <div class="fstep">
+      <div class="ficon" aria-hidden="true">
+        <!-- gift -->
+        <svg viewBox="0 0 24 24">
+          <path d="M20 7h-2.2A2.8 2.8 0 0 0 18 6a3 3 0 0 0-5.5-1.7L12 5l-.5-.7A3 3 0 0 0 6 6c0 .35.06.69.18 1H4v4h1v10h14V11h1V7zM9 4.5A1.5 1.5 0 0 1 10.5 6H8a1.5 1.5 0 0 1 1-1.5zM15 4.5A1.5 1.5 0 0 1 16 6h-2.5A1.5 1.5 0 0 1 15 4.5zM6 9h5v2H6V9zm7 12h-2v-8h2v8zm5 0h-5v-8h5v8zm0-10h-5V9h5v2z"/>
+        </svg>
+      </div>
+      <div class="ftitle">Bonus 20% Off</div>
+      <div class="fsub">Non-member bonus stacked on top → 76% realized</div>
+      <span class="fval">Urgency stacked</span>
+    </div>
+
     <div class="farrow"><div class="farrow-line"></div></div>
-    <div class="fstep"><div class="ficon">🏥</div><div class="ftitle">First Visit</div><div class="fsub">8–10 sessions — client locked into a multi-month journey</div></div>
+
+    <div class="fstep">
+      <div class="ficon" aria-hidden="true">
+        <!-- clinic -->
+        <svg viewBox="0 0 24 24">
+          <path d="M3 21V7l9-4 9 4v14h-7v-6h-4v6H3zm8-10h2V9h2V7h-2V5h-2v2H9v2h2v2z"/>
+        </svg>
+      </div>
+      <div class="ftitle">First Visit</div>
+      <div class="fsub">8–10 sessions, client locked into a multi-month journey</div>
+    </div>
+
     <div class="farrow"><div class="farrow-line"></div></div>
-    <div class="fstep"><div class="ficon">💳</div><div class="ftitle">Membership Push</div><div class="fsub">In-clinic upsell to membership + other body areas</div><span class="fval">LTV unlock</span></div>
+
+    <div class="fstep">
+      <div class="ficon" aria-hidden="true">
+        <!-- card -->
+        <svg viewBox="0 0 24 24">
+          <path d="M3 6h18a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zm0 3v2h18V9H3zm2 6h6v2H5v-2z"/>
+        </svg>
+      </div>
+      <div class="ftitle">Membership Push</div>
+      <div class="fsub">In-clinic upsell to membership + other body areas</div>
+      <span class="fval">LTV unlock</span>
+    </div>
+
     <div class="farrow"><div class="farrow-line"></div></div>
-    <div class="fstep"><div class="ficon">🛒</div><div class="ftitle">Cross-Sell Products</div><div class="fsub">3rd-party skincare sold between sessions</div></div>
+
+    <div class="fstep">
+      <div class="ficon" aria-hidden="true">
+        <!-- shopping bag -->
+        <svg viewBox="0 0 24 24">
+          <path d="M6 7V6a6 6 0 0 1 12 0v1h3l-1 14H4L3 7h3zm2 0h8V6a4 4 0 0 0-8 0v1z"/>
+        </svg>
+      </div>
+      <div class="ftitle">Cross-Sell Products</div>
+      <div class="fsub">3rd-party skincare sold between sessions</div>
+    </div>
   </div>
 
   <div class="grid2">
@@ -580,31 +656,81 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
 
   <div class="sec-lbl" style="margin-bottom:14px">What To Notice</div>
   <div class="carousel">
-    <div class="icard"><span class="icard-icon">🧲</span><div class="icard-title">The Offer Does the Work</div><div class="icard-body">70% off is impossible to ignore. It's not a discount, it's an attention grabber. The first yes costs almost nothing mentally.</div></div>
-    <div class="icard"><span class="icard-icon">📊</span><div class="icard-title">Quiz = Qualification</div><div class="icard-body">7–8 questions feel like personalization but also pre-qualify intent and warm the lead before they see a price.</div></div>
-    <div class="icard"><span class="icard-icon">⏰</span><div class="icard-title">Time Pressure Stacks</div><div class="icard-body">The extra 20% off for non-members is framed as a bonus window. It becomes urgency without feeling manipulative.</div></div>
-    <div class="icard"><span class="icard-icon">🔗</span><div class="icard-title">Multi-Session = Built-In Repeat</div><div class="icard-body">Laser removal needs 8–10 sessions by nature. LaserAway uses this to guarantee a long relationship from the first sale.</div></div>
-    <div class="icard"><span class="icard-icon">📈</span><div class="icard-title">Discount ≠ Cheap Brand</div><div class="icard-body">The brand stays premium. The discount is just the entry mechanism. Once they're inside, the experience converts at full price.</div></div>
+    <div class="icard">
+      <span class="icard-icon" aria-hidden="true">
+        <!-- magnet -->
+        <svg viewBox="0 0 24 24">
+          <path d="M7 2h4v8a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V2zm6 0h4v8a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2zm4 10h3v1a8 8 0 0 1-16 0v-1h3v1a5 5 0 0 0 10 0v-1z"/>
+        </svg>
+      </span>
+      <div class="icard-title">The Offer Does the Work</div>
+      <div class="icard-body">70% off is impossible to ignore. It's not a discount, it's an attention grabber. The first yes costs almost nothing mentally.</div>
+    </div>
+
+    <div class="icard">
+      <span class="icard-icon" aria-hidden="true">
+        <!-- chart / qualification -->
+        <svg viewBox="0 0 24 24">
+          <path d="M4 20h16v2H2V4h2v16zm3-2V9h3v9H7zm5 0V5h3v13h-3zm5 0v-7h3v7h-3z"/>
+        </svg>
+      </span>
+      <div class="icard-title">Quiz = Qualification</div>
+      <div class="icard-body">7–8 questions feel like personalization but also pre-qualify intent and warm the lead before they see a price.</div>
+    </div>
+
+    <div class="icard">
+      <span class="icard-icon" aria-hidden="true">
+        <!-- clock -->
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 11h5v-2h-4V6h-2v7z"/>
+        </svg>
+      </span>
+      <div class="icard-title">Time Pressure Stacks</div>
+      <div class="icard-body">The extra 20% off for non-members is framed as a bonus window. It becomes urgency without feeling manipulative.</div>
+    </div>
+
+    <div class="icard">
+      <span class="icard-icon" aria-hidden="true">
+        <!-- chain / repeat -->
+        <svg viewBox="0 0 24 24">
+          <path d="M10.6 13.4a1 1 0 0 1 0-1.4l3-3a4 4 0 1 1 5.7 5.7l-2.3 2.3-1.4-1.4 2.3-2.3a2 2 0 1 0-2.8-2.8l-3 3a1 1 0 0 1-1.5-.1zM13.4 10.6a1 1 0 0 1 0 1.4l-3 3a4 4 0 0 1-5.7-5.7l2.3-2.3 1.4 1.4-2.3 2.3a2 2 0 0 0 2.8 2.8l3-3a1 1 0 0 1 1.5.1z"/>
+        </svg>
+      </span>
+      <div class="icard-title">Multi-Session = Built-In Repeat</div>
+      <div class="icard-body">Laser removal needs 8–10 sessions by nature. LaserAway uses this to guarantee a long relationship from the first sale.</div>
+    </div>
+
+    <div class="icard">
+      <span class="icard-icon" aria-hidden="true">
+        <!-- growth chart -->
+        <svg viewBox="0 0 24 24">
+          <path d="M4 20h16v2H2V4h2v16zm3-4 4-4 3 3 5-6 1.5 1.3L14 18l-3-3-2.6 2.6L7 16z"/>
+        </svg>
+      </span>
+      <div class="icard-title">Discount ≠ Cheap Brand</div>
+      <div class="icard-body">The brand stays premium. The discount is just the entry mechanism. Once they're inside, the experience converts at full price.</div>
+    </div>
   </div>
 
-  <!-- LASERAWAY DROPDOWNS -->
   <div class="panels-row">
     <div class="panel">
       <img
         class="panel-image"
         src="laserawayad.png"
-        alt="First concept preview"
+        alt="LaserAway ad creative"
       >
       <div class="panel-content">
-        <h3 class="panel-title" href="https://www.facebook.com/ads/library/?id=931596636251925">Ad Creative</h3>
+        <h3 class="panel-title">
+          <a href="https://www.facebook.com/ads/library/?id=931596636251925" target="_blank" rel="noopener noreferrer">Ad Creative</a>
+        </h3>
       </div>
     </div>
-  
+
     <div class="panel">
       <img
         class="panel-image"
         src="laseraway.com.jpeg"
-        alt="Second concept preview"
+        alt="LaserAway landing page"
       >
       <div class="panel-content">
         <h3 class="panel-title">Page</h3>
