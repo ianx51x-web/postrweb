@@ -18,15 +18,12 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
 body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.25}
 
-/* PROGRESS BAR */
 #prog{position:fixed;top:0;left:0;height:2px;background:var(--grad);z-index:400;width:0%;transition:width .08s linear}
 
-/* HEADER */
 header{padding:20px 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--b);position:sticky;top:0;background:rgba(8,8,8,.93);backdrop-filter:blur(18px);z-index:200}
 .logo{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;letter-spacing:.1em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .header-pill{font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);border:1px solid var(--b);padding:6px 14px;border-radius:100px}
 
-/* HERO */
 .hero{padding:96px 40px 72px;max-width:1120px;margin:0 auto;position:relative;overflow:hidden}
 .hero-glow{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(212,178,74,.065) 0%,transparent 70%);pointer-events:none}
 .eyebrow{font-size:.73rem;text-transform:uppercase;letter-spacing:.2em;color:var(--g1);margin-bottom:18px;display:flex;align-items:center;gap:10px}
@@ -38,21 +35,16 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
 .chip{background:var(--s);border:1px solid var(--b);border-radius:100px;padding:8px 18px;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.6);cursor:pointer;transition:all .2s;user-select:none}
 .chip:hover,.chip.on{background:rgba(212,178,74,.1);border-color:rgba(212,178,74,.35);color:var(--g2)}
 
-/* FADE-UP ANIMATION */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 .hero>*{opacity:0;animation:fadeUp .7s ease forwards}
-.hero>*:nth-child(2){animation-delay:.05s}
-.hero>*:nth-child(3){animation-delay:.15s}
-.hero>*:nth-child(4){animation-delay:.25s}
-.hero>*:nth-child(5){animation-delay:.35s}
+.hero>*:nth-child(2){animation-delay:.05s}.hero>*:nth-child(3){animation-delay:.15s}
+.hero>*:nth-child(4){animation-delay:.25s}.hero>*:nth-child(5){animation-delay:.35s}
 .hero>*:nth-child(6){animation-delay:.45s}
 
-/* PLAYER */
 .player{max-width:1120px;margin:0 auto;padding:80px 40px;border-top:1px solid var(--b);opacity:0;transform:translateY(44px);transition:opacity .75s ease,transform .75s ease}
 .player.in{opacity:1;transform:translateY(0)}
 @media(max-width:640px){.player{padding:60px 20px}}
 
-/* PLAYER TOP */
 .ptop{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:start;margin-bottom:36px}
 @media(max-width:880px){.ptop{grid-template-columns:1fr}}
 .pnum{font-family:'Bebas Neue',sans-serif;font-size:.82rem;letter-spacing:.3em;color:var(--g1);margin-bottom:10px;opacity:.8}
@@ -66,14 +58,12 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
 .sv{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;line-height:1;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block}
 .sl{font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
 
-/* BRAND IMAGE */
 .bimg{border-radius:20px;overflow:hidden;border:1px solid var(--b);position:relative;aspect-ratio:4/3;background:#111}
 .bimg img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
 .bimg:hover img{transform:scale(1.04)}
 .bimg-lbl{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.75));padding:18px 14px 10px;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.55)}
 .bimg::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);z-index:1}
 
-/* FUNNEL */
 .sec-lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.18em;color:var(--g1);margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .sec-lbl::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--g1)}
 .funnel{display:flex;align-items:flex-start;overflow-x:auto;padding:4px 0 16px;scrollbar-width:thin;scrollbar-color:rgba(212,178,74,.25) transparent;margin-bottom:28px}
@@ -89,7 +79,6 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
 .fsub{font-size:.72rem;color:var(--muted);text-align:center;line-height:1.38}
 .fval{display:inline-block;margin-top:6px;background:rgba(212,178,74,.1);border:1px solid rgba(212,178,74,.22);border-radius:6px;padding:3px 7px;font-size:.66rem;color:var(--g2);font-weight:600}
 
-/* 2-COL GRID */
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
 @media(max-width:700px){.grid2{grid-template-columns:1fr}}
 .gc{background:var(--s);border:1px solid var(--b);border-radius:18px;padding:24px 26px}
@@ -101,7 +90,6 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
 .gc-body ul li{padding-left:16px;position:relative;margin-bottom:5px;font-size:.88rem}
 .gc-body ul li::before{content:'→';position:absolute;left:0;color:var(--g1);font-size:.72rem;top:2px}
 
-/* CAROUSEL */
 .carousel{display:flex;gap:13px;overflow-x:auto;padding:4px 0 16px;scrollbar-width:thin;scrollbar-color:rgba(212,178,74,.25) transparent;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin-bottom:28px}
 .carousel::-webkit-scrollbar{height:3px}
 .carousel::-webkit-scrollbar-thumb{background:rgba(212,178,74,.3);border-radius:2px}
@@ -114,6 +102,78 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
 .qcard::before{content:'"';font-family:'Bebas Neue',sans-serif;font-size:5rem;line-height:1;color:rgba(212,178,74,.1);position:absolute;top:2px;left:14px;pointer-events:none}
 .qtext{font-size:.88rem;font-style:italic;color:rgba(255,255,255,.72);line-height:1.65;margin-bottom:10px;padding-top:6px}
 .qsrc{font-size:.67rem;text-transform:uppercase;letter-spacing:.13em;color:var(--g1)}
+
+/* ══ DROPDOWN PANELS ══ */
+.panels-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+@media(max-width:700px){.panels-row{grid-template-columns:1fr}}
+
+.panel{border-radius:18px;overflow:hidden;border:1px solid var(--b);background:var(--s)}
+.panel-trigger{width:100%;background:none;border:none;color:var(--text);cursor:pointer;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:background .2s}
+.panel-trigger:hover{background:rgba(255,255,255,.04)}
+.panel-trigger-left{display:flex;align-items:center;gap:10px}
+.panel-trigger-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;background:rgba(212,178,74,.08);border:1px solid rgba(212,178,74,.18);flex-shrink:0}
+.panel-trigger-text{text-align:left}
+.panel-trigger-label{font-size:.67rem;text-transform:uppercase;letter-spacing:.17em;color:var(--g1);display:block;margin-bottom:2px}
+.panel-trigger-title{font-family:'Bebas Neue',sans-serif;font-size:1rem;text-transform:uppercase;letter-spacing:.05em;color:#fff}
+.panel-chevron{width:20px;height:20px;flex-shrink:0;opacity:.5;transition:transform .3s ease}
+.panel-chevron svg{width:20px;height:20px;stroke:var(--g2);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.panel.open .panel-chevron{transform:rotate(180deg)}
+
+.panel-body{display:none;padding:0 20px 20px;border-top:1px solid var(--b)}
+.panel.open .panel-body{display:block}
+.panel.open .panel-trigger{background:rgba(212,178,74,.04)}
+
+/* Ad panel layout */
+.ad-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-top:16px}
+@media(max-width:600px){.ad-layout{grid-template-columns:1fr}}
+
+/* Mock social ad card */
+.mock-ad{background:#1a1a1a;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.1);font-family:'DM Sans',sans-serif}
+.mock-ad-header{padding:10px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.06)}
+.mock-ad-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#333;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#fff}
+.mock-ad-name{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);line-height:1.2}
+.mock-ad-meta{font-size:.67rem;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:4px}
+.mock-ad-meta::before{content:'Sponsored';background:rgba(255,255,255,.08);padding:1px 5px;border-radius:3px;font-size:.6rem;letter-spacing:.04em}
+.mock-ad-img{width:100%;aspect-ratio:1/1;object-fit:cover;background:linear-gradient(135deg,#1a1208,#2a1e0a);display:block;position:relative}
+.mock-ad-img-placeholder{width:100%;aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,.04);color:rgba(255,255,255,.25);font-size:.75rem;text-align:center;padding:16px}
+.mock-ad-img-placeholder svg{width:32px;height:32px;opacity:.3;stroke:currentColor;fill:none;stroke-width:1.5}
+.mock-ad-body{padding:10px 12px 12px}
+.mock-ad-copy{font-size:.78rem;color:rgba(255,255,255,.8);line-height:1.55;margin-bottom:8px}
+.mock-ad-copy strong{color:#fff}
+.mock-ad-cta-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.mock-ad-domain{font-size:.67rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em}
+.mock-ad-cta-btn{background:rgba(212,178,74,.15);border:1px solid rgba(212,178,74,.3);color:var(--g2);font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:6px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+
+/* Ad notes */
+.ad-notes{padding-top:16px}
+.ad-notes-lbl{font-size:.67rem;text-transform:uppercase;letter-spacing:.17em;color:var(--g1);margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.ad-notes-lbl::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--g1)}
+.ad-notes ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px}
+.ad-notes ul li{font-size:.84rem;color:rgba(255,255,255,.72);line-height:1.55;padding-left:16px;position:relative}
+.ad-notes ul li::before{content:'→';position:absolute;left:0;color:var(--g1);font-size:.72rem;top:2px}
+
+/* Homepage panel layout */
+.hp-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-top:16px}
+@media(max-width:600px){.hp-layout{grid-template-columns:1fr}}
+
+.mock-browser{background:#111;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+.mock-browser-bar{background:#1a1a1a;padding:8px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.06)}
+.browser-dots{display:flex;gap:4px}
+.browser-dot{width:8px;height:8px;border-radius:50%}
+.browser-dot:nth-child(1){background:#ff5f57}
+.browser-dot:nth-child(2){background:#febc2e}
+.browser-dot:nth-child(3){background:#28c840}
+.browser-url{flex:1;background:rgba(255,255,255,.06);border-radius:5px;padding:3px 8px;font-size:.67rem;color:rgba(255,255,255,.35);font-family:monospace}
+.mock-browser-img{width:100%;display:block;object-fit:cover;min-height:220px;background:#0d0d0d}
+.mock-browser-img-placeholder{min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,.03);color:rgba(255,255,255,.2);font-size:.75rem;text-align:center;padding:16px}
+.mock-browser-img-placeholder svg{width:36px;height:36px;opacity:.25;stroke:currentColor;fill:none;stroke-width:1.5}
+
+.hp-notes{padding-top:16px}
+.hp-notes-lbl{font-size:.67rem;text-transform:uppercase;letter-spacing:.17em;color:var(--g1);margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.hp-notes-lbl::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--g1)}
+.hp-notes ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px}
+.hp-notes ul li{font-size:.84rem;color:rgba(255,255,255,.72);line-height:1.55;padding-left:16px;position:relative}
+.hp-notes ul li::before{content:'→';position:absolute;left:0;color:var(--g1);font-size:.72rem;top:2px}
 
 /* STEAL */
 .steal{background:rgba(212,178,74,.04);border:1px solid rgba(212,178,74,.18);border-radius:20px;padding:26px 30px;position:relative;overflow:hidden;margin-bottom:0}
@@ -138,7 +198,7 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
 .tcard-title{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:9px}
 .tcard-copy{font-size:.89rem;color:var(--muted);line-height:1.72}
 
-/* ══ BEFORE / AFTER COMPARE ══ */
+/* COMPARE */
 .compare-section{max-width:1120px;margin:0 auto;padding:0 40px 80px;border-top:1px solid var(--b)}
 @media(max-width:640px){.compare-section{padding:0 20px 60px}}
 .compare-section .sec-eyebrow{margin-top:60px}
@@ -169,26 +229,22 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
 .cta-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:var(--grad);color:#000;font-weight:700;font-size:.88rem;text-transform:uppercase;letter-spacing:.1em;border-radius:12px;text-decoration:none;transition:opacity .2s,transform .2s}
 .cta-btn:hover{opacity:.85;transform:translateY(-3px)}
 
-@media(max-width:480px){
-  header{padding:16px 20px}
-  .hero{padding:60px 20px 48px}
-}
+@media(max-width:480px){header{padding:16px 20px}.hero{padding:60px 20px 48px}}
 </style>
 </head>
 <body>
 <div id="prog"></div>
 
 <header>
-  <div class="logo"><img src="assets/img/logo/logo-postr.png" style="width: 80px;"></div>
+  <div class="logo"><img src="assets/img/logo/logo-postr.png" style="width:80px;"></div>
   <div class="header-pill">Med Spa · Top Player Report</div>
 </header>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-glow"></div>
-  <p class="eyebrow">Industry Breakdown · March 2026</p>
+  <p class="eyebrow">All-Star Med Spa Breakdown · March 2026</p>
   <h1>What the <em>Best Med Spas</em><br>Are Doing Differently</h1>
-  <p class="hero-sub">4 top players who figured out how to win while everyone else stays stuck. Here's exactly what they're doing — and how you can steal it.</p>
+  <p class="hero-sub">4 top players who figured out how to win while everyone else stays stuck. Here's exactly what they're doing, and how you can steal it.</p>
   <div class="chips">
     <span class="chip" onclick="jumpTo('peachy',0)">01 · Peachy</span>
     <span class="chip" onclick="jumpTo('laseraway',1)">02 · LaserAway</span>
@@ -197,9 +253,7 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     01 · PEACHY
-══════════════════════════════════ -->
+<!-- ══ 01 PEACHY ══ -->
 <div class="player" id="peachy">
   <div class="ptop">
     <div>
@@ -237,7 +291,7 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
     <div class="farrow"><div class="farrow-line"></div></div>
     <div class="fstep"><div class="ficon">💰</div><div class="ftitle">$425 Flat Rate</div><div class="fsub">One price. Unlimited units. No upsell. No surprises.</div><span class="fval">Zero shock</span></div>
     <div class="farrow"><div class="farrow-line"></div></div>
-    <div class="fstep"><div class="ficon">📅</div><div class="ftitle">Free Consult → Book</div><div class="fsub">No commitment to consult lowers first-visit barrier (no-shows happen when the value isn't great enough)</div></div>
+    <div class="fstep"><div class="ficon">📅</div><div class="ftitle">Free Consult → Book</div><div class="fsub">No commitment to consult lowers first-visit barrier</div></div>
     <div class="farrow"><div class="farrow-line"></div></div>
     <div class="fstep"><div class="ficon">🔁</div><div class="ftitle">Every 3–4 Months</div><div class="fsub">Repeat cycle built into the biology of the treatment</div><span class="fval">Built-in LTV</span></div>
   </div>
@@ -263,7 +317,88 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
     <div class="qcard"><div class="qtext">I've been coming for a year. They took great care asking what results I want and delivered. I've introduced 4 friends.</div><div class="qsrc">Google Review · Peachy Studio</div></div>
   </div>
 
-  <div class="steal">
+  <!-- PEACHY DROPDOWNS -->
+  <div class="panels-row">
+    <!-- Ad panel -->
+    <div class="panel" id="panel-peachy-ad">
+      <button class="panel-trigger" onclick="togglePanel('panel-peachy-ad')">
+        <div class="panel-trigger-left">
+          <div class="panel-trigger-icon">📣</div>
+          <div class="panel-trigger-text">
+            <span class="panel-trigger-label">Creative</span>
+            <span class="panel-trigger-title">Their Ad</span>
+          </div>
+        </div>
+        <div class="panel-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </button>
+      <div class="panel-body">
+        <div class="ad-layout">
+          <div>
+            <div class="mock-ad">
+              <div class="mock-ad-header">
+                <div class="mock-ad-avatar" style="background:#d4523a">P</div>
+                <div>
+                  <div class="mock-ad-name">Peachy</div>
+                  <div class="mock-ad-meta"></div>
+                </div>
+              </div>
+              <!-- Swap src below for a real screenshot -->
+              <img class="mock-ad-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP4iQ3_G7NPybYy6f4f7gz-B2Qn0dMT2goqw&s"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                   alt="Peachy ad creative" style="display:block">
+              <div class="mock-ad-img-placeholder" style="display:none">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>Swap in a real<br>ad screenshot here</span>
+              </div>
+              <div class="mock-ad-body">
+                <div class="mock-ad-copy"><strong>Stop overpaying for Botox.</strong> Peachy charges one flat fee — $425, unlimited units, no surprises. Trusted by 30,000+ clients across NYC, Chicago, DC &amp; Austin. Book your free consult today.</div>
+                <div class="mock-ad-cta-row">
+                  <span class="mock-ad-domain">peachystudio.com</span>
+                  <span class="mock-ad-cta-btn">Book Now</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Homepage panel -->
+    <div class="panel" id="panel-peachy-hp">
+      <button class="panel-trigger" onclick="togglePanel('panel-peachy-hp')">
+        <div class="panel-trigger-left">
+          <div class="panel-trigger-icon">🌐</div>
+          <div class="panel-trigger-text">
+            <span class="panel-trigger-label">Website</span>
+            <span class="panel-trigger-title">Their Homepage</span>
+          </div>
+        </div>
+        <div class="panel-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </button>
+      <div class="panel-body">
+        <div class="hp-layout">
+          <div>
+            <div class="mock-browser">
+              <div class="mock-browser-bar">
+                <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+                <div class="browser-url">peachystudio.com</div>
+              </div>
+              <!-- Swap src below for a real homepage screenshot -->
+              <img class="mock-browser-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP4iQ3_G7NPybYy6f4f7gz-B2Qn0dMT2goqw&s"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                   alt="Peachy homepage" style="display:block;object-fit:cover;min-height:220px">
+              <div class="mock-browser-img-placeholder" style="display:none">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                <span>Swap in a homepage<br>screenshot here</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="steal" style="margin-top:14px">
     <div class="steal-lbl">Steal This →</div>
     <div class="stags">
       <span class="stag">One flagship offer with fixed pricing</span>
@@ -276,9 +411,7 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     02 · LASERAWAY
-══════════════════════════════════ -->
+<!-- ══ 02 LASERAWAY ══ -->
 <div class="player" id="laseraway">
   <div class="ptop">
     <div>
@@ -328,15 +461,13 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
     </div>
     <div class="gc acc">
       <div class="gc-lbl">The Math That Makes It Work</div>
-      <div class="gc-body">
-        <ul>
-          <li>Front-end discount creates huge volume of first-timers</li>
-          <li>Multi-session format = 8–10 guaranteed return visits</li>
-          <li>Each visit = a new upsell opportunity</li>
-          <li>Membership converts the best clients into recurring revenue</li>
-          <li>The initial loss is just the cost of acquiring a great client</li>
-        </ul>
-      </div>
+      <div class="gc-body"><ul>
+        <li>Front-end discount creates huge volume of first-timers</li>
+        <li>Multi-session format = 8–10 guaranteed return visits</li>
+        <li>Each visit = a new upsell opportunity</li>
+        <li>Membership converts the best clients into recurring revenue</li>
+        <li>The initial loss is just the cost of acquiring a great client</li>
+      </ul></div>
     </div>
   </div>
 
@@ -349,7 +480,102 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
     <div class="icard"><span class="icard-icon">📈</span><div class="icard-title">Discount ≠ Cheap Brand</div><div class="icard-body">The brand stays premium. The discount is just the entry mechanism. Once they're inside, the experience converts at full price.</div></div>
   </div>
 
-  <div class="steal">
+  <!-- LASERAWAY DROPDOWNS -->
+  <div class="panels-row">
+    <div class="panel" id="panel-laser-ad">
+      <button class="panel-trigger" onclick="togglePanel('panel-laser-ad')">
+        <div class="panel-trigger-left">
+          <div class="panel-trigger-icon">📣</div>
+          <div class="panel-trigger-text">
+            <span class="panel-trigger-label">Creative</span>
+            <span class="panel-trigger-title">Their Ad</span>
+          </div>
+        </div>
+        <div class="panel-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </button>
+      <div class="panel-body">
+        <div class="ad-layout">
+          <div>
+            <div class="mock-ad">
+              <div class="mock-ad-header">
+                <div class="mock-ad-avatar" style="background:#7b2d8b">L</div>
+                <div>
+                  <div class="mock-ad-name">LaserAway</div>
+                  <div class="mock-ad-meta"></div>
+                </div>
+              </div>
+              <img class="mock-ad-img" src="https://image3.issuu.com/240301040401-1f9c9b4e12784b32b35a2cfe8c9cf8f4/jpg/page_1.jpg"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                   alt="LaserAway ad" style="display:block">
+              <div class="mock-ad-img-placeholder" style="display:none">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>Swap in a real<br>ad screenshot here</span>
+              </div>
+              <div class="mock-ad-body">
+                <div class="mock-ad-copy"><strong>70% OFF laser hair removal.</strong> 8–10 sessions on a medium area. Limited time — non-members get an extra 20% off their full purchase. Find your nearest location.</div>
+                <div class="mock-ad-cta-row">
+                  <span class="mock-ad-domain">laseraway.com</span>
+                  <span class="mock-ad-cta-btn">See Offer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ad-notes">
+            <div class="ad-notes-lbl">What To Notice</div>
+            <ul>
+              <li>"70% off" is the entire headline — the discount is so large it functions as the creative itself</li>
+              <li>The "extra 20% for non-members" creates a second layer of urgency and is framed as a bonus, not a desperation play</li>
+              <li>The ad doesn't sell the service — it sells the deal. The service is assumed. The price is the hook</li>
+              <li>No before/after needed — the number alone does the pattern interrupting</li>
+              <li>"Find your nearest location" CTA is low-friction — just look, don't commit yet</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-laser-hp">
+      <button class="panel-trigger" onclick="togglePanel('panel-laser-hp')">
+        <div class="panel-trigger-left">
+          <div class="panel-trigger-icon">🌐</div>
+          <div class="panel-trigger-text">
+            <span class="panel-trigger-label">Website</span>
+            <span class="panel-trigger-title">Their Homepage</span>
+          </div>
+        </div>
+        <div class="panel-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </button>
+      <div class="panel-body">
+        <div class="hp-layout">
+          <div>
+            <div class="mock-browser">
+              <div class="mock-browser-bar">
+                <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+                <div class="browser-url">laseraway.com</div>
+              </div>
+              <div class="mock-browser-img-placeholder">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                <span>Swap in a homepage<br>screenshot here</span>
+              </div>
+            </div>
+          </div>
+          <div class="hp-notes">
+            <div class="hp-notes-lbl">What To Notice</div>
+            <ul>
+              <li>Hero section is a 7–8 step quiz — the page immediately starts qualifying you, not selling at you</li>
+              <li>The discount offer (70% off) is visible above the fold before any service description</li>
+              <li>Location finder is prominently placed — drives foot traffic, not just form fills</li>
+              <li>Membership is cross-promoted on every service page, not buried in a nav menu</li>
+              <li>Before/after gallery is heavy — social proof built into the browsing experience</li>
+              <li>Clean, clinical aesthetic signals premium despite the aggressive discounting</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="steal" style="margin-top:14px">
     <div class="steal-lbl">Steal This →</div>
     <div class="stags">
       <span class="stag">Make the first yes feel easy</span>
@@ -362,9 +588,7 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     03 · FACE FOUNDRIÉ
-══════════════════════════════════ -->
+<!-- ══ 03 FACE FOUNDRIÉ ══ -->
 <div class="player" id="facefoundrie">
   <div class="ptop">
     <div>
@@ -375,7 +599,7 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
         <span class="pbadge">Franchise Model</span>
         <span class="pbadge">Market of One</span>
       </div>
-      <p class="pdesc">Built a facial-bar model that's easier to scale than a traditional med spa.It has fewer moving parts, standardized delivery, strong memberships. By niching this precisely, they created a category no competitor fully matches.</p>
+      <p class="pdesc">Built a facial-bar model that's easier to scale than a traditional med spa. It has fewer moving parts, standardized delivery, strong memberships. By niching this precisely, they created a category no competitor fully matches.</p>
       <div class="stats">
         <div class="stat"><span class="sv">+30%</span><span class="sl">Membership length</span></div>
         <div class="stat"><span class="sv">#1</span><span class="sl">In category</span></div>
@@ -422,7 +646,102 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
     <div class="icard"><span class="icard-icon">🤝</span><div class="icard-title">Loyalty That Actually Works</div><div class="icard-body">Membership perks extended the average membership length by 30%. That's a system designed to make leaving feel like a loss.</div></div>
   </div>
 
-  <div class="steal">
+  <!-- FACE FOUNDRIÉ DROPDOWNS -->
+  <div class="panels-row">
+    <div class="panel" id="panel-ff-ad">
+      <button class="panel-trigger" onclick="togglePanel('panel-ff-ad')">
+        <div class="panel-trigger-left">
+          <div class="panel-trigger-icon">📣</div>
+          <div class="panel-trigger-text">
+            <span class="panel-trigger-label">Creative</span>
+            <span class="panel-trigger-title">Their Ad</span>
+          </div>
+        </div>
+        <div class="panel-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </button>
+      <div class="panel-body">
+        <div class="ad-layout">
+          <div>
+            <div class="mock-ad">
+              <div class="mock-ad-header">
+                <div class="mock-ad-avatar" style="background:#2d4a3e">FF</div>
+                <div>
+                  <div class="mock-ad-name">Face Foundrié</div>
+                  <div class="mock-ad-meta"></div>
+                </div>
+              </div>
+              <div class="mock-ad-img-placeholder">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>Swap in a real<br>ad screenshot here</span>
+              </div>
+              <div class="mock-ad-body">
+                <div class="mock-ad-copy"><strong>There's a new kind of facial bar in [City].</strong> Face Foundrié is the high-end facial specialist — not a med spa, not a spa. Something better. See what everyone's talking about.</div>
+                <div class="mock-ad-cta-row">
+                  <span class="mock-ad-domain">facefoundrie.com</span>
+                  <span class="mock-ad-cta-btn">Learn More</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ad-notes">
+            <div class="ad-notes-lbl">What To Notice</div>
+            <ul>
+              <li>"New kind of facial bar" — they lead with category creation, not a specific service or price</li>
+              <li>Explicitly disqualifies competitors: "not a med spa, not a spa" — forces the reader to mentally place them in a new box</li>
+              <li>Curiosity-driven CTA ("see what everyone's talking about") drives clicks without making a claim that needs to be proven</li>
+              <li>Personalized with [City] — makes it feel local and relevant even at franchise scale</li>
+              <li>No discount, no urgency — the brand itself is the offer</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-ff-hp">
+      <button class="panel-trigger" onclick="togglePanel('panel-ff-hp')">
+        <div class="panel-trigger-left">
+          <div class="panel-trigger-icon">🌐</div>
+          <div class="panel-trigger-text">
+            <span class="panel-trigger-label">Website</span>
+            <span class="panel-trigger-title">Their Homepage</span>
+          </div>
+        </div>
+        <div class="panel-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </button>
+      <div class="panel-body">
+        <div class="hp-layout">
+          <div>
+            <div class="mock-browser">
+              <div class="mock-browser-bar">
+                <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+                <div class="browser-url">facefoundrie.com</div>
+              </div>
+              <img class="mock-browser-img" src="https://facefoundrie.com/wp-content/uploads/2025/03/FF-Naperville-Exterior-1-scaled-e1711979038998.jpg"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                   alt="Face Foundrie homepage" style="display:block;object-fit:cover;min-height:220px">
+              <div class="mock-browser-img-placeholder" style="display:none">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                <span>Swap in a homepage<br>screenshot here</span>
+              </div>
+            </div>
+          </div>
+          <div class="hp-notes">
+            <div class="hp-notes-lbl">What To Notice</div>
+            <ul>
+              <li>Editorial-magazine aesthetic — looks like a fashion brand, not a clinic</li>
+              <li>Headline is a positioning statement, not a service list: "The facial bar"</li>
+              <li>Location selector is above the fold — makes multi-location feel local everywhere</li>
+              <li>Flat pricing is shown upfront with member vs. non-member tiers side-by-side</li>
+              <li>Membership CTA is persistent — appears in nav, hero, and footer</li>
+              <li>Zero medical language — they sell confidence and ritual, not procedures</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="steal" style="margin-top:14px">
     <div class="steal-lbl">Steal This →</div>
     <div class="stags">
       <span class="stag">Find an underserved niche and own it</span>
@@ -434,9 +753,7 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     04 · GLOWBAR
-══════════════════════════════════ -->
+<!-- ══ 04 GLOWBAR ══ -->
 <div class="player" id="glowbar">
   <div class="ptop">
     <div>
@@ -496,7 +813,105 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
     <div class="qcard"><div class="qtext">Glowbar is one of the fastest-growing facial membership brands by bringing quick, custom facials to cities nationwide.</div><div class="qsrc">WTOP News · Georgetown DC Opening</div></div>
   </div>
 
-  <div class="steal">
+  <!-- GLOWBAR DROPDOWNS -->
+  <div class="panels-row">
+    <div class="panel" id="panel-gb-ad">
+      <button class="panel-trigger" onclick="togglePanel('panel-gb-ad')">
+        <div class="panel-trigger-left">
+          <div class="panel-trigger-icon">📣</div>
+          <div class="panel-trigger-text">
+            <span class="panel-trigger-label">Creative</span>
+            <span class="panel-trigger-title">Their Ad</span>
+          </div>
+        </div>
+        <div class="panel-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </button>
+      <div class="panel-body">
+        <div class="ad-layout">
+          <div>
+            <div class="mock-ad">
+              <div class="mock-ad-header">
+                <div class="mock-ad-avatar" style="background:#e8c4a0;color:#333">G</div>
+                <div>
+                  <div class="mock-ad-name">Glowbar</div>
+                  <div class="mock-ad-meta"></div>
+                </div>
+              </div>
+              <img class="mock-ad-img" src="https://wtop.com/wp-content/uploads/2023/11/Glowbar-DC-Georgetown.jpeg"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                   alt="Glowbar ad" style="display:block">
+              <div class="mock-ad-img-placeholder" style="display:none">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>Swap in a real<br>ad screenshot here</span>
+              </div>
+              <div class="mock-ad-body">
+                <div class="mock-ad-copy">A facial at most spas: 90 minutes, $180+. A Glowbar facial: <strong>30 minutes, $65/month.</strong> Same licensed aestheticians. Same results. Join for as little as 4 months.</div>
+                <div class="mock-ad-cta-row">
+                  <span class="mock-ad-domain">glowbar.com</span>
+                  <span class="mock-ad-cta-btn">Join Now</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ad-notes">
+            <div class="ad-notes-lbl">What To Notice</div>
+            <ul>
+              <li>Price comparison structure: competitor cost first, then their price — makes the gap feel dramatic</li>
+              <li>"Same licensed aestheticians. Same results." directly neutralizes the quality objection before anyone raises it</li>
+              <li>Time is positioned as a feature, not a cut corner — "30 minutes" is the product, not a compromise</li>
+              <li>Membership framing from the first ad — they're not selling a facial, they're selling recurring access</li>
+              <li>"As little as 4 months" makes the commitment feel minimal and de-risks the sign-up</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-gb-hp">
+      <button class="panel-trigger" onclick="togglePanel('panel-gb-hp')">
+        <div class="panel-trigger-left">
+          <div class="panel-trigger-icon">🌐</div>
+          <div class="panel-trigger-text">
+            <span class="panel-trigger-label">Website</span>
+            <span class="panel-trigger-title">Their Homepage</span>
+          </div>
+        </div>
+        <div class="panel-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </button>
+      <div class="panel-body">
+        <div class="hp-layout">
+          <div>
+            <div class="mock-browser">
+              <div class="mock-browser-bar">
+                <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+                <div class="browser-url">glowbar.com</div>
+              </div>
+              <img class="mock-browser-img" src="https://glowbar.com/cdn/shop/files/glowbar_value_people_first_optimized.jpg?v=1676336734&width=1500"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                   alt="Glowbar homepage" style="display:block;object-fit:cover;min-height:220px">
+              <div class="mock-browser-img-placeholder" style="display:none">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                <span>Swap in a homepage<br>screenshot here</span>
+              </div>
+            </div>
+          </div>
+          <div class="hp-notes">
+            <div class="hp-notes-lbl">What To Notice</div>
+            <ul>
+              <li>Member vs. non-member pricing is the first thing you see — transparent, no phone call required</li>
+              <li>Booking CTA requires no consultation — just pick a time and show up</li>
+              <li>"30-minute facial" is the headline, not the company name — the format is the product</li>
+              <li>Warm, approachable aesthetic — feels accessible, not clinical or intimidating</li>
+              <li>Membership perks listed prominently: priority booking, loyalty points, rollover sessions</li>
+              <li>Location page is clean — drives walk-ins by showing the closest studio instantly</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="steal" style="margin-top:14px">
     <div class="steal-lbl">Steal This →</div>
     <div class="stags">
       <span class="stag">Find the unhappy segment in your market</span>
@@ -507,9 +922,7 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     GRAND TAKEAWAYS
-══════════════════════════════════ -->
+<!-- ══ GRAND TAKEAWAYS ══ -->
 <div class="takeaways">
   <p class="sec-eyebrow">The Pattern</p>
   <div class="sec-title">What They All<br>Have in Common</div>
@@ -517,7 +930,7 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
     <div class="tcard">
       <span class="tcard-icon">🎯</span>
       <div class="tcard-title">They Simplify the Buy</div>
-      <p class="tcard-copy">Every top player makes the first purchase easier than the average med spa. The path from "I'm interested" to "I'm booked" is frictionless by design</p>
+      <p class="tcard-copy">Every top player makes the first purchase easier than the average med spa. The path from "I'm interested" to "I'm booked" is frictionless by design.</p>
     </div>
     <div class="tcard">
       <span class="tcard-icon">🔁</span>
@@ -532,14 +945,12 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
     <div class="tcard">
       <span class="tcard-icon">🏷️</span>
       <div class="tcard-title">They Act Like Brands, Not Clinics</div>
-      <p class="tcard-copy">Consistent experience, standardized trust signals, cleaner websites, a clear point of view. That's why they outgrow local med spas</p>
+      <p class="tcard-copy">Consistent experience, standardized trust signals, cleaner websites, a clear point of view. That's why they outgrow local med spas.</p>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     BEFORE / AFTER COMPARE
-══════════════════════════════════ -->
+<!-- ══ BEFORE / AFTER COMPARE ══ -->
 <div class="compare-section">
   <p class="sec-eyebrow">The Gap</p>
   <div class="sec-title">Where Most Med Spas<br>Are vs. Where They Could Be</div>
@@ -573,9 +984,9 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
 
 <!-- CTA -->
 <div class="cta">
-  <h2>Want to turn <span>Jovial? </span>into <br>philly's facial rebalancing specialist?</h2>
+  <h2>Want to turn <span>Jovial</span> into<br>Philly's Facial Rebalancing Specialist?</h2>
   <p>Let's build a growth system using the exact strategies the top US med spas are already running.</p>
-  <a href="mailto:ian@postrmarketing.com" target="_blank" class="cta-btn">Send me an email →</a>
+  <a href="mailto:ian@postrmarketing.com" class="cta-btn">Send me an email →</a>
 </div>
 
 <div class="takeaways">
@@ -585,21 +996,22 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
   </div>
 </div>
 
-
-
 <script>
+// Progress bar
 window.addEventListener('scroll',()=>{
   const s=document.documentElement.scrollTop;
   const h=document.documentElement.scrollHeight-window.innerHeight;
   document.getElementById('prog').style.width=(s/h*100)+'%';
 },{passive:true});
 
+// Scroll fade-in
 const players=document.querySelectorAll('.player');
 const io=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
 },{threshold:0.07});
 players.forEach(p=>io.observe(p));
 
+// Nav chips
 const allChips=document.querySelectorAll('.chip');
 function jumpTo(id,idx){
   const el=document.getElementById(id);
@@ -608,7 +1020,6 @@ function jumpTo(id,idx){
   allChips.forEach(c=>c.classList.remove('on'));
   allChips[idx].classList.add('on');
 }
-
 const smap=[{id:'peachy',i:0},{id:'laseraway',i:1},{id:'facefoundrie',i:2},{id:'glowbar',i:3}];
 const sio=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
@@ -619,6 +1030,14 @@ const sio=new IntersectionObserver(entries=>{
   });
 },{threshold:0.3});
 smap.forEach(s=>{const el=document.getElementById(s.id);if(el)sio.observe(el)});
+
+// Panel toggle
+function togglePanel(id){
+  const panel=document.getElementById(id);
+  if(!panel)return;
+  const isOpen=panel.classList.contains('open');
+  panel.classList.toggle('open',!isOpen);
+}
 </script>
 </body>
 </html>
