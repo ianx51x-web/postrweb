@@ -268,6 +268,26 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
   height:18px;
   fill:var(--g2);
 }
+
+.icard-icon{
+  width:38px;
+  height:38px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  background:rgba(212,178,74,.08);
+  border:1px solid rgba(212,178,74,.18);
+  margin-bottom:12px;
+  flex-shrink:0;
+}
+
+.icard-icon svg{
+  width:18px;
+  height:18px;
+  fill:var(--g2);
+  display:block;
+}
 </style>
 </head>
 <body>
@@ -405,12 +425,59 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
 
   <div class="sec-lbl" style="margin-bottom:14px">What To Notice</div>
   <div class="carousel">
-    <div class="icard"><span class="icard-icon">🎯</span><div class="icard-title">One Service Only</div><div class="icard-body">They do Botox. That's it. No fillers, no lasers, no menu overwhelm. Specialization = trust = conversion.</div></div>
-    <div class="icard"><span class="icard-icon">🤖</span><div class="icard-title">AI as a Trust Signal</div><div class="icard-body">3D facial mapping makes the brand feel clinical and advanced — a specialist clinic, not a luxury spa.</div></div>
-    <div class="icard"><span class="icard-icon">📹</span><div class="icard-title">UGC Over Polished Ads</div><div class="icard-body">Real client TikTok content outperforms studio ads. Peachy leans all the way into authentic UGC for acquisition.</div></div>
-    <div class="icard"><span class="icard-icon">🔄</span><div class="icard-title">Free Touch-Up = Retention Hook</div><div class="icard-body">A complimentary 2-week dose adjustment brings the client back in. A second touchpoint that feels like a gift.</div></div>
-    <div class="qcard"><div class="qtext">Peachy's flat fee of $425 is a game-changer. No surprises, just a smoother experience — and forehead.</div><div class="qsrc">Real client · TikTok · 590 likes</div></div>
-    <div class="qcard"><div class="qtext">I've been coming for a year. They took great care asking what results I want and delivered. I've introduced 4 friends.</div><div class="qsrc">Google Review · Peachy Studio</div></div>
+    <div class="icard">
+      <span class="icard-icon" aria-hidden="true">
+        <!-- target -->
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2a10 10 0 1 0 10 10h-2a8 8 0 1 1-8-8V2zm0 4a6 6 0 1 0 6 6h-2a4 4 0 1 1-4-4V6zm0 4a2 2 0 1 0 2 2h4l-6 6-6-6h4a2 2 0 0 0 2-2z"/>
+        </svg>
+      </span>
+      <div class="icard-title">One Service Only</div>
+      <div class="icard-body">They do Botox. That's it. No fillers, no lasers, no menu overwhelm. Specialization = trust = conversion.</div>
+    </div>
+  
+    <div class="icard">
+      <span class="icard-icon" aria-hidden="true">
+        <!-- AI / scan -->
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 4a3 3 0 1 1-3 3 3 3 0 0 1 3-3zm0 14a8 8 0 0 1-6-2.7c.03-2 4-3.3 6-3.3s5.97 1.3 6 3.3A8 8 0 0 1 12 20z"/>
+        </svg>
+      </span>
+      <div class="icard-title">AI as a Trust Signal</div>
+      <div class="icard-body">3D facial mapping makes the brand feel clinical and advanced, a specialist clinic, not a luxury spa.</div>
+    </div>
+  
+    <div class="icard">
+      <span class="icard-icon" aria-hidden="true">
+        <!-- video -->
+        <svg viewBox="0 0 24 24">
+          <path d="M4 5h11a2 2 0 0 1 2 2v1l3-2v12l-3-2v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/>
+        </svg>
+      </span>
+      <div class="icard-title">UGC Over Polished Ads</div>
+      <div class="icard-body">Real client TikTok content outperforms studio ads. Peachy leans all the way into authentic UGC for acquisition.</div>
+    </div>
+  
+    <div class="icard">
+      <span class="icard-icon" aria-hidden="true">
+        <!-- repeat -->
+        <svg viewBox="0 0 24 24">
+          <path d="M17 1l4 4-4 4V6H9a4 4 0 0 0 0 8h1v2H9a6 6 0 0 1 0-12h8V1zM7 23l-4-4 4-4v3h8a4 4 0 0 0 0-8h-1V8h1a6 6 0 0 1 0 12H7v3z"/>
+        </svg>
+      </span>
+      <div class="icard-title">Free Touch-Up = Retention Hook</div>
+      <div class="icard-body">A complimentary 2-week dose adjustment brings the client back in. A second touchpoint that feels like a gift.</div>
+    </div>
+  
+    <div class="qcard">
+      <div class="qtext">Peachy's flat fee of $425 is a game-changer. No surprises, just a smoother experience, and forehead.</div>
+      <div class="qsrc">Real client · TikTok · 590 likes</div>
+    </div>
+  
+    <div class="qcard">
+      <div class="qtext">I've been coming for a year. They took great care asking what results I want and delivered. I've introduced 4 friends.</div>
+      <div class="qsrc">Google Review · Peachy Studio</div>
+    </div>
   </div>
 
   <!-- PEACHY DROPDOWNS -->
@@ -422,7 +489,7 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
         alt="First concept preview"
       >
       <div class="panel-content">
-        <h3 class="panel-title">Ad Creative</h3>
+        <h3 class="panel-title" href="https://www.facebook.com/ads/library/?id=1293891229224662">Ad Creative</h3>
       </div>
     </div>
   
@@ -529,7 +596,7 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
         alt="First concept preview"
       >
       <div class="panel-content">
-        <h3 class="panel-title">Ad Creative</h3>
+        <h3 class="panel-title" href="https://www.facebook.com/ads/library/?id=931596636251925">Ad Creative</h3>
       </div>
     </div>
   
