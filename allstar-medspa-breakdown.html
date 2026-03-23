@@ -314,8 +314,12 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
 .tcard-icon svg{
   width:18px;
   height:18px;
-  fill:var(--g2);
   display:block;
+  fill:none;
+  stroke:var(--g2);
+  stroke-width:1.9;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 </style>
 </head>
@@ -1164,9 +1168,11 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
   <div class="tgrid">
     <div class="tcard">
       <span class="tcard-icon" aria-hidden="true">
-        <!-- cursor click (easy buy) -->
+        <!-- shopping cart: simplify the buy -->
         <svg viewBox="0 0 24 24">
-          <path d="M3 2l7 20 2-7 7-2L3 2zm9 11l-1.2 4.2L8.5 9.8 15 8l-3 5z"/>
+          <path d="M3 4h2l2.1 9.2A2 2 0 0 0 9 15h8.5a2 2 0 0 0 1.9-1.4L21 8H7.2" />
+          <circle cx="10" cy="19" r="1.75" />
+          <circle cx="17" cy="19" r="1.75" />
         </svg>
       </span>
       <div class="tcard-title">They Simplify the Buy</div>
@@ -1175,9 +1181,12 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
   
     <div class="tcard">
       <span class="tcard-icon" aria-hidden="true">
-        <!-- calendar repeat (retention) -->
+        <!-- refresh arrows: retention -->
         <svg viewBox="0 0 24 24">
-          <path d="M7 2v2H5a2 2 0 0 0-2 2v3h18V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm14 9H3v9a2 2 0 0 0 2 2h5v-2H5v-7h16v7h-5v2h5a2 2 0 0 0 2-2v-9zm-6 2l4 3h-3v3h-2v-3H9l4-3z"/>
+          <path d="M20 6v5h-5" />
+          <path d="M4 18v-5h5" />
+          <path d="M19 11a7 7 0 0 0-12-3L4 11" />
+          <path d="M5 13a7 7 0 0 0 12 3l3-3" />
         </svg>
       </span>
       <div class="tcard-title">They Build Retention on Purpose</div>
@@ -1186,9 +1195,9 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
   
     <div class="tcard">
       <span class="tcard-icon" aria-hidden="true">
-        <!-- focus / spotlight (narrowing) -->
+        <!-- funnel: narrow the promise -->
         <svg viewBox="0 0 24 24">
-          <path d="M12 2l4 4-2 2-2-2-2 2-2-2 4-4zm0 6a6 6 0 1 1-6 6h2a4 4 0 1 0 4-4V8zm-8 6H2a10 10 0 0 0 10 10v-2a8 8 0 0 1-8-8zm18 0h-2a8 8 0 0 1-8 8v2a10 10 0 0 0 10-10z"/>
+          <path d="M3 5h18l-7 8v5l-4 2v-7L3 5z" />
         </svg>
       </span>
       <div class="tcard-title">They Narrow the Promise</div>
@@ -1197,9 +1206,10 @@ header{padding:20px 40px;display:flex;align-items:center;justify-content:space-b
   
     <div class="tcard">
       <span class="tcard-icon" aria-hidden="true">
-        <!-- star badge (brand) -->
+        <!-- badge/star: brand -->
         <svg viewBox="0 0 24 24">
-          <path d="M12 2l2.4 4.9L20 8l-4 3.9L17 18l-5-2.6L7 18l1-6.1L4 8l5.6-.8L12 2zm0 6l-.9 1.8-2 .3 1.5 1.5-.3 2 1.8-.9 1.8.9-.3-2 1.5-1.5-2-.3L12 8z"/>
+          <path d="M12 3l2.2 2.3 3.2-.4.8 3.1 2.9 1.5-1.5 2.9.4 3.2-3.1.8L12 21l-2.9-2.2-3.2.4-.8-3.1-2.9-1.5 1.5-2.9-.4-3.2 3.1-.8L12 3z" />
+          <path d="M12 8.2l1.2 2.4 2.6.4-1.9 1.8.4 2.6-2.3-1.2-2.3 1.2.4-2.6-1.9-1.8 2.6-.4L12 8.2z" />
         </svg>
       </span>
       <div class="tcard-title">They Act Like Brands, Not Clinics</div>
