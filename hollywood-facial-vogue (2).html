@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hollywood Facial Makeover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #080808;
+  --white: #F7F5F1;
+  --ink:   #111;
+  --mid:   #555;
+  --pale:  #bbb;
+  --rule:  rgba(8,8,8,0.15);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: 'Libre Baskerville', serif;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════
+   COVER HERO — full magazine cover feel
+══════════════════════════════════════ */
+.cover {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #111;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Full-bleed photo / video bg */
+.cover-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* SWAP: replace with <img> or <video autoplay muted loop playsinline>
+     using style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1)" */
+  background: linear-gradient(170deg, #1c1c1c 0%, #2a2a2a 50%, #101010 100%);
+}
+
+/* Subtle vignette so text always reads */
+.cover-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 35%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.72) 100%),
+    linear-gradient(to right, rgba(0,0,0,0.45) 0%, transparent 50%, rgba(0,0,0,0.35) 100%);
+}
+
+/* ── MASTHEAD — enormous, bleeds to top ── */
+.cover-masthead {
+  position: relative;
+  z-index: 10;
+  padding: 0 2.5rem;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cover-masthead-wordmark {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 0.88;
+  display: block;
+  /* text partially bleeds behind photo — like Vogue covers */
+  mix-blend-mode: normal;
+}
+
+.cover-masthead-sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0 0;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  margin-top: 0.2rem;
+}
+
+.cover-masthead-sub span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(7px, 1vw, 10px);
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+}
+
+/* ── COVER BODY — text floats on photo ── */
+.cover-body {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr auto;
+  padding: 1.5rem 2.5rem 0;
+  gap: 0;
+  align-items: start;
+}
+
+/* Left column — cover lines */
+.cover-lines-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 2rem;
+}
+
+.cover-line {
+  color: #fff;
+}
+
+.cover-line-kicker {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(7px, 0.9vw, 10px);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  display: block;
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+
+.cover-line-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(1rem, 2.2vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  display: block;
+  color: #fff;
+}
+
+.cover-line-title em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.cover-line-body {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(0.65rem, 0.9vw, 0.78rem);
+  line-height: 1.6;
+  color: rgba(255,255,255,0.7);
+  margin-top: 4px;
+  font-style: italic;
+  display: block;
+}
+
+/* Scarcity pill */
+.scarcity-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.35);
+  padding: 5px 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(7px, 0.8vw, 9px);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  backdrop-filter: blur(4px);
+}
+
+.scarcity-dot {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* Center — empty (photo lives here) */
+.cover-center { /* intentionally empty — photo shows through */ }
+
+/* Right column — cover lines */
+.cover-lines-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 2rem;
+  text-align: right;
+}
+
+/* ── COVER FOOTER — bottom bar ── */
+.cover-footer {
+  position: relative;
+  z-index: 10;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  padding: 0 2.5rem 2.5rem;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.cover-footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cover-footer-price {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  font-style: italic;
+  color: rgba(255,255,255,0.8);
+}
+
+.cover-footer-cta {
+  display: inline-block;
+  padding: 13px 32px;
+  background: #fff;
+  color: var(--black);
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(8px, 0.9vw, 10px);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  width: fit-content;
+}
+
+.cover-footer-cta:hover {
+  background: rgba(255,255,255,0.85);
+}
+
+/* Big centred headline at bottom — like "LOOK FAMOUS" */
+.cover-footer-headline {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 0.9;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.cover-footer-headline em {
+  font-style: italic;
+  font-weight: 400;
+  display: block;
+  font-size: 0.55em;
+  letter-spacing: 0;
+}
+
+.cover-footer-right {
+  text-align: right;
+}
+
+.cover-barcode {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.cover-barcode-lines {
+  display: flex;
+  gap: 1.5px;
+  height: 28px;
+  align-items: flex-end;
+}
+
+.cover-barcode-lines span {
+  display: block;
+  width: 2px;
+  background: rgba(255,255,255,0.5);
+}
+
+.cover-barcode-lines span:nth-child(even) { height: 100%; }
+.cover-barcode-lines span:nth-child(3n)   { height: 75%; }
+.cover-barcode-lines span:nth-child(5n)   { height: 60%; width: 3px; }
+
+.cover-barcode p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7px;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+}
+
+/* ══════════════════════════════════════
+   FORM SECTION — below cover, white bg
+══════════════════════════════════════ */
+.form-section {
+  background: var(--white);
+  border-bottom: 2px solid var(--black);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.form-section-left {
+  padding: 4rem 3.5rem;
+  border-right: 2px solid var(--black);
+}
+
+.form-section-left h2 {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin-bottom: 0.3rem;
+}
+
+.form-section-left h2 em {
+  font-style: italic;
+  font-weight: 400;
+  display: block;
+}
+
+.fs-rule { width: 100%; height: 2px; background: var(--black); margin: 1.6rem 0; }
+
+.outcomes {
+  list-style: none;
+}
+
+.outcomes li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rule);
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.outcomes li:first-child { border-top: 1px solid var(--rule); }
+
+.outcomes li::before {
+  content: '—';
+  font-weight: 700;
+  color: var(--black);
+  flex-shrink: 0;
+}
+
+.fs-package-head {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--mid);
+  font-weight: 600;
+  margin: 1.6rem 0 0.8rem;
+}
+
+.included-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--black);
+  margin-bottom: 0;
+}
+
+.included-list li {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.included-list li::before {
+  content: '—';
+  color: var(--black);
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.form-section-right {
+  padding: 4rem 3.5rem;
+}
+
+.form-section-right h3 {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 0.2rem;
+}
+
+.form-section-right .form-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--mid);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.fields-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.field-group label {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.field-group input {
+  width: 100%;
+  padding: 12px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--black);
+  font-family: 'Libre Baskerville', serif;
+  font-size: 14px;
+  color: var(--black);
+  outline: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+.field-group input::placeholder { color: var(--pale); font-style: italic; }
+
+.phone-row { display: flex; align-items: flex-end; }
+
+.phone-prefix {
+  padding: 12px 10px 12px 0;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 14px;
+  color: var(--mid);
+  border-bottom: 2px solid var(--black);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.phone-row input { flex: 1; }
+
+.cta-btn {
+  display: block;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 18px 20px;
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cta-btn:hover { background: #222; }
+
+.form-disclaimer {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8.5px;
+  letter-spacing: 0.04em;
+  color: var(--mid);
+  line-height: 1.7;
+  margin-top: 0.9rem;
+  text-align: center;
+}
+
+/* ══════════════════════════════════════
+   TREATMENT STRIP
+══════════════════════════════════════ */
+.treatment-strip {
+  border-bottom: 2px solid var(--black);
+  display: grid;
+  grid-template-columns: 1fr 2px 1fr 2px 1fr 2px 1fr;
+  background: var(--white);
+}
+
+.treatment-strip-divider { background: var(--black); }
+
+.treatment-item {
+  padding: 2.5rem 2.5rem;
+  text-align: center;
+}
+
+.treatment-item-num {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 2.5rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--black);
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.treatment-item-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.treatment-item-desc {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.8rem;
+  color: var(--mid);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════
+   RESULTS MASTHEAD
+══════════════════════════════════════ */
+.results-masthead {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 3rem 3rem 2.5rem;
+  border-bottom: 2px solid var(--black);
+  gap: 2rem;
+}
+
+.rm-rule { height: 2px; background: var(--black); }
+
+.rm-center { text-align: center; }
+
+.rm-eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--mid);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.rm-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--black);
+}
+
+.rm-title em {
+  font-style: italic;
+  font-weight: 400;
+  display: block;
+  font-size: 0.65em;
+}
+
+.rm-sub {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--mid);
+  margin-top: 0.6rem;
+  display: block;
+}
+
+/* ══════════════════════════════════════
+   PHOTO WALL
+══════════════════════════════════════ */
+.photo-wall {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(5, 100px);
+  border-bottom: 2px solid var(--black);
+}
+
+.photo-card {
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid var(--black);
+  border-bottom: 1px solid var(--black);
+  background: #1a1a1a;
+  cursor: pointer;
+}
+
+.photo-card:last-child { border-right: none; }
+
+.photo-card:nth-child(1) { grid-column: 1 / 6;  grid-row: 1 / 4; }
+.photo-card:nth-child(2) { grid-column: 6 / 9;  grid-row: 1 / 3; }
+.photo-card:nth-child(3) { grid-column: 9 / 13; grid-row: 1 / 3; }
+.photo-card:nth-child(4) { grid-column: 6 / 9;  grid-row: 3 / 6; }
+.photo-card:nth-child(5) { grid-column: 9 / 11; grid-row: 3 / 5; }
+.photo-card:nth-child(6) { grid-column: 11 / 13; grid-row: 3 / 5; }
+.photo-card:nth-child(7) { grid-column: 1 / 4;  grid-row: 4 / 6; }
+.photo-card:nth-child(8) { grid-column: 4 / 6;  grid-row: 4 / 6; }
+.photo-card:nth-child(9) { grid-column: 9 / 13; grid-row: 5 / 6; }
+
+.photo-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow: hidden;
+  filter: grayscale(100%) contrast(1.1);
+  transition: transform 0.5s ease, filter 0.4s ease;
+}
+
+.photo-card:hover .photo-bg {
+  transform: scale(1.04);
+  filter: grayscale(100%) contrast(1.18);
+}
+
+.slot {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.slot.before { background: #111; border-right: 1px solid rgba(255,255,255,0.06); }
+.slot.after  { background: #1e1e1e; }
+
+/* Paparazzi flash */
+.photo-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.photo-card:hover::before {
+  animation: flash 0.45s ease forwards;
+}
+
+@keyframes flash {
+  0%   { background: rgba(255,255,255,0); }
+  12%  { background: rgba(255,255,255,0.3); }
+  24%  { background: rgba(255,255,255,0.02); }
+  42%  { background: rgba(255,255,255,0.18); }
+  100% { background: rgba(255,255,255,0); }
+}
+
+.ba-badge {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 2rem 0.8rem 0.55rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.82), transparent);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 5;
+}
+
+.tag {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  border: 1px solid;
+  font-weight: 700;
+}
+
+.tag.before { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.35); }
+.tag.after  { color: #fff; border-color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.15); }
+
+.shot-num {
+  position: absolute;
+  top: 7px; right: 9px;
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  z-index: 6;
+}
+
+/* ══════════════════════════════════════
+   PULL QUOTE
+══════════════════════════════════════ */
+.pull-quote {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 4rem 3rem;
+  border-bottom: 2px solid var(--black);
+}
+
+.pq-rule { height: 2px; background: var(--black); }
+.pq-inner { text-align: center; }
+
+.pq-mark {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 6rem;
+  line-height: 0.4;
+  color: var(--pale);
+  display: block;
+  margin-bottom: 1.4rem;
+}
+
+.pq-text {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--black);
+}
+
+.pq-text em { font-style: normal; font-weight: 700; }
+
+.pq-cite {
+  display: block;
+  margin-top: 1.4rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--mid);
+  font-weight: 700;
+}
+
+/* ══════════════════════════════════════
+   FOOTER CTA
+══════════════════════════════════════ */
+.footer-cta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 2px solid var(--black);
+}
+
+.footer-cta-left {
+  padding: 4rem 3rem;
+  border-right: 2px solid var(--black);
+}
+
+.footer-cta-left span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--mid);
+  display: block;
+  margin-bottom: 1.4rem;
+  font-weight: 700;
+}
+
+.footer-cta-left h2 {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--black);
+}
+
+.footer-cta-left h2 em {
+  font-style: italic;
+  font-weight: 400;
+  display: block;
+}
+
+.footer-cta-right {
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.4rem;
+}
+
+.footer-cta-right p {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--ink);
+  font-style: italic;
+}
+
+.footer-btn {
+  display: inline-block;
+  width: fit-content;
+  padding: 17px 48px;
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.footer-btn:hover { background: #222; }
+
+/* ══════════════════════════════════════
+   COLOPHON
+══════════════════════════════════════ */
+.colophon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.3rem 3rem;
+}
+
+.colophon p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8.5px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media (max-width: 960px) {
+  .cover-body { grid-template-columns: 1fr 1fr; }
+  .cover-lines-right { display: none; }
+  .cover-footer { grid-template-columns: 1fr 1fr; }
+  .cover-footer-headline { font-size: clamp(2rem, 8vw, 4rem); }
+
+  .form-section { grid-template-columns: 1fr; }
+  .form-section-left { border-right: none; border-bottom: 2px solid var(--black); padding: 2.5rem 1.5rem; }
+  .form-section-right { padding: 2.5rem 1.5rem; }
+  .fields-row { grid-template-columns: 1fr; }
+  .included-list { grid-template-columns: 1fr; }
+
+  .treatment-strip { grid-template-columns: 1fr 1fr; }
+  .treatment-strip-divider { display: none; }
+  .treatment-item { border-bottom: 1px solid var(--black); }
+
+  .results-masthead { padding: 2rem 1.5rem; }
+
+  .photo-wall { grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(8, 80px); }
+  .photo-card:nth-child(1) { grid-column: 1 / 7; grid-row: 1 / 3; }
+  .photo-card:nth-child(2) { grid-column: 1 / 4; grid-row: 3 / 5; }
+  .photo-card:nth-child(3) { grid-column: 4 / 7; grid-row: 3 / 5; }
+  .photo-card:nth-child(4) { grid-column: 1 / 4; grid-row: 5 / 7; }
+  .photo-card:nth-child(5) { grid-column: 4 / 7; grid-row: 5 / 7; }
+  .photo-card:nth-child(6) { grid-column: 1 / 3; grid-row: 7 / 9; }
+  .photo-card:nth-child(7) { grid-column: 3 / 5; grid-row: 7 / 9; }
+  .photo-card:nth-child(8) { grid-column: 5 / 7; grid-row: 7 / 8; }
+  .photo-card:nth-child(9) { grid-column: 5 / 7; grid-row: 8 / 9; }
+
+  .pull-quote { grid-template-columns: 1fr; gap: 0; padding: 3rem 1.5rem; }
+  .pq-rule { display: none; }
+
+  .footer-cta { grid-template-columns: 1fr; }
+  .footer-cta-left { border-right: none; border-bottom: 2px solid var(--black); padding: 2.5rem 1.5rem; }
+  .footer-cta-right { padding: 2rem 1.5rem; }
+
+  .colophon { padding: 1rem 1.5rem; flex-direction: column; gap: 6px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ COVER ══════════ -->
+<section class="cover">
+  <div class="cover-media">
+    <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1)">
+      <source src="https://www.postracquisition.com/medluxuryvid.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Giant masthead — bleeds to the top -->
+  <div class="cover-masthead">
+    <span class="cover-masthead-wordmark">HOLLYWOOD FACIAL MAKEOVER</span>
+  </div>
+
+  <!-- Body: cover lines + central photo zone -->
+  <div class="cover-body">
+
+    <!-- LEFT COVER LINES -->
+    <div class="cover-lines-left">
+
+      <div class="cover-line">
+        <span class="cover-line-kicker">FDA Cleared</span>
+        <span class="cover-line-title">YOUR SKIN,<br><em>Rebuilt</em></span>
+        <span class="cover-line-body">Not tightened. Not filled. Actually rebuilt — from within.</span>
+      </div>
+
+      <div class="cover-line">
+        <span class="cover-line-kicker">The Problem</span>
+        <span class="cover-line-title">CREAMS<br><em>Can't Fix This</em></span>
+        <span class="cover-line-body">Collagen loss happens below the surface. Surface treatments can't reach it.</span>
+      </div>
+
+      <p class="cover-line-body" style="margin-top:1.8rem;font-size:clamp(0.7rem,1vw,0.85rem);color:rgba(255,255,255,0.55);font-style:italic;border-top:1px solid rgba(255,255,255,0.18);padding-top:0.8rem;">By appointment only &mdash; limited availability.</p>
+
+    </div>
+
+    <!-- CENTER — photo lives here, intentionally empty -->
+    <div class="cover-center"></div>
+
+    <!-- RIGHT COVER LINES -->
+    <div class="cover-lines-right">
+
+      <div class="cover-line" style="text-align:right;">
+        <span class="cover-line-kicker">The Result</span>
+        <span class="cover-line-title">UP TO 2 YEARS<br><em>Of Improvement</em></span>
+        <span class="cover-line-body">One session. Results that keep getting better.</span>
+      </div>
+
+      <div class="cover-line" style="text-align:right;">
+        <span class="cover-line-kicker">No Surgery. No Downtime.</span>
+        <span class="cover-line-title">NO ONE<br><em>Needs to Know</em></span>
+        <span class="cover-line-body">Walk in. Walk out. Let them wonder.</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Cover footer — big type + CTA + barcode -->
+  <div class="cover-footer">
+
+    <div class="cover-footer-left">
+      <button class="cover-footer-cta">Claim Your Spot Now</button>
+    </div>
+
+    <div class="cover-footer-headline">
+      LOOK<br>
+      <em>Famous</em>
+    </div>
+
+    <div class="cover-footer-right">
+      <div class="cover-barcode">
+        <div class="cover-barcode-lines">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p>Exclusive · Limited · 2025</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ FORM SECTION ══════════ -->
+<section class="form-section">
+
+  <div class="form-section-left">
+    <h2>
+      What You Get<br>
+      <em>With This Offer</em>
+    </h2>
+
+    <div class="fs-rule"></div>
+
+    <p style="font-family:'Libre Baskerville',serif;font-size:0.92rem;line-height:1.85;color:var(--ink);">
+      Your skin loses structure over time — lines deepen, contours soften, 
+      and no amount of skincare reverses it. This treatment goes underneath 
+      the surface to rebuild what's been lost, from the inside out.
+    </p>
+
+    <ul class="outcomes" style="margin-top:1.4rem;">
+      <li>Visibly tighter skin — after just one session</li>
+      <li>Smooths lines and restores facial contours</li>
+      <li>No surgery, no downtime, no one needs to know</li>
+      <li>Results that continue improving for up to two years</li>
+    </ul>
+
+    <p class="fs-package-head">Your Exclusive Package Includes</p>
+
+    <ul class="included-list">
+      <li>Free consultation</li>
+      <li>Full treatment session</li>
+      <li>Aftercare guidance</li>
+      <li>Follow-up check-in</li>
+    </ul>
+  </div>
+
+  <div class="form-section-right">
+    <h3>Reserve Your Spot</h3>
+    <p class="form-sub">First 12 clients · Exclusive pricing</p>
+
+    <div class="fields-row">
+      <div class="field-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Full name" />
+      </div>
+      <div class="field-group">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com" />
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Phone</label>
+      <div class="phone-row">
+        <span class="phone-prefix">🇺🇸 +1&nbsp;</span>
+        <input type="tel" placeholder="Phone number" />
+      </div>
+    </div>
+
+    <button class="cta-btn">Claim Your Spot Now</button>
+
+    <p class="form-disclaimer">
+      By submitting your details you consent to being contacted by the clinic.
+      Privacy policy and terms of service apply.
+    </p>
+  </div>
+
+</section>
+
+<!-- ══════════ TREATMENT STRIP ══════════ -->
+<div class="treatment-strip">
+  <div class="treatment-item">
+    <span class="treatment-item-num">01</span>
+    <span class="treatment-item-label">The Problem</span>
+    <p class="treatment-item-desc">Skin loses collagen with age — leaving it looser, duller, and unreachable by topical creams.</p>
+  </div>
+  <div class="treatment-strip-divider"></div>
+  <div class="treatment-item">
+    <span class="treatment-item-num">02</span>
+    <span class="treatment-item-label">The Solution</span>
+    <p class="treatment-item-desc">A targeted pulse of energy triggers your skin's own repair process — rebuilding collagen from within.</p>
+  </div>
+  <div class="treatment-strip-divider"></div>
+  <div class="treatment-item">
+    <span class="treatment-item-num">03</span>
+    <span class="treatment-item-label">The Result</span>
+    <p class="treatment-item-desc">Firmer, smoother skin with improved contours — results that build and last for up to two years.</p>
+  </div>
+  <div class="treatment-strip-divider"></div>
+  <div class="treatment-item">
+    <span class="treatment-item-num">FDA</span>
+    <span class="treatment-item-label">Cleared</span>
+    <p class="treatment-item-desc">Non-surgical and clinically validated. Safe for first-time clients. No recovery time needed.</p>
+  </div>
+</div>
+
+<!-- ══════════ RESULTS MASTHEAD ══════════ -->
+<div class="results-masthead">
+  <div class="rm-rule"></div>
+  <div class="rm-center">
+    <span class="rm-eyebrow">Real clients · Real results · No filter</span>
+    <h2 class="rm-title">
+      BEFORE &amp; AFTER
+      <em>Unretouched</em>
+    </h2>
+    <span class="rm-sub">Candid. Honest. Theirs.</span>
+  </div>
+  <div class="rm-rule"></div>
+</div>
+
+<!-- ══════════ PHOTO WALL ══════════ -->
+<div class="photo-wall">
+
+  <div class="photo-card">
+    <div class="photo-bg"><div class="slot before">Before</div><div class="slot after">After</div></div>
+    <span class="shot-num">01</span>
+    <div class="ba-badge"><span class="tag before">Before</span><span class="tag after">After</span></div>
+  </div>
+
+  <div class="photo-card">
+    <div class="photo-bg"><div class="slot before">Before</div><div class="slot after">After</div></div>
+    <span class="shot-num">02</span>
+    <div class="ba-badge"><span class="tag before">Before</span><span class="tag after">After</span></div>
+  </div>
+
+  <div class="photo-card">
+    <div class="photo-bg"><div class="slot before">Before</div><div class="slot after">After</div></div>
+    <span class="shot-num">03</span>
+    <div class="ba-badge"><span class="tag before">Before</span><span class="tag after">After</span></div>
+  </div>
+
+  <div class="photo-card">
+    <div class="photo-bg"><div class="slot before">Before</div><div class="slot after">After</div></div>
+    <span class="shot-num">04</span>
+    <div class="ba-badge"><span class="tag before">Before</span><span class="tag after">After</span></div>
+  </div>
+
+  <div class="photo-card">
+    <div class="photo-bg"><div class="slot before">Before</div><div class="slot after">After</div></div>
+    <span class="shot-num">05</span>
+    <div class="ba-badge"><span class="tag before">Before</span><span class="tag after">After</span></div>
+  </div>
+
+  <div class="photo-card">
+    <div class="photo-bg"><div class="slot before">Before</div><div class="slot after">After</div></div>
+    <span class="shot-num">06</span>
+    <div class="ba-badge"><span class="tag before">Before</span><span class="tag after">After</span></div>
+  </div>
+
+  <div class="photo-card">
+    <div class="photo-bg"><div class="slot before">Before</div><div class="slot after">After</div></div>
+    <span class="shot-num">07</span>
+    <div class="ba-badge"><span class="tag before">Before</span><span class="tag after">After</span></div>
+  </div>
+
+  <div class="photo-card">
+    <div class="photo-bg"><div class="slot before">Before</div><div class="slot after">After</div></div>
+    <span class="shot-num">08</span>
+    <div class="ba-badge"><span class="tag before">Before</span><span class="tag after">After</span></div>
+  </div>
+
+  <div class="photo-card">
+    <div class="photo-bg"><div class="slot before">Before</div><div class="slot after">After</div></div>
+    <span class="shot-num">09</span>
+    <div class="ba-badge"><span class="tag before">Before</span><span class="tag after">After</span></div>
+  </div>
+
+</div>
+
+<!-- ══════════ PULL QUOTE ══════════ -->
+<div class="pull-quote">
+  <div class="pq-rule"></div>
+  <div class="pq-inner">
+    <span class="pq-mark">"</span>
+    <p class="pq-text">I didn't tell anyone.<br>But everyone noticed something was <em>different</em>.</p>
+    <cite class="pq-cite">— Verified Client</cite>
+  </div>
+  <div class="pq-rule"></div>
+</div>
+
+<!-- ══════════ FOOTER CTA ══════════ -->
+<div class="footer-cta">
+  <div class="footer-cta-left">
+    <span>Ready for your transformation?</span>
+    <h2>YOUR SKIN,<br><em>Redefined</em></h2>
+  </div>
+  <div class="footer-cta-right">
+    <p>
+      Firmer. Smoother. Yours. This exclusive offer is reserved
+      for the first 12 clients — once they're gone, the price goes back up.
+    </p>
+    <button class="footer-btn">Claim Your Spot — 12 Openings Left</button>
+  </div>
+</div>
+
+<!-- ══════════ COLOPHON ══════════ -->
+<footer class="colophon">
+  <p>© 2025 The Clinic · All rights reserved</p>
+  <p>Privacy Policy · Terms of Service</p>
+</footer>
+
+</body>
+</html>
