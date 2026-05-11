@@ -3,62 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>POSTR | Growth Fit Check</title>
-  <meta name="description" content="Answer a few quick questions and see if POSTR can help your local business get more booked jobs." />
+  <title>POSTR | Fit Check</title>
+  <meta name="description" content="Take the POSTR fit check and see if we can help your local business get more booked jobs." />
 
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo/favicon.png?v=2" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #030303;
-      --panel: rgba(255,255,255,.035);
-      --panel-strong: rgba(255,255,255,.065);
-      --border: rgba(255,255,255,.12);
-      --border-strong: rgba(255,255,255,.26);
+      --bg: #050505;
       --text: #ffffff;
-      --muted: rgba(255,255,255,.68);
-      --muted-2: rgba(255,255,255,.48);
+      --muted: rgba(255,255,255,.58);
+      --soft: rgba(255,255,255,.11);
+      --line: rgba(255,255,255,.16);
       --gold: #d4b24a;
-      --gold-2: #f0dc9a;
-      --gold-3: #a8832e;
-      --danger: #ff6b6b;
-      --radius: 22px;
-      --shadow: 0 24px 80px rgba(0,0,0,.45);
+      --gold-soft: rgba(212,178,74,.18);
+      --button: #ffffff;
+      --button-text: #050505;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
     }
 
     body {
-      margin: 0;
       min-height: 100vh;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
       background:
-        radial-gradient(circle at 20% 5%, rgba(212,178,74,.18), transparent 30%),
-        radial-gradient(circle at 80% 15%, rgba(255,255,255,.08), transparent 24%),
-        linear-gradient(180deg, #050505 0%, #000 100%);
-      overflow-x: hidden;
+        radial-gradient(circle at 50% -15%, rgba(212,178,74,.14), transparent 34%),
+        #050505;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-      background-size: 54px 54px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,.85), transparent 82%);
-      z-index: 0;
+    button, input, textarea {
+      font: inherit;
     }
 
     a {
@@ -66,328 +50,318 @@
       text-decoration: none;
     }
 
-    button, input, textarea {
-      font: inherit;
-    }
-
-    .page-shell {
-      position: relative;
-      z-index: 1;
+    .page {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
     .topbar {
-      width: min(1180px, calc(100% - 36px));
+      width: min(1180px, calc(100% - 42px));
       margin: 0 auto;
-      padding: 24px 0;
+      padding: 30px 0 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 20px;
     }
 
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .brand img {
-      width: 96px;
+    .logo img {
+      width: 98px;
       height: auto;
       display: block;
     }
 
-    .brand-fallback {
+    .logo-text {
       display: none;
+      font-size: 26px;
       font-weight: 900;
-      letter-spacing: -.06em;
-      font-size: 28px;
-      line-height: 1;
+      letter-spacing: -.07em;
     }
 
-    .topbar-right {
+    .help {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--muted);
-      font-size: 13px;
-      white-space: nowrap;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 0 5px rgba(212,178,74,.12);
-    }
-
-    .hero-wrap {
-      flex: 1;
-      width: min(1180px, calc(100% - 36px));
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: .92fr 1.08fr;
-      gap: 34px;
-      align-items: center;
-      padding: 34px 0 70px;
-    }
-
-    .hero-copy {
-      padding: 22px 0;
-    }
-
-    .eyebrow {
-      display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 9px 12px;
-      border: 1px solid rgba(212,178,74,.32);
-      border-radius: 999px;
-      background: rgba(212,178,74,.07);
-      color: rgba(255,255,255,.78);
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-size: 12px;
+      font-size: 15px;
+      line-height: 1.12;
       font-weight: 800;
-      margin-bottom: 20px;
+      text-align: left;
     }
 
-    .eyebrow i {
-      color: var(--gold);
-    }
-
-    h1 {
-      margin: 0;
-      max-width: 650px;
-      font-size: clamp(44px, 6.2vw, 86px);
-      line-height: .92;
-      letter-spacing: -.075em;
-      text-transform: uppercase;
-      font-weight: 900;
-    }
-
-    h1 span {
-      display: block;
-      color: var(--gold-2);
-      text-shadow: 0 0 34px rgba(212,178,74,.16);
-    }
-
-    .hero-copy p {
-      max-width: 560px;
-      margin: 22px 0 0;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.58;
-    }
-
-    .proof-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      max-width: 610px;
-      margin-top: 28px;
-    }
-
-    .proof-pill {
-      min-height: 94px;
-      padding: 16px;
-      border: 1px solid rgba(255,255,255,.09);
-      background: rgba(255,255,255,.03);
-      border-radius: 16px;
-    }
-
-    .proof-pill strong {
-      display: block;
-      font-size: 22px;
-      line-height: 1;
-      letter-spacing: -.04em;
-      margin-bottom: 8px;
-    }
-
-    .proof-pill span {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.35;
-    }
-
-    .funnel-card {
-      position: relative;
-      border: 1px solid rgba(255,255,255,.13);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.028)),
-        rgba(0,0,0,.35);
-      border-radius: 30px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .funnel-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(240,220,154,.8), transparent);
-    }
-
-    .funnel-inner {
-      position: relative;
-      padding: clamp(22px, 4vw, 38px);
-    }
-
-    .funnel-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 24px;
-    }
-
-    .funnel-kicker {
-      margin: 0 0 9px;
-      color: var(--gold-2);
-      text-transform: uppercase;
-      letter-spacing: .13em;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .funnel-title {
-      margin: 0;
-      font-size: clamp(25px, 3vw, 38px);
-      line-height: 1.05;
-      letter-spacing: -.055em;
-      text-transform: uppercase;
-      max-width: 520px;
-    }
-
-    .step-count {
-      flex: 0 0 auto;
-      width: 64px;
-      height: 64px;
+    .help-icon {
+      width: 31px;
+      height: 31px;
       display: grid;
       place-items: center;
+      border: 1px solid var(--line);
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.15);
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.78);
-      font-size: 13px;
-      font-weight: 800;
+      color: var(--gold);
+      font-size: 16px;
     }
 
-    .progress-shell {
-      height: 8px;
+    .progress-wrap {
+      width: min(1180px, calc(100% - 42px));
+      margin: 0 auto;
+      position: relative;
+      height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 5px;
       border-radius: 999px;
-      background: rgba(255,255,255,.08);
+      background: rgba(255,255,255,.16);
       overflow: hidden;
-      margin-bottom: 26px;
     }
 
     .progress-bar {
       height: 100%;
       width: 0%;
       border-radius: inherit;
-      background: linear-gradient(90deg, var(--gold-3), var(--gold), var(--gold-2));
-      transition: width .34s ease;
+      background: linear-gradient(90deg, #a8832e, #d4b24a, #f0dc9a);
+      transition: width .25s ease;
+    }
+
+    .avatar {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 54px;
+      height: 54px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: #111;
+      border: 4px solid #050505;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.1);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .avatar span {
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: -.06em;
+      color: var(--gold);
+    }
+
+    .main {
+      flex: 1;
+      width: min(760px, calc(100% - 36px));
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: clamp(70px, 10vh, 120px) 0 60px;
+      text-align: center;
     }
 
     .screen {
       display: none;
-      animation: enter .24s ease both;
+      width: 100%;
+      animation: fadeIn .22s ease both;
     }
 
     .screen.active {
       display: block;
     }
 
-    @keyframes enter {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .question {
-      margin: 0 0 18px;
-      font-size: clamp(24px, 3.5vw, 42px);
-      line-height: 1.06;
-      letter-spacing: -.06em;
+    .kicker {
+      margin: 0 0 14px;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    h1, h2 {
+      margin: 0;
+      font-size: clamp(28px, 4.4vw, 42px);
+      line-height: 1.22;
+      letter-spacing: -.045em;
       font-weight: 900;
     }
 
-    .hint {
-      margin: -6px 0 22px;
+    .intro-gap {
+      height: 58px;
+    }
+
+    .subtext {
+      margin: 14px auto 0;
+      max-width: 560px;
       color: var(--muted);
+      font-size: 17px;
       line-height: 1.5;
-      font-size: 15px;
+    }
+
+    .button-stack {
+      margin-top: 34px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .btn {
+      border: 0;
+      min-width: 310px;
+      min-height: 60px;
+      padding: 0 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 900;
+      font-size: 18px;
+      transition: transform .16s ease, opacity .16s ease, background .16s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--button);
+      color: var(--button-text);
+    }
+
+    .btn-dark {
+      background: rgba(255,255,255,.14);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.14);
+    }
+
+    .btn-ghost {
+      min-width: auto;
+      min-height: auto;
+      padding: 10px 12px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .fineprint {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .time {
+      margin-top: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,.8);
+      font-weight: 800;
+      font-size: 30px;
+      letter-spacing: -.04em;
+    }
+
+    .clock {
+      width: 34px;
+      height: 34px;
+      border: 4px solid rgba(255,255,255,.72);
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .clock::before {
+      content: "";
+      position: absolute;
+      width: 4px;
+      height: 12px;
+      background: rgba(255,255,255,.72);
+      left: 50%;
+      top: 7px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+    }
+
+    .clock::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 4px;
+      background: rgba(255,255,255,.72);
+      left: 50%;
+      top: 50%;
+      transform: translate(-1px, -50%);
+      border-radius: 999px;
     }
 
     .field {
-      margin-bottom: 18px;
+      max-width: 520px;
+      margin: 28px auto 0;
+      text-align: left;
     }
 
-    .field-label {
+    .field label {
       display: block;
       margin-bottom: 10px;
-      color: rgba(255,255,255,.72);
+      color: rgba(255,255,255,.7);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      letter-spacing: .11em;
-      font-size: 12px;
-      font-weight: 800;
     }
 
-    .text-input, textarea {
+    input, textarea {
       width: 100%;
       min-height: 58px;
-      border: 1px solid rgba(255,255,255,.13);
-      border-radius: 16px;
-      background: rgba(0,0,0,.26);
+      padding: 15px 16px;
+      border-radius: 9px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
       color: #fff;
       outline: none;
-      padding: 16px 17px;
-      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+      font-size: 17px;
+      transition: border-color .16s ease, box-shadow .16s ease;
     }
 
     textarea {
-      min-height: 132px;
+      min-height: 118px;
       resize: vertical;
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
-    .text-input::placeholder, textarea::placeholder {
-      color: rgba(255,255,255,.35);
+    input::placeholder, textarea::placeholder {
+      color: rgba(255,255,255,.33);
     }
 
-    .text-input:focus, textarea:focus {
-      border-color: rgba(212,178,74,.72);
-      box-shadow: 0 0 0 4px rgba(212,178,74,.12);
-      background: rgba(0,0,0,.36);
+    input:focus, textarea:focus {
+      border-color: rgba(212,178,74,.9);
+      box-shadow: 0 0 0 4px var(--gold-soft);
     }
 
-    .choice-grid {
+    .choice-list {
+      max-width: 520px;
+      margin: 30px auto 0;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
-      margin-top: 4px;
-    }
-
-    .choice-grid.single {
-      grid-template-columns: 1fr;
     }
 
     .choice {
       position: relative;
       display: block;
       cursor: pointer;
+      text-align: left;
     }
 
     .choice input {
@@ -397,658 +371,334 @@
     }
 
     .choice-card {
-      position: relative;
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 17px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.026);
-      color: #fff;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
-    }
-
-    .choice-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(255,255,255,.28);
-      background: rgba(255,255,255,.05);
-    }
-
-    .choice-title {
-      display: block;
-      font-weight: 800;
-      letter-spacing: -.02em;
-      line-height: 1.2;
-    }
-
-    .choice-sub {
-      display: block;
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.35;
-      font-weight: 500;
-    }
-
-    .check {
-      width: 23px;
-      height: 23px;
-      flex: 0 0 auto;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.32);
-      display: grid;
-      place-items: center;
-      color: #000;
-      font-size: 11px;
-      transition: all .18s ease;
-    }
-
-    .choice input:checked + .choice-card {
-      border-color: rgba(212,178,74,.84);
-      background: linear-gradient(135deg, rgba(212,178,74,.16), rgba(255,255,255,.04));
-      box-shadow: inset 0 0 0 1px rgba(212,178,74,.28), 0 12px 34px rgba(0,0,0,.2);
-    }
-
-    .choice input:checked + .choice-card .check {
-      background: var(--gold);
-      border-color: var(--gold);
-    }
-
-    .choice input:checked + .choice-card .check::before {
-      content: "\f00c";
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-    }
-
-    .choice input:focus-visible + .choice-card {
-      outline: 2px solid rgba(212,178,74,.65);
-      outline-offset: 3px;
-    }
-
-    .button-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-top: 24px;
-    }
-
-    .button-group {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .btn {
-      appearance: none;
-      border: 0;
-      min-height: 52px;
-      border-radius: 999px;
-      padding: 0 20px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      cursor: pointer;
-      font-weight: 900;
-      letter-spacing: .035em;
-      text-transform: uppercase;
-      font-size: 13px;
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
-    }
-
-    .btn-primary {
-      color: #0b0b0b;
-      background: linear-gradient(135deg, var(--gold), var(--gold-2));
-      box-shadow: 0 15px 34px rgba(212,178,74,.18);
-    }
-
-    .btn-secondary {
-      color: #fff;
-      background: rgba(255,255,255,.035);
+      width: 100%;
+      min-height: 62px;
+      padding: 16px 18px;
+      border-radius: 9px;
       border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 800;
+      transition: border-color .16s ease, background .16s ease, transform .16s ease;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
+    .choice-card:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.09);
+      border-color: rgba(255,255,255,.28);
     }
 
-    .btn-primary:hover {
-      box-shadow: 0 18px 42px rgba(212,178,74,.26);
+    .choice input:checked + .choice-card {
+      border-color: var(--gold);
+      background: rgba(212,178,74,.16);
     }
 
-    .btn:disabled {
-      opacity: .55;
-      cursor: not-allowed;
-      transform: none;
+    .choice input:checked + .choice-card::after {
+      content: "✓";
+      color: var(--gold);
+      font-weight: 900;
     }
 
-    .microcopy {
-      color: var(--muted-2);
-      font-size: 13px;
-      line-height: 1.45;
+    .nav {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .error {
       display: none;
-      margin-top: 14px;
+      max-width: 520px;
+      margin: 16px auto 0;
       padding: 12px 14px;
-      border: 1px solid rgba(255,107,107,.32);
-      background: rgba(255,107,107,.08);
-      color: rgba(255,255,255,.86);
-      border-radius: 14px;
+      border-radius: 9px;
+      color: #fff;
+      background: rgba(255, 78, 78, .13);
+      border: 1px solid rgba(255, 78, 78, .28);
+      text-align: center;
       font-size: 14px;
+      font-weight: 700;
     }
 
     .error.show {
       display: block;
     }
 
-    .result-box {
-      padding: 22px;
-      border: 1px solid rgba(212,178,74,.22);
-      background: linear-gradient(135deg, rgba(212,178,74,.12), rgba(255,255,255,.035));
-      border-radius: 22px;
-      margin-bottom: 22px;
-    }
-
-    .result-box h3 {
-      margin: 0 0 8px;
-      font-size: 32px;
-      letter-spacing: -.055em;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .result-box p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .summary-grid {
+    .summary {
+      max-width: 560px;
+      margin: 28px auto 0;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
-      margin-bottom: 18px;
+      text-align: left;
     }
 
-    .summary-item {
-      border: 1px solid rgba(255,255,255,.1);
-      background: rgba(255,255,255,.03);
-      border-radius: 14px;
-      padding: 12px;
+    .summary-row {
+      padding: 13px 15px;
+      border-radius: 9px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
     }
 
-    .summary-item span {
+    .summary-row span {
       display: block;
-      color: var(--muted-2);
-      font-size: 11px;
+      color: var(--muted);
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: .1em;
+      letter-spacing: .12em;
       font-weight: 900;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
 
-    .summary-item strong {
+    .summary-row strong {
       display: block;
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1.35;
     }
 
-    .trust-strip {
-      width: min(1180px, calc(100% - 36px));
-      margin: -38px auto 50px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 22px;
-      background: rgba(255,255,255,.025);
-      overflow: hidden;
-    }
-
-    .trust-item {
-      padding: 20px;
-      border-right: 1px solid rgba(255,255,255,.075);
-    }
-
-    .trust-item:last-child {
-      border-right: 0;
-    }
-
-    .trust-item strong {
-      display: block;
-      margin-bottom: 5px;
-      font-size: 15px;
-      text-transform: uppercase;
-      letter-spacing: -.01em;
-    }
-
-    .trust-item span {
-      display: block;
-      color: var(--muted);
-      line-height: 1.45;
-      font-size: 14px;
-    }
-
-    .footer {
-      width: min(1180px, calc(100% - 36px));
-      margin: 0 auto;
-      padding: 0 0 34px;
-      color: var(--muted-2);
-      font-size: 13px;
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 980px) {
-      .hero-wrap {
-        grid-template-columns: 1fr;
-        padding-top: 18px;
-      }
-
-      .hero-copy {
-        padding-bottom: 0;
-      }
-
-      .funnel-card {
-        max-width: 760px;
-        width: 100%;
-        margin: 0 auto;
-      }
-
-      .trust-strip {
-        margin-top: -26px;
-      }
-    }
-
-    @media (max-width: 680px) {
+    @media (max-width: 700px) {
       .topbar {
-        padding-top: 18px;
+        padding-top: 20px;
       }
 
-      .topbar-right span:last-child {
-        display: none;
+      .help {
+        font-size: 12px;
       }
 
-      .brand img {
-        width: 82px;
+      .help-icon {
+        width: 28px;
+        height: 28px;
       }
 
-      .hero-wrap {
-        width: min(100% - 28px, 1180px);
-        gap: 24px;
-        padding-bottom: 52px;
+      .progress-wrap {
+        width: calc(100% - 30px);
       }
 
-      .proof-row,
-      .choice-grid,
-      .summary-grid,
-      .trust-strip {
-        grid-template-columns: 1fr;
+      .avatar {
+        width: 48px;
+        height: 48px;
       }
 
-      .funnel-inner {
-        padding: 22px;
+      .main {
+        width: calc(100% - 30px);
+        padding-top: 56px;
       }
 
-      .funnel-header {
-        display: block;
+      .intro-gap {
+        height: 42px;
       }
 
-      .step-count {
-        margin-top: 14px;
-        width: auto;
-        height: auto;
-        display: inline-flex;
-        padding: 9px 12px;
-      }
-
-      .button-row {
-        flex-direction: column-reverse;
-        align-items: stretch;
-      }
-
-      .button-group,
       .btn {
         width: 100%;
+        min-width: 0;
       }
 
-      .trust-strip {
-        width: min(100% - 28px, 1180px);
-      }
-
-      .trust-item {
-        border-right: 0;
-        border-bottom: 1px solid rgba(255,255,255,.075);
-      }
-
-      .trust-item:last-child {
-        border-bottom: 0;
+      .time {
+        font-size: 25px;
       }
     }
   </style>
 </head>
 
 <body>
-  <main class="page-shell">
+  <div class="page">
     <header class="topbar">
-      <a class="brand" href="/" aria-label="POSTR home">
+      <a class="logo" href="/" aria-label="POSTR home">
         <img src="assets/img/logo/logo-postr.png" alt="POSTR" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-        <span class="brand-fallback">POSTR</span>
+        <span class="logo-text">POSTR</span>
       </a>
 
-      <div class="topbar-right">
-        <span class="status-dot" aria-hidden="true"></span>
-        <span>Quick fit check</span>
-        <span>2 minutes</span>
-      </div>
+      <a class="help" href="mailto:ian@postrmarketing.com">
+        <span class="help-icon">✉</span>
+        <span>Need help?<br>Email Ian</span>
+      </a>
     </header>
 
-    <section class="hero-wrap" aria-label="POSTR questionnaire funnel">
-      <div class="hero-copy">
-        <div class="eyebrow"><i class="fa-solid fa-bolt"></i> Local growth system</div>
-        <h1>Find out if your business is ready to get <span>more booked jobs</span></h1>
-        <p>
-          Answer a few direct questions. If there is a real fit, you can book a quick call and we will show you where your current lead flow is leaking.
-        </p>
+    <div class="progress-wrap" aria-hidden="true">
+      <div class="progress-track">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <div class="avatar">
+        <img src="assets/img/team/ian.png" alt="Ian Andersen" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <span>IA</span>
+      </div>
+    </div>
 
-        <div class="proof-row" aria-label="Proof points">
-          <div class="proof-pill">
-            <strong>Google Ads</strong>
-            <span>High-intent traffic from people already searching.</span>
+    <main class="main">
+      <form id="fitForm" name="postr-fit-check" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="postr-fit-check" />
+        <p style="display:none;"><label>Do not fill this out: <input name="bot-field" /></label></p>
+
+        <input type="hidden" name="utm_source" id="utm_source" />
+        <input type="hidden" name="utm_medium" id="utm_medium" />
+        <input type="hidden" name="utm_campaign" id="utm_campaign" />
+        <input type="hidden" name="utm_term" id="utm_term" />
+        <input type="hidden" name="utm_content" id="utm_content" />
+
+        <section class="screen active" data-step="0">
+          <h1>Hi there 👋<br>I’m Ian, founder of POSTR.</h1>
+          <div class="intro-gap"></div>
+          <h2>Ready to find out how we can help you get more booked jobs?</h2>
+
+          <div class="button-stack">
+            <button class="btn btn-dark" type="button" data-next>Let’s go!</button>
+            <div class="fineprint">It’s free to get started.</div>
+            <div class="time"><span class="clock"></span> 2 min</div>
           </div>
-          <div class="proof-pill">
-            <strong>Landing Pages</strong>
-            <span>Pages built to turn visitors into calls and bookings.</span>
+        </section>
+
+        <section class="screen" data-step="1">
+          <p class="kicker">Question 1</p>
+          <h2>What type of local business do you run?</h2>
+          <p class="subtext">This helps us understand the market you are in.</p>
+
+          <div class="field">
+            <label for="business_type">Business type</label>
+            <input id="business_type" name="business_type" type="text" placeholder="e.g. home cleaning, med spa, HVAC" required />
           </div>
-          <div class="proof-pill">
-            <strong>Tracking</strong>
-            <span>Clean data so spend is tied to real outcomes.</span>
+        </section>
+
+        <section class="screen" data-step="2">
+          <p class="kicker">Question 2</p>
+          <h2>What city or area do you serve?</h2>
+          <p class="subtext">Search demand and competition change a lot by location.</p>
+
+          <div class="field">
+            <label for="service_area">Main service area</label>
+            <input id="service_area" name="service_area" type="text" placeholder="e.g. San Francisco, Copenhagen, Miami" required />
           </div>
+        </section>
+
+        <section class="screen" data-step="3">
+          <p class="kicker">Question 3</p>
+          <h2>What is the main thing you want fixed?</h2>
+
+          <div class="choice-list">
+            <label class="choice"><input type="radio" name="main_goal" value="More booked jobs" required><span class="choice-card">More booked jobs</span></label>
+            <label class="choice"><input type="radio" name="main_goal" value="Better website conversion"><span class="choice-card">Better website conversion</span></label>
+            <label class="choice"><input type="radio" name="main_goal" value="Google Ads"><span class="choice-card">Google Ads</span></label>
+            <label class="choice"><input type="radio" name="main_goal" value="Unstable lead flow"><span class="choice-card">Unstable lead flow</span></label>
+          </div>
+        </section>
+
+        <section class="screen" data-step="4">
+          <p class="kicker">Question 4</p>
+          <h2>Where do most customers come from right now?</h2>
+
+          <div class="choice-list">
+            <label class="choice"><input type="radio" name="current_source" value="Referrals" required><span class="choice-card">Referrals</span></label>
+            <label class="choice"><input type="radio" name="current_source" value="Google Search or Maps"><span class="choice-card">Google Search or Maps</span></label>
+            <label class="choice"><input type="radio" name="current_source" value="Paid ads"><span class="choice-card">Paid ads</span></label>
+            <label class="choice"><input type="radio" name="current_source" value="Random or inconsistent"><span class="choice-card">Random or inconsistent</span></label>
+          </div>
+        </section>
+
+        <section class="screen" data-step="5">
+          <p class="kicker">Question 5</p>
+          <h2>What monthly ad budget would be realistic?</h2>
+
+          <div class="choice-list">
+            <label class="choice"><input type="radio" name="ad_budget" value="Under $1,000" required><span class="choice-card">Under $1,000</span></label>
+            <label class="choice"><input type="radio" name="ad_budget" value="$1,000 to $3,000"><span class="choice-card">$1,000 to $3,000</span></label>
+            <label class="choice"><input type="radio" name="ad_budget" value="$3,000 to $6,000"><span class="choice-card">$3,000 to $6,000</span></label>
+            <label class="choice"><input type="radio" name="ad_budget" value="$6,000+"><span class="choice-card">$6,000+</span></label>
+          </div>
+        </section>
+
+        <section class="screen" data-step="6">
+          <p class="kicker">Question 6</p>
+          <h2>How soon do you want to start?</h2>
+
+          <div class="choice-list">
+            <label class="choice"><input type="radio" name="timeline" value="ASAP" required><span class="choice-card">ASAP</span></label>
+            <label class="choice"><input type="radio" name="timeline" value="This month"><span class="choice-card">This month</span></label>
+            <label class="choice"><input type="radio" name="timeline" value="This quarter"><span class="choice-card">This quarter</span></label>
+            <label class="choice"><input type="radio" name="timeline" value="Just researching"><span class="choice-card">Just researching</span></label>
+          </div>
+        </section>
+
+        <section class="screen" data-step="7">
+          <p class="kicker">Question 7</p>
+          <h2>Where should we send your breakdown?</h2>
+
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required />
+          </div>
+        </section>
+
+        <section class="screen" data-step="8">
+          <p class="kicker">Last step</p>
+          <h2>Anything we should know before the call?</h2>
+          <p class="subtext">Optional, but useful. Tell us what is broken or what you already tried.</p>
+
+          <div class="field">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" placeholder="e.g. We get traffic, but not enough booked jobs."></textarea>
+          </div>
+        </section>
+
+        <section class="screen" data-step="9">
+          <p class="kicker">Done</p>
+          <h2>You look like a fit.</h2>
+          <p class="subtext">Your answers are saved. Book a quick call and we’ll bring ideas based on your situation.</p>
+
+          <div class="summary" id="summary"></div>
+
+          <div class="button-stack">
+            <a class="btn btn-primary" href="https://calendly.com/ian-postrmarketing/one-on-one-meeting-1" target="_blank" rel="noopener">Book 15-min call</a>
+            <div class="fineprint">No long pitch. Just a direct breakdown.</div>
+          </div>
+        </section>
+
+        <div class="error" id="errorBox">Answer this before moving on.</div>
+
+        <div class="nav" id="nav">
+          <button class="btn btn-ghost" type="button" data-back>Back</button>
+          <button class="btn btn-primary" type="button" data-next>Continue</button>
         </div>
-      </div>
-
-      <section class="funnel-card" aria-label="Questionnaire">
-        <div class="funnel-inner">
-          <div class="funnel-header">
-            <div>
-              <p class="funnel-kicker">POSTR fit check</p>
-              <h2 class="funnel-title" id="funnelTitle">Answer this first.</h2>
-            </div>
-            <div class="step-count" id="stepCount">1 / 9</div>
-          </div>
-
-          <div class="progress-shell" aria-hidden="true">
-            <div class="progress-bar" id="progressBar"></div>
-          </div>
-
-          <form id="postrFunnel" name="postr-growth-fit-check" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
-            <input type="hidden" name="form-name" value="postr-growth-fit-check" />
-            <p style="display:none;">
-              <label>Do not fill this out: <input name="bot-field" /></label>
-            </p>
-
-            <input type="hidden" name="utm_source" id="utm_source" />
-            <input type="hidden" name="utm_medium" id="utm_medium" />
-            <input type="hidden" name="utm_campaign" id="utm_campaign" />
-            <input type="hidden" name="utm_term" id="utm_term" />
-            <input type="hidden" name="utm_content" id="utm_content" />
-
-            <div class="screen active" data-screen="1" data-title="Start with the basics.">
-              <h3 class="question">What type of local business do you run?</h3>
-              <p class="hint">Keep it simple. Cleaning, HVAC, med spa, dental, roofing, window cleaning, anything local.</p>
-              <div class="field">
-                <label class="field-label" for="businessType">Business type</label>
-                <input class="text-input" id="businessType" name="business_type" type="text" placeholder="e.g. home cleaning, med spa, HVAC" required />
-              </div>
-            </div>
-
-            <div class="screen" data-screen="2" data-title="Where do you sell?">
-              <h3 class="question">What city or area do you mainly serve?</h3>
-              <p class="hint">This helps judge search volume, competition, and how hard your market is.</p>
-              <div class="field">
-                <label class="field-label" for="serviceArea">Main service area</label>
-                <input class="text-input" id="serviceArea" name="service_area" type="text" placeholder="e.g. San Francisco, Copenhagen, Miami" required />
-              </div>
-            </div>
-
-            <div class="screen" data-screen="3" data-title="What do you need fixed?">
-              <h3 class="question">What is the main thing you want right now?</h3>
-              <p class="hint">Pick the closest one. No perfect answer needed.</p>
-              <div class="choice-grid">
-                <label class="choice">
-                  <input type="radio" name="main_goal" value="More booked jobs or appointments" required />
-                  <span class="choice-card">
-                    <span><span class="choice-title">More booked jobs</span><span class="choice-sub">You need more real calls, forms, and appointments.</span></span>
-                    <span class="check"></span>
-                  </span>
-                </label>
-
-                <label class="choice">
-                  <input type="radio" name="main_goal" value="Better website conversion" />
-                  <span class="choice-card">
-                    <span><span class="choice-title">Better website conversion</span><span class="choice-sub">Traffic exists, but the page is not pulling its weight.</span></span>
-                    <span class="check"></span>
-                  </span>
-                </label>
-
-                <label class="choice">
-                  <input type="radio" name="main_goal" value="Test Google Ads" />
-                  <span class="choice-card">
-                    <span><span class="choice-title">Test Google Ads</span><span class="choice-sub">You want demand now, not six months from now.</span></span>
-                    <span class="check"></span>
-                  </span>
-                </label>
-
-                <label class="choice">
-                  <input type="radio" name="main_goal" value="Fix unstable lead flow" />
-                  <span class="choice-card">
-                    <span><span class="choice-title">Fix unstable lead flow</span><span class="choice-sub">Some weeks are good. Some weeks are dead.</span></span>
-                    <span class="check"></span>
-                  </span>
-                </label>
-              </div>
-            </div>
-
-            <div class="screen" data-screen="4" data-title="Current situation.">
-              <h3 class="question">Where do most customers come from now?</h3>
-              <p class="hint">This tells us how dependent the business is on referrals, walk-ins, social, or paid traffic.</p>
-              <div class="choice-grid">
-                <label class="choice">
-                  <input type="radio" name="current_source" value="Referrals" required />
-                  <span class="choice-card"><span><span class="choice-title">Referrals</span><span class="choice-sub">Good quality, but hard to control.</span></span><span class="check"></span></span>
-                </label>
-                <label class="choice">
-                  <input type="radio" name="current_source" value="Google search or maps" />
-                  <span class="choice-card"><span><span class="choice-title">Google search or maps</span><span class="choice-sub">People find you when they need the service.</span></span><span class="check"></span></span>
-                </label>
-                <label class="choice">
-                  <input type="radio" name="current_source" value="Paid ads" />
-                  <span class="choice-card"><span><span class="choice-title">Paid ads</span><span class="choice-sub">You already buy traffic.</span></span><span class="check"></span></span>
-                </label>
-                <label class="choice">
-                  <input type="radio" name="current_source" value="Random or inconsistent" />
-                  <span class="choice-card"><span><span class="choice-title">Random or inconsistent</span><span class="choice-sub">No clean system yet.</span></span><span class="check"></span></span>
-                </label>
-              </div>
-            </div>
-
-            <div class="screen" data-screen="5" data-title="Budget reality.">
-              <h3 class="question">What monthly ad budget would be realistic?</h3>
-              <p class="hint">This should be money you can actually deploy if the numbers make sense.</p>
-              <div class="choice-grid">
-                <label class="choice">
-                  <input type="radio" name="ad_budget" value="Under $1,000" required />
-                  <span class="choice-card"><span><span class="choice-title">Under $1,000</span><span class="choice-sub">Small test budget.</span></span><span class="check"></span></span>
-                </label>
-                <label class="choice">
-                  <input type="radio" name="ad_budget" value="$1,000 to $3,000" />
-                  <span class="choice-card"><span><span class="choice-title">$1k to $3k</span><span class="choice-sub">Enough for a serious local test.</span></span><span class="check"></span></span>
-                </label>
-                <label class="choice">
-                  <input type="radio" name="ad_budget" value="$3,000 to $6,000" />
-                  <span class="choice-card"><span><span class="choice-title">$3k to $6k</span><span class="choice-sub">Good room to learn and scale.</span></span><span class="check"></span></span>
-                </label>
-                <label class="choice">
-                  <input type="radio" name="ad_budget" value="$6,000+" />
-                  <span class="choice-card"><span><span class="choice-title">$6k+</span><span class="choice-sub">Aggressive growth mode.</span></span><span class="check"></span></span>
-                </label>
-              </div>
-            </div>
-
-            <div class="screen" data-screen="6" data-title="Speed matters.">
-              <h3 class="question">How soon do you want to start?</h3>
-              <p class="hint">Not asking for pressure. Just timing.</p>
-              <div class="choice-grid">
-                <label class="choice">
-                  <input type="radio" name="timeline" value="ASAP" required />
-                  <span class="choice-card"><span><span class="choice-title">ASAP</span><span class="choice-sub">I want this moving now.</span></span><span class="check"></span></span>
-                </label>
-                <label class="choice">
-                  <input type="radio" name="timeline" value="This month" />
-                  <span class="choice-card"><span><span class="choice-title">This month</span><span class="choice-sub">Soon, but not emergency mode.</span></span><span class="check"></span></span>
-                </label>
-                <label class="choice">
-                  <input type="radio" name="timeline" value="This quarter" />
-                  <span class="choice-card"><span><span class="choice-title">This quarter</span><span class="choice-sub">Planning ahead.</span></span><span class="check"></span></span>
-                </label>
-                <label class="choice">
-                  <input type="radio" name="timeline" value="Just researching" />
-                  <span class="choice-card"><span><span class="choice-title">Just researching</span><span class="choice-sub">Not ready to act yet.</span></span><span class="check"></span></span>
-                </label>
-              </div>
-            </div>
-
-            <div class="screen" data-screen="7" data-title="Website check.">
-              <h3 class="question">Do you already have a website?</h3>
-              <p class="hint">A weak website can kill good traffic. A good one makes ads much easier.</p>
-              <div class="choice-grid">
-                <label class="choice">
-                  <input type="radio" name="has_website" value="Yes" required />
-                  <span class="choice-card"><span><span class="choice-title">Yes</span><span class="choice-sub">We already have a live site.</span></span><span class="check"></span></span>
-                </label>
-                <label class="choice">
-                  <input type="radio" name="has_website" value="No" />
-                  <span class="choice-card"><span><span class="choice-title">No</span><span class="choice-sub">We need one built first.</span></span><span class="check"></span></span>
-                </label>
-              </div>
-            </div>
-
-            <div class="screen" data-screen="8" data-title="Contact details.">
-              <h3 class="question">Where should we send your breakdown?</h3>
-              <p class="hint">Use a real email. No spam. Just your answers and next steps.</p>
-              <div class="field">
-                <label class="field-label" for="fullName">Name</label>
-                <input class="text-input" id="fullName" name="name" type="text" placeholder="Your name" required />
-              </div>
-              <div class="field">
-                <label class="field-label" for="email">Email</label>
-                <input class="text-input" id="email" name="email" type="email" placeholder="you@company.com" required />
-              </div>
-              <div class="field">
-                <label class="field-label" for="websiteUrl">Website URL, optional</label>
-                <input class="text-input" id="websiteUrl" name="website_url" type="text" placeholder="https://yourwebsite.com" />
-              </div>
-            </div>
-
-            <div class="screen" data-screen="9" data-title="Last thing.">
-              <h3 class="question">Anything we should know before the call?</h3>
-              <p class="hint">Tell us what is broken, what you tried, or what you want fixed first.</p>
-              <div class="field">
-                <label class="field-label" for="notes">Notes, optional</label>
-                <textarea id="notes" name="notes" placeholder="e.g. We get traffic but not enough booked jobs. We tried ads before but leads were poor quality."></textarea>
-              </div>
-            </div>
-
-            <div class="screen" data-screen="10" data-title="Good. Now book the call.">
-              <div class="result-box">
-                <h3>You look like a fit.</h3>
-                <p>Your answers are saved. Book a quick call and we will come prepared with direct ideas for your business.</p>
-              </div>
-
-              <div class="summary-grid" id="answerSummary"></div>
-
-              <div class="button-row">
-                <div class="microcopy">No long pitch. We look at the business, the market, and the fastest path to more booked work.</div>
-                <a class="btn btn-primary" href="https://calendly.com/ian-postrmarketing/one-on-one-meeting-1" target="_blank" rel="noopener">
-                  Book 15-min call <i class="fa-solid fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="error" id="errorBox">Answer this question before moving on.</div>
-
-            <div class="button-row" id="navRow">
-              <div class="microcopy" id="microcopy">Takes around 2 minutes.</div>
-              <div class="button-group">
-                <button class="btn btn-secondary" type="button" id="backBtn">Back</button>
-                <button class="btn btn-primary" type="button" id="nextBtn">Next <i class="fa-solid fa-arrow-right"></i></button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </section>
-    </section>
-
-    <section class="trust-strip" aria-label="Why POSTR">
-      <div class="trust-item">
-        <strong>No agency handoff</strong>
-        <span>You deal directly with the person building the growth system.</span>
-      </div>
-      <div class="trust-item">
-        <strong>Built for local business</strong>
-        <span>Calls, bookings, and real revenue matter more than vanity metrics.</span>
-      </div>
-      <div class="trust-item">
-        <strong>Fast iteration</strong>
-        <span>Ads, landing pages, and tracking get tuned around what actually converts.</span>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <span>© POSTR</span>
-      <span>ian@postrmarketing.com</span>
-    </footer>
-  </main>
+      </form>
+    </main>
+  </div>
 
   <script>
     (function () {
-      const form = document.getElementById('postrFunnel');
+      const form = document.getElementById('fitForm');
       const screens = Array.from(document.querySelectorAll('.screen'));
-      const nextBtn = document.getElementById('nextBtn');
-      const backBtn = document.getElementById('backBtn');
-      const navRow = document.getElementById('navRow');
       const progressBar = document.getElementById('progressBar');
-      const stepCount = document.getElementById('stepCount');
-      const funnelTitle = document.getElementById('funnelTitle');
+      const nav = document.getElementById('nav');
       const errorBox = document.getElementById('errorBox');
-      const microcopy = document.getElementById('microcopy');
-      const answerSummary = document.getElementById('answerSummary');
-
-      const totalQuestions = 9;
-      let current = 1;
-      let isSubmitting = false;
+      const nextButtons = document.querySelectorAll('[data-next]');
+      const backButton = document.querySelector('[data-back]');
+      const summary = document.getElementById('summary');
+      let step = 0;
+      let submitting = false;
+      const lastQuestionStep = 8;
 
       const params = new URLSearchParams(window.location.search);
-      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(function (key) {
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function (key) {
         const input = document.getElementById(key);
         if (input) input.value = params.get(key) || '';
       });
 
-      function getScreen(number) {
+      function activeScreen() {
         return screens.find(function (screen) {
-          return Number(screen.dataset.screen) === number;
+          return Number(screen.dataset.step) === step;
         });
       }
 
       function showError(message) {
-        errorBox.textContent = message || 'Answer this question before moving on.';
+        errorBox.textContent = message || 'Answer this before moving on.';
         errorBox.classList.add('show');
       }
 
@@ -1056,13 +706,12 @@
         errorBox.classList.remove('show');
       }
 
-      function validateCurrent() {
-        const screen = getScreen(current);
+      function validate() {
+        const screen = activeScreen();
         if (!screen) return true;
 
-        const requiredFields = Array.from(screen.querySelectorAll('[required]'));
-
-        for (const field of requiredFields) {
+        const required = Array.from(screen.querySelectorAll('[required]'));
+        for (const field of required) {
           if (field.type === 'radio') {
             const checked = screen.querySelector('input[name="' + field.name + '"]:checked');
             if (!checked) {
@@ -1070,10 +719,9 @@
               return false;
             }
           } else if (field.type === 'email') {
-            const value = field.value.trim();
-            const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-            if (!valid) {
-              showError('Enter a valid email before moving on.');
+            const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim());
+            if (!ok) {
+              showError('Enter a valid email.');
               field.focus();
               return false;
             }
@@ -1088,57 +736,11 @@
         return true;
       }
 
-      function updateProgress() {
-        const visibleStep = Math.min(current, totalQuestions);
-        const percent = current >= 10 ? 100 : Math.round(((visibleStep - 1) / totalQuestions) * 100);
-        progressBar.style.width = percent + '%';
-        stepCount.textContent = current >= 10 ? 'Done' : visibleStep + ' / ' + totalQuestions;
-      }
-
-      function updateNav() {
-        backBtn.style.display = current === 1 || current === 10 ? 'none' : 'inline-flex';
-        navRow.style.display = current === 10 ? 'none' : 'flex';
-        nextBtn.innerHTML = current === totalQuestions
-          ? 'See result <i class="fa-solid fa-arrow-right"></i>'
-          : 'Next <i class="fa-solid fa-arrow-right"></i>';
-        microcopy.textContent = current <= 3 ? 'Fast answers. No fluff.' : 'Your answers help shape the call.';
-      }
-
-      function showScreen(number) {
-        current = number;
-        screens.forEach(function (screen) {
-          screen.classList.toggle('active', Number(screen.dataset.screen) === current);
-        });
-
-        const active = getScreen(current);
-        if (active && active.dataset.title) funnelTitle.textContent = active.dataset.title;
-
-        hideError();
-        updateProgress();
-        updateNav();
-      }
-
       function getValue(name) {
-        const radio = form.querySelector('input[name="' + name + '"]:checked');
-        if (radio) return radio.value;
-
+        const checked = form.querySelector('input[name="' + name + '"]:checked');
+        if (checked) return checked.value;
         const field = form.querySelector('[name="' + name + '"]');
         return field ? field.value.trim() : '';
-      }
-
-      function buildSummary() {
-        const items = [
-          ['Business', getValue('business_type')],
-          ['Area', getValue('service_area')],
-          ['Goal', getValue('main_goal')],
-          ['Current source', getValue('current_source')],
-          ['Budget', getValue('ad_budget')],
-          ['Timeline', getValue('timeline')]
-        ];
-
-        answerSummary.innerHTML = items.map(function (item) {
-          return '<div class="summary-item"><span>' + escapeHtml(item[0]) + '</span><strong>' + escapeHtml(item[1] || 'Not answered') + '</strong></div>';
-        }).join('');
       }
 
       function escapeHtml(value) {
@@ -1150,59 +752,91 @@
           .replace(/'/g, '&#039;');
       }
 
-      async function submitForm() {
-        if (isSubmitting) return;
-        isSubmitting = true;
-        nextBtn.disabled = true;
-        nextBtn.innerHTML = 'Saving...';
+      function buildSummary() {
+        const rows = [
+          ['Business', getValue('business_type')],
+          ['Area', getValue('service_area')],
+          ['Goal', getValue('main_goal')],
+          ['Current source', getValue('current_source')],
+          ['Budget', getValue('ad_budget')],
+          ['Timeline', getValue('timeline')]
+        ];
+
+        summary.innerHTML = rows.map(function (row) {
+          return '<div class="summary-row"><span>' + escapeHtml(row[0]) + '</span><strong>' + escapeHtml(row[1] || 'Not answered') + '</strong></div>';
+        }).join('');
+      }
+
+      function update() {
+        screens.forEach(function (screen) {
+          screen.classList.toggle('active', Number(screen.dataset.step) === step);
+        });
+
+        if (step === 0 || step === 9) {
+          nav.style.display = 'none';
+        } else {
+          nav.style.display = 'flex';
+          backButton.style.display = step === 1 ? 'none' : 'inline-flex';
+        }
+
+        const progress = step === 0 ? 0 : step >= 9 ? 100 : Math.round((step / lastQuestionStep) * 100);
+        progressBar.style.width = progress + '%';
+        hideError();
+      }
+
+      async function submit() {
+        if (submitting) return;
+        submitting = true;
 
         try {
-          const formData = new FormData(form);
-          const body = new URLSearchParams(formData).toString();
-
+          const data = new FormData(form);
           await fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: body
+            body: new URLSearchParams(data).toString()
           });
-        } catch (error) {
-          console.warn('Form submission failed, showing result anyway.', error);
+        } catch (e) {
+          console.warn('Form submit failed, continuing to final screen.', e);
         } finally {
           buildSummary();
-          showScreen(10);
-          nextBtn.disabled = false;
-          isSubmitting = false;
+          step = 9;
+          submitting = false;
+          update();
         }
       }
 
-      nextBtn.addEventListener('click', function () {
-        if (!validateCurrent()) return;
+      nextButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          if (!validate()) return;
 
-        if (current === totalQuestions) {
-          submitForm();
-          return;
-        }
+          if (step === lastQuestionStep) {
+            submit();
+            return;
+          }
 
-        showScreen(current + 1);
+          step += 1;
+          update();
+        });
       });
 
-      backBtn.addEventListener('click', function () {
-        showScreen(Math.max(1, current - 1));
+      backButton.addEventListener('click', function () {
+        step = Math.max(1, step - 1);
+        update();
       });
 
       form.addEventListener('keydown', function (event) {
-        const isTextInput = event.target.matches('input[type="text"], input[type="email"]');
-        if (event.key === 'Enter' && isTextInput) {
+        if (event.key === 'Enter' && event.target.matches('input[type="text"], input[type="email"]')) {
           event.preventDefault();
-          nextBtn.click();
+          const visibleNext = step === 0 ? document.querySelector('.screen.active [data-next]') : document.querySelector('#nav [data-next]');
+          if (visibleNext) visibleNext.click();
         }
       });
 
-      form.addEventListener('change', function (event) {
-        if (event.target.matches('input[type="radio"]')) hideError();
+      form.addEventListener('change', function () {
+        hideError();
       });
 
-      showScreen(1);
+      update();
     })();
   </script>
 </body>
