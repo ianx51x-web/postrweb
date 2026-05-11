@@ -541,12 +541,12 @@
         <input type="hidden" name="utm_content" id="utm_content" />
 
         <section class="screen active" data-step="0">
-          <h1>Hi there 👋<br>I’m Ian, founder of POSTR.</h1>
+          <h1>Hi there 👋<br>I’m Ian from POSTR.</h1>
           <div class="intro-gap"></div>
-          <h2>Ready to find out how we can help you get more booked jobs?</h2>
+          <h2>Ready to find out how we can solve your bookings issue?</h2>
 
           <div class="button-stack">
-            <button class="btn btn-dark" type="button" data-next>Let’s go!</button>
+            <button class="btn btn-dark" type="button" data-next>Let’s go</button>
             <div class="fineprint">It’s free to get started.</div>
             <div class="time"><span class="clock"></span> 2 min</div>
           </div>
@@ -554,97 +554,115 @@
 
         <section class="screen" data-step="1">
           <p class="kicker">Question 1</p>
-          <h2>What type of local business do you run?</h2>
-          <p class="subtext">This helps us understand the market you are in.</p>
+          <h2>Which best defines your customer problem?</h2>
 
-          <div class="field">
-            <label for="business_type">Business type</label>
-            <input id="business_type" name="business_type" type="text" placeholder="e.g. home cleaning, med spa, HVAC" required />
+          <div class="choice-list">
+            <label class="choice"><input type="radio" name="customer_problem" value="I can't get enough customers" required><span class="choice-card">I can't get enough customers</span></label>
+            <label class="choice"><input type="radio" name="customer_problem" value="I can't keep customers"><span class="choice-card">I can't keep customers</span></label>
+            <label class="choice"><input type="radio" name="customer_problem" value="Both"><span class="choice-card">Both</span></label>
+          </div>
+
+          <div style="max-width:520px;margin:28px auto 0;padding:20px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);text-align:left;">
+            <div style="font-size:14px;color:var(--muted);margin-bottom:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;">Client testimonial</div>
+            <div style="font-size:19px;line-height:1.45;font-weight:700;letter-spacing:-.03em;">“We got so many clients we literally had to hire more staff to keep up.”</div>
+            <div style="margin-top:14px;color:var(--muted);font-size:15px;">Jens, Home Cleaning Business</div>
           </div>
         </section>
 
         <section class="screen" data-step="2">
           <p class="kicker">Question 2</p>
-          <h2>What city or area do you serve?</h2>
-          <p class="subtext">Search demand and competition change a lot by location.</p>
+          <h2>How are you currently attracting new customers?</h2>
+          <p class="subtext">We’ll help you get more.</p>
 
-          <div class="field">
-            <label for="service_area">Main service area</label>
-            <input id="service_area" name="service_area" type="text" placeholder="e.g. San Francisco, Copenhagen, Miami" required />
+          <div class="choice-list">
+            <label class="choice"><input type="radio" name="customer_source" value="Referrals" required><span class="choice-card">Referrals</span></label>
+            <label class="choice"><input type="radio" name="customer_source" value="Google Maps"><span class="choice-card">Google Maps</span></label>
+            <label class="choice"><input type="radio" name="customer_source" value="Paid ads"><span class="choice-card">Paid ads</span></label>
+            <label class="choice"><input type="radio" name="customer_source" value="Random or inconsistent"><span class="choice-card">Random / Inconsistent</span></label>
           </div>
         </section>
 
         <section class="screen" data-step="3">
           <p class="kicker">Question 3</p>
-          <h2>What is the main thing you want fixed?</h2>
+          <h2>How many new customers are you getting per month?</h2>
 
           <div class="choice-list">
-            <label class="choice"><input type="radio" name="main_goal" value="More booked jobs" required><span class="choice-card">More booked jobs</span></label>
-            <label class="choice"><input type="radio" name="main_goal" value="Better website conversion"><span class="choice-card">Better website conversion</span></label>
-            <label class="choice"><input type="radio" name="main_goal" value="Google Ads"><span class="choice-card">Google Ads</span></label>
-            <label class="choice"><input type="radio" name="main_goal" value="Unstable lead flow"><span class="choice-card">Unstable lead flow</span></label>
+            <label class="choice"><input type="radio" name="monthly_customers" value="0 - 10" required><span class="choice-card">0 - 10</span></label>
+            <label class="choice"><input type="radio" name="monthly_customers" value="10 - 50"><span class="choice-card">10 - 50</span></label>
+            <label class="choice"><input type="radio" name="monthly_customers" value="50 - 100"><span class="choice-card">50 - 100</span></label>
+            <label class="choice"><input type="radio" name="monthly_customers" value="100+"><span class="choice-card">100+</span></label>
           </div>
         </section>
 
         <section class="screen" data-step="4">
           <p class="kicker">Question 4</p>
-          <h2>Where do most customers come from right now?</h2>
+          <h2>What’s the biggest challenge you face in getting new customers?</h2>
 
           <div class="choice-list">
-            <label class="choice"><input type="radio" name="current_source" value="Referrals" required><span class="choice-card">Referrals</span></label>
-            <label class="choice"><input type="radio" name="current_source" value="Google Search or Maps"><span class="choice-card">Google Search or Maps</span></label>
-            <label class="choice"><input type="radio" name="current_source" value="Paid ads"><span class="choice-card">Paid ads</span></label>
-            <label class="choice"><input type="radio" name="current_source" value="Random or inconsistent"><span class="choice-card">Random or inconsistent</span></label>
+            <label class="choice"><input type="radio" name="biggest_challenge" value="Can't stand out from competitors" required><span class="choice-card">Can't stand out from competitors</span></label>
+            <label class="choice"><input type="radio" name="biggest_challenge" value="Bargain shoppers"><span class="choice-card">Bargain shoppers</span></label>
+            <label class="choice"><input type="radio" name="biggest_challenge" value="Getting bookings consistently"><span class="choice-card">Getting bookings consistently</span></label>
+            <label class="choice"><input type="radio" name="biggest_challenge" value="All of them"><span class="choice-card">All of them</span></label>
           </div>
         </section>
 
         <section class="screen" data-step="5">
-          <p class="kicker">Question 5</p>
-          <h2>What monthly ad budget would be realistic?</h2>
+          <p class="kicker">Based on your answer</p>
+          <h2 id="reassureTitle">That makes sense.</h2>
+          <p class="subtext" id="reassureText">A lot of local businesses run into this exact issue when they rely on inconsistent lead flow.</p>
 
-          <div class="choice-list">
-            <label class="choice"><input type="radio" name="ad_budget" value="Under $1,000" required><span class="choice-card">Under $1,000</span></label>
-            <label class="choice"><input type="radio" name="ad_budget" value="$1,000 to $3,000"><span class="choice-card">$1,000 to $3,000</span></label>
-            <label class="choice"><input type="radio" name="ad_budget" value="$3,000 to $6,000"><span class="choice-card">$3,000 to $6,000</span></label>
-            <label class="choice"><input type="radio" name="ad_budget" value="$6,000+"><span class="choice-card">$6,000+</span></label>
+          <div style="max-width:540px;margin:34px auto 0;padding:22px;border-radius:10px;background:rgba(212,178,74,.12);border:1px solid rgba(212,178,74,.22);">
+            <div style="font-size:17px;line-height:1.55;color:#fff;">
+              The good news is that this is usually a positioning and acquisition problem, not a business quality problem.
+            </div>
           </div>
         </section>
 
         <section class="screen" data-step="6">
-          <p class="kicker">Question 6</p>
-          <h2>How soon do you want to start?</h2>
+          <p class="kicker">Question 5</p>
+          <h2>Why are you looking for marketing help?</h2>
 
           <div class="choice-list">
-            <label class="choice"><input type="radio" name="timeline" value="ASAP" required><span class="choice-card">ASAP</span></label>
-            <label class="choice"><input type="radio" name="timeline" value="This month"><span class="choice-card">This month</span></label>
-            <label class="choice"><input type="radio" name="timeline" value="This quarter"><span class="choice-card">This quarter</span></label>
-            <label class="choice"><input type="radio" name="timeline" value="Just researching"><span class="choice-card">Just researching</span></label>
+            <label class="choice"><input type="radio" name="why_help" value="High overhead gives me stress" required><span class="choice-card">High overhead gives me stress</span></label>
+            <label class="choice"><input type="radio" name="why_help" value="Slow days are boring and discouraging"><span class="choice-card">Slow days are boring and discouraging</span></label>
+            <label class="choice"><input type="radio" name="why_help" value="I don't know what to do or where to start"><span class="choice-card">I don't know what to do or where to start</span></label>
+            <label class="choice"><input type="radio" name="why_help" value="Everything"><span class="choice-card">Everything</span></label>
           </div>
         </section>
 
         <section class="screen" data-step="7">
-          <p class="kicker">Question 7</p>
-          <h2>Where should we send your breakdown?</h2>
+          <p class="kicker">Almost done</p>
+          <h2>Thanks!</h2>
+          <p class="subtext">Next I’ll need some basic contact info so I can get in touch and ask you more detailed questions about your issue.</p>
 
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" placeholder="Your name" required />
-          </div>
-
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="you@company.com" required />
+          <div class="button-stack">
+            <button class="btn btn-primary" type="button" data-next>Continue</button>
           </div>
         </section>
 
         <section class="screen" data-step="8">
-          <p class="kicker">Last step</p>
-          <h2>Anything we should know before the call?</h2>
-          <p class="subtext">Optional, but useful. Tell us what is broken or what you already tried.</p>
+          <p class="kicker">Contact info</p>
+          <h2>Thanks! Please enter your contact info below.</h2>
+          <p class="subtext">🔒 We’ll keep your information private and only use it to contact you.</p>
 
           <div class="field">
-            <label for="notes">Notes</label>
-            <textarea id="notes" name="notes" placeholder="e.g. We get traffic, but not enough booked jobs."></textarea>
+            <label for="first_name">First name</label>
+            <input id="first_name" name="first_name" type="text" placeholder="First name" required />
+          </div>
+
+          <div class="field">
+            <label for="last_name">Last name</label>
+            <input id="last_name" name="last_name" type="text" placeholder="Last name" required />
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input id="phone" name="phone" type="tel" placeholder="Phone number" required />
+          </div>
+
+          <div class="field">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required />
           </div>
         </section>
 
@@ -754,12 +772,11 @@
 
       function buildSummary() {
         const rows = [
-          ['Business', getValue('business_type')],
-          ['Area', getValue('service_area')],
-          ['Goal', getValue('main_goal')],
-          ['Current source', getValue('current_source')],
-          ['Budget', getValue('ad_budget')],
-          ['Timeline', getValue('timeline')]
+          ['Customer problem', getValue('customer_problem')],
+          ['Current source', getValue('customer_source')],
+          ['Monthly customers', getValue('monthly_customers')],
+          ['Biggest challenge', getValue('biggest_challenge')],
+          ['Reason for help', getValue('why_help')]
         ];
 
         summary.innerHTML = rows.map(function (row) {
@@ -768,6 +785,25 @@
       }
 
       function update() {
+        if (step === 5) {
+          const challenge = getValue('biggest_challenge');
+          const title = document.getElementById('reassureTitle');
+          const text = document.getElementById('reassureText');
+
+          if (challenge === "Can't stand out from competitors") {
+            title.textContent = 'You are probably blending in.';
+            text.textContent = 'Most local businesses sound identical online. Better positioning and messaging usually fixes this fast.';
+          } else if (challenge === 'Bargain shoppers') {
+            title.textContent = 'Cheap leads are exhausting.';
+            text.textContent = 'If your marketing attracts bargain shoppers, you end up competing on price instead of trust.';
+          } else if (challenge === 'Getting bookings consistently') {
+            title.textContent = 'Inconsistent bookings kill momentum.';
+            text.textContent = 'A lot of businesses rely too heavily on referrals and word of mouth, which creates unpredictable slow periods.';
+          } else if (challenge === 'All of them') {
+            title.textContent = 'That usually means the system is broken.';
+            text.textContent = 'When everything feels off at once, it usually means customer acquisition was never properly built.';
+          }
+        }
         screens.forEach(function (screen) {
           screen.classList.toggle('active', Number(screen.dataset.step) === step);
         });
